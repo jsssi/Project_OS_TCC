@@ -1,12 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-@import './dist/scss/variables.scss';
+@import './styles/variables.scss';
 
-
-*root{
-  margin: 0;
+:root{
   padding: 0;
+  margin: 0;
   border: 0;
 
   box-sizing: border-box;
-  color: $secund-font-color;
+  background-color:$backgroud-color;
+  body{
+    margin: 0;
+    height: 100vh;
+  }
 }

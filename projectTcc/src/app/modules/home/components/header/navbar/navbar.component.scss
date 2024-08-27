@@ -1,0 +1,74 @@
+@import '../../../../../../styles/variables.scss';
+
+.navbar{
+   width: 65vw;
+   height: 10vh;
+
+   border: 1px solid red;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+
+   position: absolute;
+   top: 2.0rem;
+   right: 10.0rem;
+
+  .buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    gap: 3.0rem;
+
+    .button-nav{
+      background: none;
+      color: $secund-font-color;
+      border: none;
+      cursor: pointer;
+
+      font-size: $font-size;
+      font-weight:$fonte-wheight;
+      text-transform: uppercase;
+
+      padding: .6rem;
+      height: auto;
+      width: auto;
+      border-radius: .5rem;
+    }
+    .button-nav:focus{
+      background-color:rgba(0, 0, 0, 0.626);
+      color: $primary-font-color;
+      transition: all .5s ease-in-out;
+
+    }
+
+
+  }
+  .fn_name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 1.0rem;
+
+    border: 1px solid red;
+    .img_fn{
+      width: 5vw;
+      height: 10vh;
+      border-radius: 50%;
+
+      background-color: #ffff;
+
+
+      display: flex;
+      align-items: center;
+      justify-content:center;
+      img{
+        width: 5vw;
+        height: 10vh;
+        border-radius: 50%;
+       }
+    }
+  }
+}
