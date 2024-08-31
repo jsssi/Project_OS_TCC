@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './modules/home/home.component';
 import { LoginComponent } from './modules/login/login.component';
-import { CanActivateHomeGuard } from './modules/can-deactivate.guard';
+import { CanActivateHomeGuard } from './Guard/can-deactivate.guard';
 
 
 export const routes: Routes = [

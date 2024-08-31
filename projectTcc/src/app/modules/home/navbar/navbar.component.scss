@@ -1,37 +1,73 @@
 @import '../../../../styles/variables.scss';
 
-.navbar {
+.sideBar {
   position: absolute;
-  bottom: 1.0rem;
-  left: 1.0rem;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: auto;
+
+  border: 1px solid red;
+  padding: 1.0rem;
+
+  background-color: #31181E;
+  display: flex;
+  align-items: center;
+
+  flex-direction: column;
+
+  .img_logo {
+    margin-top: 1.0rem;
+  }
 
   ul {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 
-    gap: 3.0rem;
+
+    gap: 1.0rem;
     list-style: none;
-    border: 1px solid red;
+    margin-top: 5rem;
 
-    .button_nav {
+    .button_nav, i {
 
-      width: auto;
-      height: auto;
-      border: 1px solid red;
+     background: none;
+     font-family: $primary-fonte-family;
+     color: #fff;
 
-      height: auto;
-      width: fit-content;
+
       padding: .3rem;
+      border-radius: .4rem;
       cursor: pointer;
 
 
-      font-size: .7rem;
+      font-size: 1.5rem;
       text-transform: uppercase;
+      text-align: left;
+
       font-weight: bold;
     }
+    .button_nav:focus{
+      background: $secund-font-color;
+      color: rgb(0, 0, 0);
+      transition: all 0.5s ease-in-out;
+    }
 
+  }
 
+  .logout_button {
+    position: absolute;
+    bottom: 1.0rem;
+    left: 1rem;
 
+    background: none;
+    color: #fff;
+
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: .3rem .4rem;
   }
 }
