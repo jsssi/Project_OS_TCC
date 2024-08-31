@@ -20,7 +20,7 @@
 
 
     height: 50vh;
-    width: 65vw;
+    width: 50vw;
 
     @include center_itens();
     margin: 0;
@@ -33,7 +33,7 @@
       flex-direction: column;
 
       height: 100%;
-      width: 30%;
+      width: 40%;
 
       background-color: #fff;
       border-radius: .5rem;
@@ -43,6 +43,8 @@
         font-size: 1.5rem;
         font-weight: bold;
         text-transform: capitalize;
+        
+        margin-bottom: 1.0rem;
       }
 
       .form_login {
@@ -55,7 +57,11 @@
           font-family: $primary-fonte-family;
           font-weight: bold;
           color: black;
-          font-size: .6rem
+          background-color: #40404089;
+          border: none;
+          font-size: .6rem;
+
+          border-radius: .3rem;
         }
         .login_button{
           font-family: "Roboto", sans-serif;;
@@ -84,7 +90,7 @@
     .img_logo {
       @include center_itens();
 
-      width: 70%;
+      width: 60%;
       height: 100%;
       border-radius: .5rem;
 
@@ -93,7 +99,8 @@
 
       img {
         width: 30vw;
-        height: 40vh;
+        height: 50vh;
+        margin-bottom: 2.0rem;
 
       }
     }

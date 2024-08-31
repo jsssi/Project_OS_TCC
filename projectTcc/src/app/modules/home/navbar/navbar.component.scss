@@ -1,0 +1,37 @@
+@import '../../../../styles/variables.scss';
+
+.navbar {
+  position: absolute;
+  bottom: 1.0rem;
+  left: 1.0rem;
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 3.0rem;
+    list-style: none;
+    border: 1px solid red;
+
+    .button_nav {
+
+      width: auto;
+      height: auto;
+      border: 1px solid red;
+
+      height: auto;
+      width: fit-content;
+      padding: .3rem;
+      cursor: pointer;
+
+
+      font-size: .7rem;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+
+
+  }
+}
