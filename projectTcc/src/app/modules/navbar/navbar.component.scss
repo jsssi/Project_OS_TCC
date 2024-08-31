@@ -1,4 +1,4 @@
-@import '../../../../styles/variables.scss';
+@import '../../../styles/variables.scss';
 
 .sideBar {
   position: absolute;
@@ -8,7 +8,7 @@
   height: 100vh;
   width: auto;
 
-  border: 1px solid red;
+
   padding: 1.0rem;
 
   background-color: #31181E;
@@ -30,8 +30,11 @@
 
     gap: 1.0rem;
     list-style: none;
+
     margin-top: 5rem;
 
+
+    
     .button_nav, i {
 
      background: none;
@@ -49,6 +52,7 @@
       text-align: left;
 
       font-weight: bold;
+
     }
     .button_nav:focus{
       background: $secund-font-color;
