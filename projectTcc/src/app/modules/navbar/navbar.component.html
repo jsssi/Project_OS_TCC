@@ -1,5 +1,21 @@
 <nav class="sidebar">
+
   <div class="sidebar_content">
+    <div class="menu">
+      <button class="menu_btn" (click)="setActive($event)" (click)="addandremoveclass()">
+        <i class="bi bi-list"></i>
+        <span class="item_description">
+          menu
+        </span>
+      </button>
+     <button class="menu_btn_close hide" (click)="setActive($event)" (click)="addandremoveclass()">
+      <i class="bi bi-x-lg">
+        <span class="item_description">
+          close
+        </span>
+      </i>
+     </button>
+    </div>
       <div class="user">
             <img src="../../../assets/Group 15 (2).png" alt="user">
             <p class="user_infos">
@@ -91,14 +107,7 @@
           </li>
       </ul>
   </div>
-  <div class="menu">
-    <button class="menu_btn" (click)="addclasslist()" (click)="setActive($event)">
-      <i class="bi bi-list"></i>
-      <span class="item_description">
-        menu
-      </span>
-    </button>
-  </div>
+
   <div class="logout">
      <button class="logout_btn" routerLink="/login" routerLinkActive="active">
        <i class="bi bi-box-arrow-right"></i>
