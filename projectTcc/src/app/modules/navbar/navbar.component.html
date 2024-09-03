@@ -1,14 +1,110 @@
-<div class="sideBar">
-  <div class="img_logo">
-     <img src="../../../../assets/img/COS_red_fundo_escuro-removebg-preview 1.png" alt="">
-  </div>
-  <ul>
-    <li><button class="button_nav" routerLink="/home" routerLinkActive="active"><i class="bi bi-house"></i></button></li>
-    <li><button class="button_nav" routerLink="#" routerLinkActive="active"><i class="bi bi-person"></i></button></li>
-    <li><button class="button_nav" routerLink="#" routerLinkActive="active"><i class="bi bi-box-seam"></i></button></li>
-    <li><button class="button_nav" routerLink="#" routerLinkActive="active"><i class="bi bi-search"></i></button></li>
-    <li><button class="button_nav" routerLink="#" routerLinkActive="active"><i class="bi bi-file-earmark-medical"></i></button></li>
-  </ul>
-  <button routerLink="/login" routerLinkActive="active" class="logout_button"><i class="bi bi-box-arrow-left"></i></button>
-</div>
+<nav class="sidebar">
+  <div class="sidebar_content">
+      <div class="user">
+            <img src="../../../assets/Group 15 (2).png" alt="user">
+            <p class="user_infos">
+                cicrano
+              <span class="item_description">
+                 funcionario
+              </span>
+            </p>
 
+
+      </div>
+      <ul class="side_items ">
+          <li class="side-item">
+            <button class="side_btn active" (click)="setActive($event)">
+              <i class="bi bi-house"></i>
+              <span class="item_description">
+                home
+              </span>
+            </button>
+          </li>
+          <li class="side-item">
+            <button class="side_btn" (click)="setActive($event)">
+              <i class="bi bi-person"></i>
+              <span class="item_description">
+                cliente
+              </span>
+            </button>
+          </li>
+          <li class="side-item">
+            <button class="side_btn" (click)="setActive($event)">
+              <i class="bi bi-box-seam"></i>
+              <span class="item_description">
+                estoque
+              </span>
+            </button>
+          </li>
+          <li class="side-item">
+            <button class="side_btn" (click)="setActive($event)">
+              <i class="bi bi-search"></i>
+              <span class="item_description">
+                buscar
+              </span>
+
+
+            </button>
+            <button class="search_modal" (click)="modalClass()">
+              <i class="bi bi-chevron-down"id="arrow-down"></i>
+            </button>
+            <button class="search_modal-left hide" (click)="closeModal()">
+              <i class="bi bi-chevron-left" id="arrow-left"></i>
+            </button>
+            <div class="modal_more_info">
+              <div class="item_description active_btn_modal">
+                 <button class="buscar_modal">
+                  produto
+                </button>
+              </div>
+              <div class="item_description">
+                 <button class="buscar_modal">
+                  marca
+                </button>
+              </div>
+              <div class="item_description">
+                <button class="buscar_modal">
+                  preço
+                </button>
+
+              </div>
+              <div class="item_description">
+                 <button class="buscar_modal">
+                  quantidade
+                </button>
+              </div>
+
+              <div class="item_description">
+                 <button class="buscar_modal">
+                  status
+                </button>
+              </div>
+            </div>
+          </li>
+          <li class="side-item">
+            <button class="side_btn" (click)="setActive($event)">
+              <i class="bi bi-file-earmark-medical"></i>
+              <span class="item_description">
+                gerar o.s
+              </span>
+            </button>
+          </li>
+      </ul>
+  </div>
+  <div class="menu">
+    <button class="menu_btn" (click)="addclasslist()" (click)="setActive($event)">
+      <i class="bi bi-list"></i>
+      <span class="item_description">
+        menu
+      </span>
+    </button>
+  </div>
+  <div class="logout">
+     <button class="logout_btn" routerLink="/login" routerLinkActive="active">
+       <i class="bi bi-box-arrow-right"></i>
+       <span class="item_description">
+          logout
+       </span>
+     </button>
+  </div>
+</nav>
