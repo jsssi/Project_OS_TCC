@@ -1,22 +1,30 @@
 <div class="page">
-  <img class="logo" src="../../../assets/img/COS_fundo_escuro-removebg-preview 2.png" alt="">
-
+  <div class="text">
+    <h2>welcome back</h2>
+    <h4>log in!</h4>
+  </div>
   <div class="login">
-    <h1 class="tittle">seja bem-vindo</h1>
     <form action="#" class="form_login">
-      <label class="input_label" for="user">Usuario</label>
-      <input type="text"required class="user">
-      <label class="input_label" for="password">Password</label>
-      <input type="password"required class="password">
+
+      <div class="form-group">
+        <input type="text" required class="user" id="nome" placeholder=" " />
+        <label for="nome">Usuario</label>
+      </div>
+
+      <div class="form-group">
+        <input type="password" required class="password" id="senha" placeholder=" " />
+        <label for="senha">Password</label>
+      </div>
+
+
 
       <button class="login_button" routerLink="/home" routerLinkActive="active" type="submit">
-          login</button>
+        login</button>
     </form>
     <div class="box">
-      <input type="checkbox">
-      <span>Lembrar</span>
-      <a href="#">Esqueceu a senha?</a>
+      <span><input type="checkbox">Lembrar</span>
+      <a routerLink="/home" routerLinkActive="active">Esqueceu a senha?</a>
     </div>
-     <h4>OR</h4>
+    <h4 class="OR">OR</h4>
 
-</div>
+  </div>
