@@ -220,7 +220,18 @@
   }
 }
 */
-
+@keyframes show{
+  to{
+    transform: translateY(0rem);
+    transform: scale(5rem);
+    opacity: .3;
+  }
+  from{
+    transform: translateY(100rem);
+    transform: scale(100rem);
+    opacity: 100;
+  }
+}
 @media(max-width:520px) {
   .page {
     background-color: $backgroud-color;
@@ -231,6 +242,19 @@
     justify-content: flex-end;
     flex-direction: column;
 
+    transition: all .5s ease-in-out;
+    .back {
+
+      padding: .5rem;
+
+      cursor: pointer;
+      position: absolute;
+      right: 1.0rem;
+      top: 1.0rem;
+
+      border-radius:.32rem;
+
+    }
 
     .text {
       position: absolute;
@@ -268,7 +292,6 @@
     }
 
     .login {
-
       background-color: #ffffff;
 
       border-radius: 2.0rem 2.0rem 0 0;
@@ -283,6 +306,8 @@
 
       gap: 1.0rem;
 
+      transition: all .5s ease-out;
+      animation:  show .7s ease-out backwards;
       .tittle {
 
         font-weight: 500;
@@ -301,84 +326,112 @@
         flex-direction: column;
         gap: 1.0rem;
 
-       .form-group{
-        position: relative;
-        input {
-          width: 100%;
-          padding: 10px;
-          font-size: 16px;
-          border-bottom: 2px solid #ccc;
-          border-radius: 4px;
-          outline: none;
-          background: transparent;
+        .form-group {
+          position: relative;
 
-          &:focus {
-            border-color: #4a90e2;
+          input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-bottom: 2px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+            background: transparent;
+
+            &:focus {
+              border-color: #4a90e2;
+            }
+
+            &:focus+label,
+            &:not(:placeholder-shown)+label {
+              top: -12px;
+              font-size: 12px;
+              color: #4a90e2;
+            }
           }
 
-          &:focus + label,
-          &:not(:placeholder-shown) + label {
-            top: -12px;
-            font-size: 12px;
-            color: #4a90e2;
+          // Estilos para a label
+          label {
+            position: absolute;
+            top: 12px;
+            left: 10px;
+            font-size: 16px;
+            color: #aaa;
+            transition: all 0.3s ease;
+            pointer-events: none;
           }
         }
-
-        // Estilos para a label
-        label {
-          position: absolute;
-          top: 12px;
-          left: 10px;
-          font-size: 16px;
-          color: #aaa;
-          transition: all 0.3s ease;
-          pointer-events: none;
-        }
-      }
-       }
-
-        .login_button {
-
-          background-color: rgb(10, 89, 149);
-          color: #ffffff;
-
-          margin-top: 1.0rem;
-
-          border-radius: .3rem;
-          padding: .4rem;
-
-          cursor: pointer;
-          width: 50%;
-
-          text-transform: uppercase;
-          font-size: .7rem;
-          font-weight: 400;
-
-        }
       }
 
-      .box {
-        display: flex;
-        gap: .4rem;
-        align-items: center;
-        justify-content: space-between;
+      .login_button {
 
-        span {
-          @include center_itens();
-          gap: .3rem;
+        background-color: rgb(45, 62, 75);
+        color: #ffffff;
 
-          font-size: .8rem;
-          font-weight: 500;
-        }
+        margin-top: 1.0rem;
 
-        a {
-          font-weight: 500;
-          font-size: .75rem;
+        border-radius: .3rem;
+        padding: .6rem;
 
-        }
+        cursor: pointer;
+        width: 100%;
+
+        text-transform: uppercase;
+        font-size: .7rem;
+        font-weight: 400;
+
+      }
+    }
+
+    .box {
+      display: flex;
+      gap: .4rem;
+      align-items: center;
+      justify-content: space-between;
+
+      span {
+        @include center_itens();
+        gap: .3rem;
+
+        font-size: .8rem;
+        font-weight: 500;
       }
 
+      a {
+        font-weight: 500;
+        font-size: .75rem;
+
+      }
+    }
+
+    .more_logins {
+
+      width: 100%;
+      height: auto;
+
+      @include center_itens();
+      gap: 1rem;
+
+      i {
+        height: 9vh;
+        width: 15vw;
+
+        text-align: center;
+
+        border-radius: .5rem;
+        color: #ffffff;
+        background-color: $backgroud-color;
+        font-size: 1.6rem;
+        padding: .3rem;
+
+        transition: all .5s ease-in-out;
+        cursor: pointer;
+      }
+
+      i:focus {
+        background-color: #4a90e2;
+        color: #ffffff;
+      }
     }
   }
-
-
+}

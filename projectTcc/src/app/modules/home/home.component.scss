@@ -1,0 +1,18 @@
+.buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  height: 100vh;
+  gap: 1.0rem;
+  button{
+    padding: .3rem;
+    width: 30vw;
+
+    text-transform: capitalize;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+}

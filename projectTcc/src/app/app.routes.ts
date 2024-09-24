@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
 
 import { LoginComponent } from './modules/login/login.component';
-import { CanActivateHomeGuard } from './Guard/can-deactivate.guard';
+
 import { HomeComponent } from './modules/home/home.component';
+import { CadastrarComponent } from './modules/cadastrar/cadastrar.component';
 
 
 export const routes: Routes = [
@@ -16,8 +17,12 @@ export const routes: Routes = [
     component: LoginComponent
   },
   {
+    path:'cadastrar',
+    component: CadastrarComponent
+  },
+  {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
 
