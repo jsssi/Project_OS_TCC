@@ -7,25 +7,25 @@
      <i class="bi bi-arrow-bar-left" ></i>
    </button>
    <div class="register">
-     <form action="#" class="form_login">
+     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" #ngDir ="ngForm" class="form_login">
 
        <div class="form-group">
-         <input type="text" required class="user" id="nome" placeholder=" " />
+         <input type="text" required class="user" id="nome" placeholder=" " formControlName="nome" />
          <label for="nome">Usuario</label>
        </div>
 
        <div class="form-group">
-         <input type="password" required class="password" id="senha" placeholder=" " />
+         <input type="password" required class="password" id="senha" placeholder=" " formControlName="senha" />
          <label for="senha">Password</label>
        </div>
        <div class="form-group">
-        <input type="email" required class="email" id="email" placeholder=" " />
+        <input type="email" required class="email" id="email" placeholder=" " formControlName="email"/>
         <label for="senha">Email</label>
       </div>
        <div class="box">
          <span><input type="checkbox">Lembrar</span>
        </div>
-       <button class="register_button" routerLink="/home" routerLinkActive="active" type="submit">
+       <button class="register_button" routerLink="/home" routerLinkActive="active" type="submit" (click)="onSubmit()">
         register</button>
      </form>
 
