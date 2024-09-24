@@ -16,4 +16,8 @@ $secund-font-family:"Roboto", system-ui;
 $fonte-wheight:bold;
 $font-size:.8rem;
 
-
+@mixin center_itens {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

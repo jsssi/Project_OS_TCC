@@ -1,11 +1,7 @@
 @import '../../../styles/variables.scss';
 
 
-@mixin center_itens {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 /*
 
@@ -220,16 +216,25 @@
   }
 }
 */
+
 @keyframes show{
   to{
     transform: translateY(0rem);
-    transform: scale(5rem);
     opacity: .3;
   }
   from{
     transform: translateY(100rem);
-    transform: scale(100rem);
+
     opacity: 100;
+  }
+}
+@keyframes show_text{
+  to{
+    transform: translateX(0rem);
+
+  }
+  from{
+    transform: translateX(100rem);
   }
 }
 @media(max-width:520px) {
@@ -253,6 +258,8 @@
       top: 1.0rem;
 
       border-radius:.32rem;
+      animation: show_text .8s ease-out forwards;
+      transition: all .5s ease-out;
 
     }
 
@@ -265,10 +272,11 @@
 
       height: auto;
       width: fit-content;
-
+      animation: show_text .5s ease-in-out forwards;
       h4 {
         text-align: left;
       }
+
     }
 
     .OR {
@@ -290,8 +298,8 @@
       top: 1rem;
 
     }
-
-    .login {
+//login frame--------------------------------
+    .login,.register{
       background-color: #ffffff;
 
       border-radius: 2.0rem 2.0rem 0 0;
@@ -308,16 +316,7 @@
 
       transition: all .5s ease-out;
       animation:  show .7s ease-out backwards;
-      .tittle {
 
-        font-weight: 500;
-        color: #000000;
-        font-size: 1.2rem;
-
-        text-transform: uppercase;
-        text-align: center;
-
-      }
 
       .form_login {
 
@@ -363,7 +362,7 @@
         }
       }
 
-      .login_button {
+      .login_button ,.register_button{
 
         background-color: rgb(45, 62, 75);
         color: #ffffff;
@@ -434,4 +433,5 @@
       }
     }
   }
+
 }

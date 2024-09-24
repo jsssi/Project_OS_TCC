@@ -1,1 +1,38 @@
-<p>cadastrar works!</p>
+<div class="page">
+  <div class="text">
+     <h2>welcome</h2>
+     <h4>log out!</h4>
+   </div>
+   <button class="back" routerLink="/home">
+     <i class="bi bi-arrow-bar-left" ></i>
+   </button>
+   <div class="register">
+     <form action="#" class="form_login">
+
+       <div class="form-group">
+         <input type="text" required class="user" id="nome" placeholder=" " />
+         <label for="nome">Usuario</label>
+       </div>
+
+       <div class="form-group">
+         <input type="password" required class="password" id="senha" placeholder=" " />
+         <label for="senha">Password</label>
+       </div>
+       <div class="form-group">
+        <input type="email" required class="email" id="email" placeholder=" " />
+        <label for="senha">Email</label>
+      </div>
+       <div class="box">
+         <span><input type="checkbox">Lembrar</span>
+       </div>
+       <button class="register_button" routerLink="/home" routerLinkActive="active" type="submit">
+        register</button>
+     </form>
+
+     <h4 class="OR">OR</h4>
+     <div class="more_logins">
+       <i class="bi bi-google"></i>
+       <i class="bi bi-apple"></i>
+       <i class="bi bi-microsoft"></i>
+     </div>
+   </div>
