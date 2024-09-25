@@ -60,8 +60,14 @@ export class LocalStorageService {
         console.log(user.username,user.password , user.email)
     )
   }
-  login(username: string, password: string) {
+  login(username: string, password: string){
 
+     this.getAllUsers().map((user)=>{
+        if(user.username === username && user.password === password){
+          console.log('Login efetuado com sucesso!')
+
+        }
+     })
 
   }
 }

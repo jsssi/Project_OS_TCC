@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   }
   onSubmit(){
     const {nome , senha }  = this.loginForm.value
-    
+    this.localStorage.login(nome,senha)
 
 
 
