@@ -28,7 +28,7 @@
     transform: translatex(-100rem);
    }
 }
-.page {
+:host{
  @include center_itens();
   position: absolute;
   height: 100vh;

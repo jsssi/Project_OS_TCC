@@ -11,7 +11,6 @@ import { NgClass, NgIf } from '@angular/common'
 export class NavbarComponent implements AfterViewInit {
   hide = true;
   private sideBar?: HTMLElement;
-  private btnMenu?: HTMLElement;
   private modalBusca?: HTMLElement;
   private seta?: HTMLElement;
   private seta1?: HTMLElement;
@@ -20,7 +19,7 @@ export class NavbarComponent implements AfterViewInit {
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
   ngAfterViewInit() {
-    this.btnMenu = this.el.nativeElement.querySelector('.btn_menu');
+    
     this.modalBusca = this.el.nativeElement.querySelector('.modal_more_info');
     this.sideBar = this.el.nativeElement.querySelector('nav');
     this.seta = this.el.nativeElement.querySelector('.search_modal-left ');
