@@ -1,0 +1,31 @@
+@import '../../../styles/variables.scss';
+
+:host {
+  @include center_itens();
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100vh;
+
+
+  i {
+    height: auto;
+    width: fit-content;
+    
+    border-radius: .3rem;
+
+    padding: .3rem;
+
+    background-color:#fff;
+
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .cliente_main {
+    height: 70%;
+    width: 100vw;
+    border: 1px solid red;
+    border-radius: 2.0rem;
+  }
+}
