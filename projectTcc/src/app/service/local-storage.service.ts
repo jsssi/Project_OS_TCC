@@ -8,15 +8,15 @@ export class LocalStorageService {
 
 
   constructor() {
-    this.loadFromLocalStorage(); // Carrega os dados do LocalStorage ao iniciar o serviço
+    this.loadFromLocalStorage();
   }
 
-  // Salvar o estado do "banco de dados" no LocalStorage
+
   private saveToLocalStorage(): void {
     localStorage.setItem('users', JSON.stringify(this.users));
   }
 
-  // Carregar o estado do "banco de dados" do LocalStorage
+
   private loadFromLocalStorage(): void {
     const storedUsers = localStorage.getItem('users');
     if (storedUsers) {
@@ -24,14 +24,14 @@ export class LocalStorageService {
     }
   }
 
-  // Função para salvar um usuário
+
   setUser(username: string, password: string, email: string): void {
     const user = { username, password, email };
     this.users[username] = user;
-    this.saveToLocalStorage(); // Atualiza o LocalStorage sempre que o objeto for modificado
+    this.saveToLocalStorage();
   }
 
-  // Função para recuperar um usuário pelo nome de usuário
+
   getUser(username: string): any {
     return this.users[username] || null;
   }
@@ -61,12 +61,12 @@ export class LocalStorageService {
     )
   }
   login(username: string, password: string){
-
+     let result = false
      this.getAllUsers().map((user)=>{
         if(user.username === username && user.password === password){
-          console.log('Login efetuado com sucesso!')
-
+          result = true;
         }
+        return result
      })
 
   }

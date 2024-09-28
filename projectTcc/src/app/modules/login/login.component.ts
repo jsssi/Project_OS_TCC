@@ -24,10 +24,11 @@ export class LoginComponent implements OnInit {
 
     console.log(this.localStorage.toString());
   }
+
   onSubmit(){
     const {nome , senha }  = this.loginForm.value
-    this.localStorage.login(nome,senha)
-
+    const result = this.localStorage.login(nome,senha)
+    console.log(result)
 
 
   }
