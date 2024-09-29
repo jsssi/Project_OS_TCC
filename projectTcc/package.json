@@ -1,6 +1,9 @@
 {
   "name": "project-tcc",
   "version": "0.0.0",
+  "main": "main.js",
+  "authors": "sc",
+  "description": "scapp",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,7 +11,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "commit": "git add . && git commit -m \"Commit message\"",
-    "push": "git push origin main"
+    "push": "git push origin main",
+    "electron": "ng build --base-href ./ && electron .",
+    "dist": "ng build --base-href ./ && electron-builder"
   },
   "private": true,
   "dependencies": {
@@ -31,6 +36,9 @@
     "@angular/cli": "^18.2.0",
     "@angular/compiler-cli": "^18.2.0",
     "@types/jasmine": "~5.1.0",
+    "electron": "^32.1.2",
+    "electron-builder": "^25.0.5",
+    "electron-reload": "^2.0.0-alpha.1",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -38,5 +46,16 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.5.2"
+  },
+  "build": {
+    "appId": "software.cantrips",
+    "productName": "SoftwareCantrips",
+    "mac": {
+      "category": "public.app-category.developer-tools"
+    },
+    "files": [
+      "**/*",
+      "dist/project-tcc/browser/**"
+    ]
   }
 }
