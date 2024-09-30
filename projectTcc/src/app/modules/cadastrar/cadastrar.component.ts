@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { LocalStorageService } from '../../service/local-storage.service';
+import { users } from '../../model/Users';
+import { UserService } from '../../service/User.service';
+
 
 @Component({
   selector: 'app-cadastrar',
@@ -12,7 +14,8 @@ import { LocalStorageService } from '../../service/local-storage.service';
 })
 export class CadastrarComponent  implements OnInit {
   registerForm!: FormGroup;
-  constructor(private localStorage: LocalStorageService) {
+
+  constructor(private UserService : UserService) {
     this.registerForm = new FormGroup({
       nome: new FormControl(""),
       email: new FormControl(""),
@@ -20,12 +23,12 @@ export class CadastrarComponent  implements OnInit {
     });
   }
   ngOnInit(): void {
-      console.log(this.localStorage.getAllUsers());
+     console.log(this.UserService.ShowAllUsers())
   }
   onSubmit() {
-    const { nome, senha, email } = this.registerForm.value;
-    this.localStorage.setUser(nome, senha, email);
-    console.log(this.localStorage.toString());
-  }
+    const  {nome , email , senha } = this.registerForm.value;
+    console.log(nome , email , senha ) 
+    this.UserService.RegisterUser(nome , email, senha )
+  } 
 
 }
