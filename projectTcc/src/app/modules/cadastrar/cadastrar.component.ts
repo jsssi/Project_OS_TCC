@@ -29,6 +29,6 @@ export class CadastrarComponent  implements OnInit {
     const  {nome , email , senha } = this.registerForm.value;
     console.log(nome , email , senha ) 
     this.UserService.RegisterUser(nome , email, senha )
-  } 
+  }
 
 }
