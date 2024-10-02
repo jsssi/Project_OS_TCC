@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -20,19 +21,15 @@ export class CanActivateHomeGuard implements CanActivate {
       return false;
     }
     console.log('usuario autenticado')
+
     // Se o usuário estiver autenticado, permite a navegação para a rota desejada
     return true;
   }
 
-  // Método para simular a verificação de autenticação
-  private checkUserAuthentication(): boolean {
-    // Aqui você pode simular a autenticação. Por exemplo:
-    // return true;  // Para simular um usuário autenticado
-    // return false; // Para simular um usuário não autenticado
 
-    // Vamos usar uma variável simples para testes
-    const isAuthenticated = true; // ou false, para testar ambos os cenários
-    return isAuthenticated;
+  private checkUserAuthentication(): boolean {
+
+   return true;
   }
 }
 //estudar mais sobre
