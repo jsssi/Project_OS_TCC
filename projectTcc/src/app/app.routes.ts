@@ -1,22 +1,33 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './modules/home/home.component';
+
 import { LoginComponent } from './modules/login/login.component';
-import { CanActivateHomeGuard } from './Guard/can-deactivate.guard';
+
+import { HomeComponent } from './modules/home/home.component';
+import { CadastrarComponent } from './modules/cadastrar/cadastrar.component';
+import { ClientePageComponent } from './modules/cliente-page/cliente-page.component';
 
 
 export const routes: Routes = [
+
   {
     path : 'home',
-    component : HomeComponent,
-    canActivate:[CanActivateHomeGuard]
+    component : HomeComponent
   },
   {
-    path : 'login',
-    component : LoginComponent
+    path :'login',
+    component: LoginComponent
+  },
+  {
+    path:'cadastrar',
+    component: CadastrarComponent
+  },
+  {
+    path:'cliente',
+    component: ClientePageComponent
   },
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
 

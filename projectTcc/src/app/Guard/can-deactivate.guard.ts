@@ -21,7 +21,7 @@ export class CanActivateHomeGuard implements CanActivate {
     }
     console.log('usuario autenticado')
     // Se o usuário estiver autenticado, permite a navegação para a rota desejada
-    return true;
+     return true;
   }
 
   // Método para simular a verificação de autenticação

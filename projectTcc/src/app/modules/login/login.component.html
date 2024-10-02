@@ -1,23 +1,36 @@
-  <div class="logo">
-    <img src="../../../assets/img/COS_fundo_escuro-removebg-preview 2.png" alt="">
-  </div>
-  <div class="login">
+<div class="page">
+ <div class="text">
+    <h2>welcome back</h2>
+    <h4>log in!</h4>
 
-    <div class="form">
-      <h1>seja bem-vindo</h1>
-      <form action="#" class="form_login">
-        <input type="text" placeholder="Usuario" required>
-        <input type="password" placeholder="Password" required>
-        <button class="login_button" routerLink="/home" routerLinkActive="active" type="submit" >Fazer <span> login</span></button>
-      </form>
+  </div>
+  <button class="back" routerLink="/home">
+    <i class="bi bi-arrow-bar-left" ></i>
+  </button>
+  <div class="login">
+    <form action="#" class="form_login" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <input type="text" required class="user" id="nome" placeholder=" " formControlName = "nome" />
+        <label for="nome">Usuario</label>
+      </div>
+
+      <div class="form-group">
+        <input type="password" required class="password" id="senha" placeholder=" " formControlName = "senha" />
+        <label for="senha">Password</label>
+      </div>
+      <div class="box">
+        <span><input type="checkbox">Lembrar</span>
+        <a routerLink="/cadastrar" routerLinkActive="active">Esqueceu a senha?</a>
+      </div>
+      <button class="login_button" routerLink="/cliente" routerLinkActive="active" type="submit" (click)="onSubmit()">
+        login</button>
+    </form>
+
+    <h4 class="OR">OR</h4>
+    <div class="more_logins">
+      <i class="bi bi-google"></i>
+      <i class="bi bi-apple"></i>
+      <i class="bi bi-microsoft"></i>
     </div>
   </div>
-  <div class="container">
-    <div class="circulo"></div>
-    <div class="circulo"></div>
-    <div class="circulo"></div>
-    <div class="img"></div>
-    <div class="img"><img src="../../../assets/img/Web-devices-pana.webp" alt=""></div>
-
-  </div>
-
