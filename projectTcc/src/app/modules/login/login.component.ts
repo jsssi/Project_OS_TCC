@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { LocalStorageService } from '../../service/local-storage.service';
+
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -14,7 +14,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 export class LoginComponent implements OnInit {
   loginForm!:FormGroup;
 
-  constructor(private localStorage: LocalStorageService){
+  constructor(){
     this.loginForm = new FormGroup({
       nome : new FormControl(""),
       senha : new FormControl("")
@@ -22,12 +22,12 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit(): void {
 
-    console.log(this.localStorage.toString());
+    
   }
+
   onSubmit(){
     const {nome , senha }  = this.loginForm.value
-    this.localStorage.login(nome,senha)
-
+    
 
 
   }

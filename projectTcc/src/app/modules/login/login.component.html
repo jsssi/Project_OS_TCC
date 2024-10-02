@@ -4,9 +4,6 @@
     <h4>log in!</h4>
 
   </div>
-  <button class="back" routerLink="/home">
-    <i class="bi bi-arrow-bar-left" ></i>
-  </button>
   <div class="login">
     <form action="#" class="form_login" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
@@ -33,4 +30,9 @@
       <i class="bi bi-apple"></i>
       <i class="bi bi-microsoft"></i>
     </div>
+    <span>
+      dont have account?
+      <a routerLink="/cadastrar" routerLinkActive="active">Sing up</a>
+    </span>
+
   </div>

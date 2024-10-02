@@ -247,6 +247,8 @@
     justify-content: flex-end;
     flex-direction: column;
 
+    height: 100vh;
+
     transition: all .5s ease-in-out;
     .back {
 
@@ -273,8 +275,10 @@
       height: auto;
       width: fit-content;
       animation: show_text .5s ease-in-out forwards;
+
       h4 {
         text-align: left;
+
       }
 
     }
@@ -288,25 +292,17 @@
 
     height: 100vh;
 
-    .logo {
-      width: 6rem;
-      height: 6rem;
 
-      display: block;
-      position: absolute;
-      left: 1rem;
-      top: 1rem;
-
-    }
 //login frame--------------------------------
     .login,.register{
       background-color: #ffffff;
+      box-shadow: 2px -3px 34px -3px rgba(0,0,0,0.75);
 
       border-radius: 2.0rem 2.0rem 0 0;
       padding: 2rem;
 
       width: 100%;
-      height: 70%;
+      height: 70vh;
 
       display: flex;
       flex-direction: column;
@@ -332,7 +328,7 @@
             width: 100%;
             padding: 10px;
             font-size: 16px;
-            border-bottom: 2px solid #ccc;
+            border-bottom: .1rem solid #9F9797;
             border-radius: 4px;
             outline: none;
             background: transparent;
@@ -355,7 +351,7 @@
             top: 12px;
             left: 10px;
             font-size: 16px;
-            color: #aaa;
+            color: #000000;
             transition: all 0.3s ease;
             pointer-events: none;
           }
@@ -379,6 +375,7 @@
         font-size: .7rem;
         font-weight: 400;
 
+        box-shadow: 2px -3px 34px -3px rgba(0,0,0,0.75);
       }
     }
 
@@ -415,9 +412,15 @@
         height: 9vh;
         width: 15vw;
 
+
         display: flex;
         align-items: center;
         justify-content: center;
+
+       display: flex;
+       align-items: center;
+       justify-content: center;
+
 
         border-radius: .5rem;
         color: #ffffff;
@@ -427,14 +430,19 @@
 
         transition: all .5s ease-in-out;
         cursor: pointer;
-        
-      }
 
-      i:focus {
-        background-color: #4a90e2;
-        color: #ffffff;
-      }
+
+
+        box-shadow: 2px -3px 34px -3px rgba(0,0,0,0.75);
+
+
+    }
+    span{
+      text-align: center;
+      font-size: .7rem;
+      opacity: .8;
     }
   }
 
+}
 }

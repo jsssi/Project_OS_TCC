@@ -24,7 +24,7 @@ export class CanActivateHomeGuard implements CanActivate {
      return true;
   }
 
-  // Método para simular a verificação de autenticação
+
   private checkUserAuthentication(): boolean {
     // Aqui você pode simular a autenticação. Por exemplo:
     // return true;  // Para simular um usuário autenticado
