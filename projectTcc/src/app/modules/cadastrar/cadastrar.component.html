@@ -10,18 +10,18 @@
      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" #ngDir ="ngForm" class="form_login">
 
        <div class="form-group">
-         <input type="text" required class="user" id="nome" placeholder=" " formControlName="nome" />
+         <input type="text" required class="name" id="name" placeholder=" " formControlName="name" />
          <label for="nome">Usuario</label>
-       </div>
-
-       <div class="form-group">
-         <input type="password" required class="password" id="senha" placeholder=" " formControlName="senha" />
-         <label for="senha">Password</label>
        </div>
        <div class="form-group">
         <input type="email" required class="email" id="email" placeholder=" " formControlName="email"/>
         <label for="senha">Email</label>
       </div>
+       <div class="form-group">
+         <input type="password" required class="password" id="password" placeholder=" " formControlName="password" />
+         <label for="password">Password</label>
+       </div>
+
        <div class="box">
          <span><input type="checkbox">Lembrar</span>
        </div>

@@ -16,7 +16,10 @@ import { NgxIndexedDBModule, NgxIndexedDBService } from 'ngx-indexed-db';
 export class LoginComponent implements OnInit {
   loginForm!:FormGroup;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1328526c19019686a0beaa2ca086c31d19aae57e
   constructor(){
     this.loginForm = new FormGroup({
       nome : new FormControl(""),
@@ -25,10 +28,19 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit(): void {
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 1328526c19019686a0beaa2ca086c31d19aae57e
   }
 
   onSubmit(){
     const {nome , senha }  = this.loginForm.value
+<<<<<<< HEAD
+=======
+    
+
+>>>>>>> 1328526c19019686a0beaa2ca086c31d19aae57e
 
   }
 }

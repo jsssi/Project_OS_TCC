@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule, FormControl, RequiredValidator } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { userService } from '../../service/user.service';
+import { UserService } from '../../service/User.service';
+
+
+
+
+
+
+
 
 @Component({
   selector: 'app-cadastrar',
@@ -10,23 +17,30 @@ import { userService } from '../../service/user.service';
   templateUrl: './cadastrar.component.html',
   styleUrl: '../login/login.component.scss'
 })
-export class CadastrarComponent  implements OnInit {
+export class CadastrarComponent implements OnInit {
   registerForm!: FormGroup;
-  constructor(private UserStorage: userService ) {
+  constructor(private UserService : UserService) {
+
     this.registerForm = new FormGroup({
-      nome: new FormControl(""),
+      name: new FormControl(""),
       email: new FormControl(""),
-      senha: new FormControl(""),
+      password: new FormControl(""),
     });
   }
   ngOnInit(): void {
-    const resultShowUser = this.UserStorage.ShowAllUsers();
+
+    const resultShowUser = this.UserService.ShowAllUsers();
     console.log(resultShowUser)
+
+    console.log(this.UserService.ShowAllUsers())
   }
+
 
   onSubmit() {
-    const{ nome, senha, email } = this.registerForm.value;
-    this.UserStorage.RegisterUser({nome, email, senha});
-  }
+    const { name, email, password } = this.registerForm.value;
+    this.UserService.RegisterUser(name, email, password)
+    console.log(this.UserService.login(name))
 
+
+  }
 }

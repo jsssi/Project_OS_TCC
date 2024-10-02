@@ -17,10 +17,15 @@ export const routes: Routes = [
     component: CadastrarComponent
   },
   {
+<<<<<<< HEAD
 
    path:'cliente',
    component: ClientePageComponent,
    canActivate:[CanActivateHomeGuard]
+=======
+    path:'cliente',
+    component: ClientePageComponent
+>>>>>>> 1328526c19019686a0beaa2ca086c31d19aae57e
   },
   {
     path: '',
