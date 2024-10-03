@@ -28,13 +28,10 @@ export class CanActivateHomeGuard implements CanActivate {
   }
 
 
-  private checkUserAuthentication(): boolean {
-   const verify = this.UserService.login();
-   console.log(verify)
-   if(verify){
-    return true
-   }
-   return false;
+   checkUserAuthentication(): boolean {
+
+    return false;
   }
+
 }
 //estudar mais sobre
