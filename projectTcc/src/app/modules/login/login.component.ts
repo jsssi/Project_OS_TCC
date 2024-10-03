@@ -3,6 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgxIndexedDBModule, NgxIndexedDBService } from 'ngx-indexed-db';
+import { UserService } from '../../service/User.service';
 
 
 @Component({
@@ -16,31 +17,19 @@ import { NgxIndexedDBModule, NgxIndexedDBService } from 'ngx-indexed-db';
 export class LoginComponent implements OnInit {
   loginForm!:FormGroup;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 1328526c19019686a0beaa2ca086c31d19aae57e
-  constructor(){
+  constructor(private userService: UserService){
     this.loginForm = new FormGroup({
-      nome : new FormControl(""),
-      senha : new FormControl("")
+      name : new FormControl(""),
+      password : new FormControl("")
     });
   }
   ngOnInit(): void {
-
-<<<<<<< HEAD
-=======
-    
->>>>>>> 1328526c19019686a0beaa2ca086c31d19aae57e
+    this.userService.ShowAllUsers()
   }
 
   onSubmit(){
-    const {nome , senha }  = this.loginForm.value
-<<<<<<< HEAD
-=======
+    const {name , password }  = this.loginForm.value;
+    this.userService.login(name , password)
     
-
->>>>>>> 1328526c19019686a0beaa2ca086c31d19aae57e
-
   }
 }

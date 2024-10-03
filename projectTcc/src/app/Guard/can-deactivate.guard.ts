@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
+import { UserService } from '../service/User.service';
 
 
 @Injectable({
@@ -7,7 +8,7 @@ import { CanActivate, Router } from '@angular/router';
 })
 export class CanActivateHomeGuard implements CanActivate {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,private UserService : UserService) {}
 
   canActivate(): boolean {
     // Simula se o usuário está autenticado ou não
@@ -28,8 +29,12 @@ export class CanActivateHomeGuard implements CanActivate {
 
 
   private checkUserAuthentication(): boolean {
-
-   return true;
+   const verify = this.UserService.login();
+   console.log(verify)
+   if(verify){
+    return true
+   }
+   return false;
   }
 }
 //estudar mais sobre
