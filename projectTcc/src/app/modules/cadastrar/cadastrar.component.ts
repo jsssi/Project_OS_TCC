@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, ReactiveFormsModule, FormControl, RequiredValidator } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { UserService } from '../../service/User.service';
+import { UserService } from '../../service/user.service';
+
 @Component({
   selector: 'app-cadastrar',
   standalone: true,

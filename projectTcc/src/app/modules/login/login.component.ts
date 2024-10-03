@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { NgxIndexedDBModule, NgxIndexedDBService } from 'ngx-indexed-db';
-import { UserService } from '../../service/User.service';
+
+import { UserService } from '../../service/user.service';
 import { CanActivateHomeGuard } from '../../Guard/can-deactivate.guard';
 
 
