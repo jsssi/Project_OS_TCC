@@ -25,12 +25,12 @@ export class LoginComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.userService.ShowAllUsers()
+
   }
 
   onSubmit(){
     const {name , password }  = this.loginForm.value;
-    this.userService.login(name, password);
+
 
   }
 }

@@ -7,8 +7,5 @@ import { HttpClient } from "@angular/common/http";
   providedIn: 'root'
 })
 export class UserService {
-  private _httpCliente: HttpClient
-  constructor (private httpClient:HttpClient){
-    this._httpCliente = httpClient;
-  }
+
 }
