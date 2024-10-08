@@ -24,16 +24,15 @@
     transform: translateX(100rem);
   }
 }
-
+//Mobile browser
 @media(max-width:520px) {
   .page {
     background-color: $backgroud-color;
     font-family: $primary-fonte-family;
 
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex-direction: column;
+    align-items: last baseline;
+
 
     height: 100vh;
 
@@ -187,7 +186,7 @@
 }
 
 //tablet browser
-@media (max-width:711px) {
+@media (min-width:521px) {
   .page {
     background-color: $backgroud-color;
     font-family: $primary-fonte-family;
@@ -197,10 +196,7 @@
     height: 100vh;
 
     transition: all .5s ease-in-out;
-
-
-
-    .text {
+   .text {
       position: absolute;
       left: .4rem;
       top: 2rem;
@@ -225,7 +221,7 @@
       border-radius: 2.0rem;
       padding: 2rem;
       width: 55vw;
-      height: 40vh;
+      height: 50vh;
 
       .form_login {
 
@@ -275,7 +271,7 @@
         background-color: rgb(45, 62, 75);
         color: #ffffff;
 
-        margin-top: 4.0rem;
+        margin-top: 1.0rem;
 
         border-radius: .3rem;
         padding: .6rem;
@@ -312,4 +308,11 @@
       }
     }
   }
+}
+//teste com controle de fluxo
+
+@if(width >  700px){
+ .page{
+   background-color: #000000;
+ }
 }
