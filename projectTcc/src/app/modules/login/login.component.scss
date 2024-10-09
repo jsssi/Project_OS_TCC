@@ -1,6 +1,6 @@
 @import '../../../styles/variables.scss';
 
-//mobile browser
+
 @keyframes show {
   to {
     transform: translateY(0rem);
@@ -24,7 +24,7 @@
     transform: translateX(100rem);
   }
 }
-
+//mobile browser
 @media(max-width:520px) {
   .page {
     background-color: $backgroud-color;
@@ -187,7 +187,7 @@
 }
 
 //tablet browser
-@media (max-width:711px) {
+@media (min-width:521px) {
   .page {
     background-color: $backgroud-color;
     font-family: $primary-fonte-family;
@@ -225,7 +225,7 @@
       border-radius: 2.0rem;
       padding: 2rem;
       width: 55vw;
-      height: 40vh;
+      height: 50vh;
 
       .form_login {
 
@@ -275,7 +275,7 @@
         background-color: rgb(45, 62, 75);
         color: #ffffff;
 
-        margin-top: 4.0rem;
+        margin-top: 1.0rem;
 
         border-radius: .3rem;
         padding: .6rem;
@@ -312,4 +312,12 @@
       }
     }
   }
+}
+//modal web styles
+.modal_web{
+  border: 1px solid red;
+  height: 50vh;
+  width:  40vw;
+
+  border-radius:2px 2px ;
 }
