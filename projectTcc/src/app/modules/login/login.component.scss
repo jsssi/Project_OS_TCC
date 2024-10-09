@@ -1,6 +1,6 @@
 @import '../../../styles/variables.scss';
 
-//mobile browser
+
 @keyframes show {
   to {
     transform: translateY(0rem);
@@ -24,7 +24,7 @@
     transform: translateX(100rem);
   }
 }
-//Mobile browser
+//mobile browser
 @media(max-width:520px) {
   .page {
     background-color: $backgroud-color;
@@ -309,4 +309,11 @@
     }
   }
 }
-//teste com controle de fluxo
+//modal web styles
+.modal_web{
+  border: 1px solid red;
+  height: 50vh;
+  width:  40vw;
+
+  border-radius:2px 2px ;
+}
