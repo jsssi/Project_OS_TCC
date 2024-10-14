@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> dev2_Senai
 
 @Injectable({
   providedIn: 'root',
