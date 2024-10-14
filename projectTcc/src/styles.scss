@@ -8,6 +8,7 @@
 
   box-sizing: border-box;
   body{
-    background-color: $backgroud-color;
+    background:linear-gradient($backgroud);
+    height: 100vh;
   }
 }
