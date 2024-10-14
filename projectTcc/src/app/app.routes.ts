@@ -6,7 +6,7 @@ import { CanActivateHomeGuard } from './Guard/can-deactivate.guard';
 export const routes: Routes = [
 
 
-  
+
   {
 
     path: '',
