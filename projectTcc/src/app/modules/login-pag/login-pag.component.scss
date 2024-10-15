@@ -1,0 +1,36 @@
+@import "../../../styles/variables.scss";
+
+:host {
+  @include center_itens();
+  height: 100vh;
+
+  .main-box {
+    height: 60vh;
+    width: 50vw;
+
+    display: flex;
+
+    .form_group {
+      width: 40%;
+      height: 100%;
+
+      border: 1px solid red;
+
+    }
+
+    .box_more_info {
+     border: 1px solid red;
+
+     width: 70%;
+     height: 100%;
+
+
+
+
+
+
+
+
+    }
+  }
+}

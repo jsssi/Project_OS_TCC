@@ -1,7 +1,5 @@
-import { Routes } from '@angular/router';
-import { LoginComponent } from './modules/login/login.component';
-import { ClientePageComponent } from './modules/cliente-page/cliente-page.component';
-import { CanActivateHomeGuard } from './Guard/can-deactivate.guard';
+import { Routes } from '@angular/router'
+import { LoginPagComponent } from './modules/login-pag/login-pag.component';
 
 
 export const routes: Routes = [
@@ -9,13 +7,7 @@ export const routes: Routes = [
 
   {
     path: 'login',
-    component: LoginComponent
-  },
-  {
-
-    path: 'cliente',
-    component: ClientePageComponent,
-    canActivate: [CanActivateHomeGuard]
+    component: LoginPagComponent
   },
   {
 

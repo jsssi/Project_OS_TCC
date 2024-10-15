@@ -8,6 +8,11 @@
 
   box-sizing: border-box;
   body{
-    background-color: $backgroud-color;
+    background: $backgroud-color;
+    background-repeat: no-repeat;
+    height: 100vh;
+
+
+    
   }
 }
