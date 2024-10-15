@@ -1,0 +1,45 @@
+@import '../../../styles/variables.scss';
+
+header{
+
+  border: 1px solid green;
+  background: #00162E;
+  display: flex;
+  flex-direction: row;
+
+  width: 100%;
+  height: 80px;
+
+  justify-content: flex-end;
+
+  .logo{
+     position: absolute;
+     top: 0.5rem;
+     left: 1rem;
+    img{
+      width: 48px;
+      height: 68px;
+    }
+  }
+
+  nav{
+    border: 1px darkmagenta solid;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+
+    margin: auto;
+    ul{
+      color: #FFC65E;
+      cursor: pointer;
+    }
+  }
+
+  .menu{
+
+    border: 1px solid red;
+    i{
+      color: white;
+    }
+  }
+}
