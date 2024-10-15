@@ -1,0 +1,43 @@
+@import '../../../styles/variables.scss';
+
+header{
+
+  background: #00162E;
+  display: flex;
+  flex-direction: row;
+
+  width: 100%;
+  height: 80px;
+
+  justify-content: flex-end;
+
+  .logo{
+     position: absolute;
+     top: 0.5rem;
+     left: 1rem;
+    img{
+      width: 48px;
+      height: 68px;
+    }
+  }
+
+  nav{
+    display: flex;
+    gap: 40px;
+    align-items: center;
+
+    margin: auto;
+    ul{
+      color: #FFC65E;
+    }
+  }
+
+  .menu{
+    i{
+     justify-self: center;
+      width: 30px;
+      height: 30px;
+      color: white;
+    }
+  }
+}
