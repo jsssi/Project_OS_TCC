@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 384a0c29a6cae20c61d5d5524f74683d41dac041
 
 @Injectable({
   providedIn: 'root',
