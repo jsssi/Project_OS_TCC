@@ -1,0 +1,88 @@
+@import "../../../styles/variables.scss";
+
+:host {
+  @include center_itens();
+  height: 100vh;
+
+  .main-box {
+    height: 60vh;
+    width: 60vw;
+
+    display: flex;
+
+    .form_group{
+      background-color: #ffff;
+
+      width: 35%;
+      height: 100%;
+
+      padding: 1.5rem;
+      border-radius: 2rem 0 0 2rem;
+
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      gap: 2.5rem;
+      .tittle{
+        font-size: 2rem;
+        font-weight: 400;
+
+        text-transform: capitalize;
+      }
+      .form-login{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        flex-direction: column;
+        gap: 1.5rem;
+
+
+        text-align: left;
+
+        input {
+          padding: .4rem;
+
+          width: 16vw;
+
+          border: 1px solid gray;
+          border-radius: 2rem;
+        }
+
+        .login_btn {
+          padding: .3rem;
+          background-color: $secund-color;
+          border-radius: 2rem;
+
+          width: 8vw;
+          height: auto;
+
+        }
+
+      }
+
+      a {
+        color: #000;
+
+        font-size: .95rem;
+        transition: color 0.3s ease;
+      }
+
+    }
+
+    .box_more_info {
+
+      width: 70%;
+      height: 100%;
+
+      background-image: url("../../../assets/4882066.png");
+
+      @include center_itens();
+      img{
+        width: 16vw;
+        height: auto;
+      }
+    }
+  }
+}

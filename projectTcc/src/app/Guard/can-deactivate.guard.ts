@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { UserService } from '../service/user.service';
-
-
 @Injectable({
   providedIn: 'root',
 })
 export class CanActivateHomeGuard implements CanActivate {
 
-  constructor(private router: Router,private UserService : UserService) {}
+  constructor(private router: Router) {}
 
   canActivate(): boolean {
     // Simula se o usuário está autenticado ou não
