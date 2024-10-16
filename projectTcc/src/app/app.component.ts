@@ -10,9 +10,7 @@ import { NavBarComponent } from "./modules/nav-bar/nav-bar.component";
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, RouterLink, RouterLinkActive, NavBarComponent],
-  template: `<router-outlet>
-    <app-nav-bar></app-nav-bar>
-  </router-outlet>`,
+  template: `<router-outlet></router-outlet>`,
   styleUrl: './app.component.scss',
   encapsulation: ViewEncapsulation.None
 })
