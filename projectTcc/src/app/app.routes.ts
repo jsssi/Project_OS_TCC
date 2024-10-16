@@ -4,6 +4,8 @@ import { LoginPageComponentComponent } from './modules/login-page-component/logi
 import { NavBarComponent } from './modules/nav-bar/nav-bar.component';
 import { HomeComponent } from './modules/home/home.component';
 
+import { CadastroPageComponent } from './modules/cadastro-page/cadastro-page.component';
+
 export const routes: Routes = [
 
   {
@@ -13,6 +15,13 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+
+  },
+  {
+
+    path:'cadastrar',
+    component:CadastroPageComponent
+
   },
   {
     path: '',
