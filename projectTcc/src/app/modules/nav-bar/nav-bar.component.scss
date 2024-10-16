@@ -1,7 +1,6 @@
 @import '../../../styles/variables.scss';
 
 header{
-
   background: #00162E;
   display: flex;
   flex-direction: row;
@@ -16,27 +15,34 @@ header{
      top: 0.5rem;
      left: 1rem;
     img{
-      width: 48px;
+      margin: 0 15px;
+      width:51px;
       height: 68px;
     }
   }
 
   nav{
     display: flex;
-    gap: 40px;
+    gap: 60px;
     align-items: center;
 
-    margin: auto;
+    margin-right: 90px;
+
     ul{
+      font-size: 20px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       color: #FFC65E;
+      cursor: pointer;
     }
   }
 
   .menu{
+    align-self: center;
+
+    margin-right: 45px;
     i{
-     justify-self: center;
-      width: 30px;
-      height: 30px;
+      font-size: 30px;
+      cursor: pointer;
       color: white;
     }
   }
