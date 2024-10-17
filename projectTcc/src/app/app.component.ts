@@ -12,7 +12,6 @@ import { NavBarComponent } from "./modules/nav-bar/nav-bar.component";
   template: `<router-outlet></router-outlet>`,
   styleUrl: './app.component.scss',
   encapsulation: ViewEncapsulation.None
-
 })
 export class AppComponent {
   title = 'projectTcc';
