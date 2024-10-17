@@ -4,32 +4,6 @@
   @include center_itens();
   height: 100vh;
 
-<<<<<<< HEAD
-  .main {
-    border: 1px solid rgb(255, 255, 255);
-    height: 50vh;
-    width: 60vw;
-
-    @include center_itens();
-
-    .Formgroup{
-      border: 1px solid red;
-      width: 40%;
-      height: 100%;
-
-      @include center_itens();
-      flex-direction: column;
-
-
-    }
-    .image_Box{
-      border: 1px solid green;
-
-      height: 100%;
-      width: 60%;
-    }
-
-=======
   .main-box {
     height: 60vh;
     width: 60vw;
@@ -84,6 +58,8 @@
           width: 8vw;
           height: auto;
 
+          cursor: pointer;
+
         }
 
       }
@@ -103,6 +79,8 @@
       height: 100%;
 
       background-image: url("../../../assets/4882066.png");
+      background-repeat: no-repeat;
+      background-size: cover;
 
       @include center_itens();
       img{
@@ -110,6 +88,5 @@
         height: auto;
       }
     }
->>>>>>> 384a0c29a6cae20c61d5d5524f74683d41dac041
   }
 }
