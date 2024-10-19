@@ -17,7 +17,7 @@
       height: 100%;
 
       padding: 1.5rem;
-      border-radius: 2rem 0 0 2rem;
+      border-radius: 1rem 0 0 1rem;
 
       display: flex;
       justify-content: center;
@@ -58,6 +58,7 @@
           width: 8vw;
           height: auto;
 
+          cursor: pointer;
         }
 
       }
@@ -77,7 +78,7 @@
       height: 100%;
 
       background-image: url("../../../assets/4882066.png");
-
+      border-radius: 0 1rem  1rem 0;
       @include center_itens();
       img{
         width: 16vw;
