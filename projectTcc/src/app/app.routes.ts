@@ -4,6 +4,7 @@ import { LoginPageComponentComponent } from './modules/login-page-component/logi
 import { NavBarComponent } from './modules/nav-bar/nav-bar.component';
 import { HomeComponent } from './modules/home/home.component';
 import { CadastroPageComponent } from './modules/cadastro-page/cadastro-page.component';
+import { FirstPageComponent } from './modules/first-page/first-page.component';
 
 export const routes: Routes = [
 
@@ -12,8 +13,8 @@ export const routes: Routes = [
     component: LoginPageComponentComponent
   },
   {
-    path:'cadastrar',
-    component:CadastroPageComponent
+    path: 'cadastrar',
+    component: CadastroPageComponent
 
   },
   {
@@ -21,8 +22,12 @@ export const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'welcome',
+    component: FirstPageComponent
+  },
+  {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/welcome',
     pathMatch: 'full'
   },
 

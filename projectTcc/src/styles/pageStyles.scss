@@ -1,0 +1,151 @@
+@import "./variables.scss";
+
+@keyframes fall {
+  0% {
+    transform: rotate(315deg) translateX(10rem);
+
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotate(315deg) translateX(-1000px);
+    opacity: 0;
+  }
+}
+@keyframes open_page {
+  from {
+    transform: translateY(-100rem);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes open_page_text {
+  0% {
+
+    filter: blur(12px);
+    opacity: 0;
+  }
+
+  100% {
+
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+
+
+@mixin center_itens {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin button_style {
+  padding: .3rem;
+  background-color: #ffffff;
+  color: #000;
+  border-radius: .5rem;
+
+  width: 8rem;
+  height: auto;
+
+  cursor: pointer;
+
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: 500;
+  font-size: 1rem;
+
+  box-shadow: -3px 6px 6px 0px rgba(255, 255, 255, 0.194);
+}
+@mixin box-more-info-styles{
+  @include center_itens();
+
+  height: 40%;
+  width: 100vw;
+
+  padding: .5rem;
+  border-radius: 0 0 30% 30%;
+  box-shadow: -3px 6px 6px 0px rgba(255, 255, 255, 0.194);
+
+  background-image: url('../assets/4882066.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  animation: open_page 1s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+  transition: all 0.5s;
+
+  .logoPng {
+    width: 5rem;
+    height: auto;
+  }
+}
+@mixin star_fall {
+  .star {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background: #ffffff;
+    border-radius: 50rem;
+    box-shadow: 0 0 0 2px rgb(255, 255, 255, 0.1), 0 0 0 4px rgba(255, 255, 255, 0.1), 0 0 15px rgba(255, 255, 255, 1);
+    animation: fall 3s linear infinite;
+  }
+
+  .star::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: .8rem;
+    width: 20px;
+    height: 1px;
+    background: linear-gradient(#ffffff85 100%, rgba(255, 255, 255, 0.379) 50%);
+    opacity: 0.7;
+    transform: translateX(-50%);
+
+  }
+
+  .star:nth-child(1) {
+    top: 5rem;
+    right: 80px;
+    animation-delay: -0.2s;
+    animation-duration: 3s;
+  }
+
+  .star:nth-child(2) {
+    top: 8rem;
+    left: 100px;
+    animation-delay: 0.3s;
+    animation-duration: 4s;
+  }
+
+  .star:nth-child(3) {
+    top: 12rem;
+    right: 150px;
+    animation-delay: -0.1s;
+    animation-duration: 3.5s;
+  }
+
+  .star:nth-child(4) {
+    top: 15rem;
+    left: 200px;
+    animation-delay: 0.5s;
+    animation-duration: 3.8s;
+  }
+
+  .star:nth-child(5) {
+    top: 18rem;
+    right: 50px;
+    animation-delay: 0s;
+    animation-duration: 4.2s;
+  }
+}
