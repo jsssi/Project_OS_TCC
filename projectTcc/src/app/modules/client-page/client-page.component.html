@@ -8,14 +8,11 @@
 <span class="star"></span>
 
 <div class="status-phone-list">
-  <div class="user-header">
-    <span class="user-span">Nome</span>
-    <span class="user-span">Info</span>
-    <span class="user-span">Status</span>
-  </div>
-  <div class="user-card" *ngFor = 'let User of users'>
-    <span class="user-span-card">{{User.name}}</span>
-    <span class="user-span-card">{{User.info}}</span>
-    <span class="user-span-card">{{User.status}}</span>
+  <div class="user-card" *ngFor='let User of users'>
+    <div class="user-span">
+       <span>Name:   {{User.name}}</span>
+       <span>Status: {{User.status}}</span>
+    </div>
+    <div class="box2"></div>
   </div>
 </div>
