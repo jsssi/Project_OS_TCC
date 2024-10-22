@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
 })
 export class ClientPageComponent {
   users=[
-    {name:'jefferson',info:'motorola',status:'em andamento'}
+    {name:'jefferson',info:'motorola',status:'em andamento',telefone:'(71)xxxx-xxxx',celular:"Motorola"}
   ]
+
 }
