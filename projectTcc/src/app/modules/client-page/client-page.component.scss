@@ -1,0 +1,53 @@
+@import "../../../styles/pageStyles.scss";
+@import "../../../styles/variables.scss";
+
+
+:host {
+  @include star_fall();
+
+  height: 100vh;
+  color: #fff;
+
+  .box_more_info {
+    @include box-more-info-styles();
+    height: 20%;
+    border-radius: 0rem 0rem 1.5rem 1.5rem;
+
+    overflow: hidden;
+  }
+
+  .status-phone-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+
+
+    @include center_itens();
+    flex-direction: column;
+
+    border: 1px solid red;
+
+    .user-header {
+      display: flex;
+      gap: 2rem;
+      font-weight: bold;
+      font-size: .9rem;
+      text-transform: uppercase;
+
+      border: 1px solid red;
+      margin-top: 1.0rem;
+    }
+
+    .user-card {
+      @include center_itens();
+      gap: 1.0rem;
+
+      border: 1px solid red;
+
+      padding: 1rem;
+      width: 100%;
+
+    }
+  }
+
+}

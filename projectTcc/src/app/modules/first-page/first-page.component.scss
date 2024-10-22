@@ -40,62 +40,61 @@
   :host {
     height: 100vh;
 
-    .main-box {
-      @include center_itens();
-      background: linear-gradient($backgroud);
-      color: #ffffff;
 
-      height: 100%;
-      width: 100%;
+    @include center_itens();
+    background: linear-gradient($backgroud);
+    color: #ffffff;
+
+    height: 100%;
+    width: 100%;
+
+    flex-direction: column;
+    box-shadow: 4px -2px 27px -4px rgba(0, 0, 0, 0.46) inset;
+
+
+    .box-optins {
+
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
       flex-direction: column;
-      box-shadow: 4px -2px 27px -4px rgba(0, 0, 0, 0.46) inset;
+
+      text-align: left;
+
+      height: 60%;
+      width: 100vw;
 
 
-      .box-optins {
+      padding: .5rem;
+      margin-bottom: 1.0rem;
+      position: relative;
 
+      @include star_fall();
 
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+      .text {
+        animation: open_page_text 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+        transition: all .5s;
 
-        flex-direction: column;
-
-        text-align: left;
-
-        height: 60%;
-        width: 100vw;
-
-
-        padding: .5rem;
-        margin-bottom: 1.0rem;
-        position: relative;
-
-        @include star_fall();
-
-        .text {
-          animation: open_page_text 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+        p {
+          animation: open_page_text 1.6s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
           transition: all .5s;
-
-          p {
-            animation: open_page_text 1.6s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-            transition: all .5s;
-          }
-        }
-
-        .buttons {
-          @include center_itens();
-          gap: 1.0rem;
-
-          .button-option {
-            @include button_style()
-          }
         }
       }
 
-      .box_more_info {
-         @include box-more-info-styles()
-       }
+      .buttons {
+        @include center_itens();
+        gap: 1.0rem;
+
+        .button-option {
+          @include button_style()
+        }
+      }
+    }
+
+    .box_more_info {
+      @include box-more-info-styles()
     }
   }
 }
