@@ -9,10 +9,12 @@
 
 <div class="status-phone-list">
   <div class="user-card" *ngFor='let User of users'>
+    <button class="button-more-info-user">
+      <i class="bi bi-three-dots"></i>
+    </button>
     <div class="user-span">
-       <span>Name:   {{User.name}}</span>
-       <span>Status: {{User.status}}</span>
+      <span>Name: {{User.name}}<span>Status: {{User.status}}</span></span>
+      <span>TEL: {{User.telefone}} <span>Modelo: {{User.celular}}</span></span>
     </div>
-    <div class="box2"></div>
   </div>
 </div>
