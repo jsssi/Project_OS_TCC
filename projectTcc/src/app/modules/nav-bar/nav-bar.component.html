@@ -1,19 +1,14 @@
-<nav class="navbar" #navBar>
-  <div class="navbar-logo">
-    <img src="../../../assets/Rectangle 8.png" class="Logo"><img>
+<header>
+  <div class="logo">
+    <img src="../../../assets/Rectangle 8.png">
   </div>
-  <button class="navbar-toggler close-modal" #open>
-    <i class="bi bi-list"></i>
-  </button>
-  <button class="closeNav-extends hide" #close>
-    <i class="bi bi-x-lg"></i>
-  </button>
-  <div class="navbar-menu">
-    <ul class="navbar-links">
-      <li>Home</li>
-      <li>Clientes</li>
-      <li>Estoque</li>
-      <li>Ordem</li>
-    </ul>
-  </div>
-</nav>
+
+  <nav>
+    <ul routerLink="/home" routerLinkActive="active">Home</ul>
+    <ul routerLink="/clientes" routerLinkActive="active">Clientes</ul>
+    <ul routerLink="/products" routerLinkActive="active">Estoque</ul>
+    <ul routerLink="/OSCos" routerLinkActive="active">Ordem</ul>
+  </nav>
+
+
+</header>

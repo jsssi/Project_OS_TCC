@@ -65,6 +65,11 @@
   font-size: 1rem;
 
   box-shadow: -3px 6px 6px 0px rgba(255, 255, 255, 0.194);
+  transition: all .3s ease-in-out;
+  &:hover{
+    background-color: #d5a428;
+    transform: scale(1.1)
+  }
 }
 @mixin box-more-info-styles{
   @include center_itens();

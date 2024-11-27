@@ -5,6 +5,7 @@
 @media(min-width:780px) {
   :host {
     @include center_itens();
+
     height: 100vh;
 
     .main-box {
@@ -12,6 +13,7 @@
       width: 60vw;
 
       display: flex;
+      flex-direction: row-reverse;
 
       .form_group {
         background-color: #ffff;
@@ -28,6 +30,10 @@
 
         gap: 2.5rem;
 
+        span {
+          display: none;
+        }
+
         .tittle {
           font-size: 2rem;
           font-weight: 400;
@@ -35,9 +41,7 @@
           text-transform: capitalize;
         }
 
-        .form {
-
-          border: 1px solid red;
+        .login_form {
 
           height: auto;
           width: 100%;
@@ -55,12 +59,10 @@
 
 
           .form-field {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            @include center-itens();
             flex-direction: column;
 
-            gap: 1rem;
+            gap: 2rem;
 
             input {
               padding: .4rem;
@@ -76,6 +78,7 @@
 
           .login_btn {
             @include button_style();
+            background-color: $secund-color;
           }
 
         }
@@ -113,7 +116,7 @@
 
     height: 100%;
     overflow: hidden;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
 
     .main-box {
       @include center_itens();

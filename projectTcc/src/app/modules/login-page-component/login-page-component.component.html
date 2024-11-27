@@ -1,8 +1,6 @@
 <main class="main-box">
   <div class="box_more_info">
     <img src="../../../assets/Rectangle 8.png" alt="logo" class="logoPng">
-    <button class="back-btn" routerLink="/welcome" routerLinkActive="active"><i
-        class="bi bi-arrow-bar-left"></i></button>
   </div>
 
   <div class="form_group">
@@ -14,14 +12,14 @@
     <span class="star"></span>
 
     <form class="login_form" [formGroup]='FormLogin'>
-      <h2 class="tittle">Entrar</h2>
+      <h2 class="tittle">Fazer Login</h2>
 
       <div class="form-field">
-        <input type="text" formControlName = 'cpf' placeholder="CPF"   >
-        <input type="text" formControlName = 'senha' placeholder="Senha" >
+        <input type="text" formControlName='cpf' placeholder="CPF">
+        <input type="text" formControlName='senha' placeholder="Senha">
       </div>
       <button class="login_btn"
-        (click)="navigate()">login</button>
+        (click)="navigate()">Enviar</button>
 
     </form>
   </div>

@@ -1,12 +1,14 @@
 import { Routes } from '@angular/router';
 import { CanActivateHomeGuard } from './Guard/can-deactivate.guard';
+//components
 import { LoginPageComponentComponent } from './modules/login-page-component/login-page-component.component';
-import { NavBarComponent } from './modules/nav-bar/nav-bar.component';
+
 import { HomeComponent } from './modules/home/home.component';
 import { CadastroPageComponent } from './modules/cadastro-page/cadastro-page.component';
-import { FirstPageComponent } from './modules/first-page/first-page.component';
+
 import { ClientPageComponent } from './modules/client-page/client-page.component';
 import { ProductPageComponent } from './modules/product-page/product-page.component';
+import { OrderServiceComponent } from './order-service/order-service.component';
 
 export const routes: Routes = [
 
@@ -20,23 +22,24 @@ export const routes: Routes = [
 
   },
   {
-    path: 'welcome',
-    component: FirstPageComponent
-  },
-  {
     path: 'home',
     component: HomeComponent
   },
   {
-    path :'client-Home-page',
+    path :'clientes',
     component: ClientPageComponent
-  },{
-    path: 'product',
+  },
+  {
+    path: 'products',
     component: ProductPageComponent
   },
   {
+   path:'OSCos',
+   component:OrderServiceComponent
+  },
+  {
     path: '',
-    redirectTo: '/welcome',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
 
