@@ -11,8 +11,6 @@ import employerService from '../../Service/employer.service';
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    RouterLink,
-    RouterLinkActive
   ],
   templateUrl: './login-page-component.component.html',
   styleUrl: './login-page-component.component.scss'
@@ -31,14 +29,14 @@ export class LoginPageComponentComponent implements OnInit {
     name: "João Silva",
     email: "joao.silva@example.com",
     password: "senha123",
+    numberContact: 123456789,
     cpf: "123.456.789-00",
     phone: [
       {
         model: "Samsung Galaxy S21",
         problem: "Bateria fraca",
         date: new Date(),
-        status: "Em andamento",
-        numberContact: 123456789
+        status
       }
     ]
   };
@@ -67,6 +65,6 @@ export class LoginPageComponentComponent implements OnInit {
   navigate() {
     const data = this.FormLogin.value;
     console.log(data);
-   this.Router.navigate(['/home']);
+    this.Router.navigate(['/home']);
   }
 }
