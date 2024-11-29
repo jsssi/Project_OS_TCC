@@ -1,0 +1,145 @@
+@import "../../styles/variables.scss";
+@import "../../styles/pageStyles.scss";
+
+
+:host {
+  @include center_itens();
+  flex-direction: column;
+
+
+  input,
+  textarea {
+    border: 1px solid gray;
+    padding: .4rem;
+    border-radius: .3rem;
+  }
+
+  input {
+    width: 20vw;
+    height: auto;
+  }
+
+  textarea {
+    width: 41vw;
+    height: 15vh;
+
+    margin-bottom: 2rem;
+  }
+
+
+  .header_Page {
+
+    display: flex;
+    flex-direction: column;
+
+    height: 30vh;
+    width: 100%;
+
+
+    @include center_itens();
+
+    .text-content {
+      @include center_itens();
+      flex-direction: column;
+      text-align: center;
+
+      width: 20vw;
+      height: 30vh;
+
+      position: relative;
+      margin-top: 1rem;
+
+      span {
+        color: #fff;
+      }
+
+      p {
+        margin-top: 1.4rem;
+      }
+
+      color: $secund-color;
+    }
+  }
+
+  .main_Page_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+
+    margin-top: 1rem;
+    height: 60vh;
+    width: 60vw;
+
+    border-radius: .4rem;
+
+    background: #fff;
+
+    .cliente-title{
+      margin-top: 1rem;
+    }
+
+    .Order_Service_Form{
+
+      position: relative;
+
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      width: 75%;
+      height: auto;
+
+
+      gap: .5rem;
+
+      padding: .7rem;
+
+
+
+      .form-user{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+
+
+      }
+      .phone-Os {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+
+        gap: .5rem;
+
+       
+
+        width: 100%;
+      }
+
+      .Oder-Register-btn {
+
+        position: absolute;
+        right: 0;
+        bottom: 0;
+
+
+        padding: .5rem;
+        cursor: pointer;
+        width: fit-content;
+        color: $secund-color;
+        background: #00162E;
+
+        border-radius: .3rem;
+
+        transition: all .5s ease-in-out;
+
+        &:hover {
+          background: #151f2a;
+        }
+      }
+    }
+  }
+}

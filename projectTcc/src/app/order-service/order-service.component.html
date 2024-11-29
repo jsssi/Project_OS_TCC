@@ -1,1 +1,69 @@
-<p>order-service works!</p>
+<header class="header_Page">
+  <app-nav-bar></app-nav-bar>
+  <div class="text-content">
+    <h2>
+      <span>Cadastro de</span>
+      O.S
+    </h2>
+    <p>Crie uma ordem de serviço para um
+      cliente e agilize o serviço</p>
+  </div>
+</header>
+<main class="main_Page_container">
+
+  <h3 class="cliente-title">Dados Do Cliente</h3>
+
+  <div class="Order_Service_Form">
+
+    <form class="form-user" [formGroup]="ClienteForm">
+      <div class="form-field">
+        <input
+          type="text"
+          placeholder="Nome"
+          formControlName="nome">
+      </div>
+
+      <div class="form-field">
+        <input
+          type="text"
+          placeholder="CPF"
+          formControlName="cpf">
+      </div>
+
+      <div class="form-field">
+        <input
+          type="text"
+          placeholder="Email"
+          formControlName="email">
+      </div>
+
+      <div class="form-field">
+        <input
+          type="text"
+          placeholder="Numero de Contato"
+          formControlName="numeroCliente">
+      </div>
+
+    </form>
+
+    <form class="phone-Os" [formGroup]="PhoneForm">
+      <h3>Dispositivo</h3>
+
+      <div class="form-field">
+        <input
+          type="text"
+          placeholder="Modelo"
+          formControlName="modelo">
+        >
+      </div>
+
+      <div class="form-field">
+        <textarea
+          placeholder="Problema"
+          formControlName="problema"></textarea>
+      </div>
+    </form>
+
+    <button class="Oder-Register-btn">Registrar Ordem</button>
+  </div>
+</main>
