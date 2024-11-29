@@ -4,7 +4,7 @@ import { CanActivateHomeGuard } from './Guard/can-deactivate.guard';
 import { LoginPageComponentComponent } from './modules/login-page-component/login-page-component.component';
 
 import { HomeComponent } from './modules/home/home.component';
-import { CadastroPageComponent } from './modules/cadastro-page/cadastro-page.component';
+
 
 import { ClientPageComponent } from './modules/client-page/client-page.component';
 import { ProductPageComponent } from './modules/product-page/product-page.component';
@@ -17,16 +17,11 @@ export const routes: Routes = [
     component: LoginPageComponentComponent
   },
   {
-    path: 'cadastrar',
-    component: CadastroPageComponent
-
-  },
-  {
     path: 'home',
     component: HomeComponent
   },
   {
-    path :'clientes',
+    path: 'clientes',
     component: ClientPageComponent
   },
   {
@@ -34,8 +29,8 @@ export const routes: Routes = [
     component: ProductPageComponent
   },
   {
-   path:'OSCos',
-   component:OrderServiceComponent
+    path: 'OSCos',
+    component: OrderServiceComponent
   },
   {
     path: '',

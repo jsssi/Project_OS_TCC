@@ -20,7 +20,7 @@
   }
 
   textarea {
-    width: 40vw;
+    width: 41vw;
     height: 15vh;
 
     margin-bottom: 2rem;
@@ -79,7 +79,7 @@
       margin-top: 1rem;
     }
 
-    .Order_Service_Form {
+    .Order_Service_Form{
 
       position: relative;
 
@@ -98,14 +98,25 @@
 
 
 
+      .form-user{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
 
+
+
+      }
       .phone-Os {
         display: flex;
         align-items: flex-start;
         justify-content: center;
         flex-direction: column;
 
-        gap: 1rem;
+        gap: .5rem;
+
+       
+
+        width: 100%;
       }
 
       .Oder-Register-btn {

@@ -7,8 +7,6 @@ export interface usersWeb {
   phone: Array<{
     model: string,
     problem: string,
-    date:Date,
-    status: string,
   }>
 }
 
