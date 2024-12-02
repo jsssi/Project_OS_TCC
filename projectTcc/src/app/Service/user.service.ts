@@ -23,6 +23,17 @@ export class UserService implements OnInit{
   private SaveUserInLocalStorage() {
     localStorage.setItem('user', JSON.stringify(this.user));
   }
+  updatePassword(newPassword:string , cpf:string){
+   const DataUser = this.getUser()
+   if(DataUser){
+     const index = DataUser.findIndex(item => item.cpf === cpf);
+     if(index !== -1){
+       DataUser[index].password = newPassword;
+       this.SaveUserInLocalStorage();
+       
+     }
+   }
+  }
   setUser(user:usersWeb){
     this.user.push(user);
     this.SaveUserInLocalStorage();

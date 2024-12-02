@@ -1,13 +1,14 @@
+import { phone } from "./Phone";
+
 export interface usersWeb {
-  name: string;
-  email: string;
-  password: string;
+  first_name:    string;
+  last_name:     string;
+  cpf:           string;
+  email:         string;
+  adress:        string;
+  password:      string;
   numberContact: number;
-  cpf: string;
-  phone: Array<{
-    model: string,
-    problem: string,
-  }>
+  
 }
 
 

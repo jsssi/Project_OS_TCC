@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
-import { OrderServiceComponent } from "../order-service/order-service.component";
+import { OrderServiceComponent } from "../modules/order-service/order-service.component";
 import { Order } from "../model/Order";
+import { employer } from "../model/employer";
 
 @Injectable({
   providedIn : "root"
@@ -8,6 +9,9 @@ import { Order } from "../model/Order";
 
 export  class OrderService{
   private Order : Order[]=[];
+  private employee : employer[] = [];
+
+
   constructor(){
     this.loadLocalStorage();
   }
@@ -21,14 +25,14 @@ export  class OrderService{
     localStorage.setItem('orderService', JSON.stringify(this.Order));
   }
 
-  setOrderService(order: Order){
+  setOrderService(order: Order){ 
     this.Order.push(order);
     this.SaveInLocalStorage();
   }
   getOrderService(){
     return this.Order;
   }
-  getOrderServiceFindClient(){
+  FindOderForCpf(cpf:string){
 
   }
 }

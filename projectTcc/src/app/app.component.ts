@@ -5,6 +5,7 @@ import { NavBarComponent } from "./modules/nav-bar/nav-bar.component";
 import { employer } from './model/employer';
 import { UserService } from './Service/user.service';
 import employerService from './Service/employer.service';
+import { OrderService } from './Service/Ordem.Service';
 
 
 
@@ -23,18 +24,24 @@ import employerService from './Service/employer.service';
 export class AppComponent implements OnInit {
   title = 'projectTcc';
   constructor(
-    private userService:UserService,
-    private emplooyerService:employerService
-  ){}
+    private userService: UserService,
+    private emplooyerService: employerService,
+    private OrderService: OrderService,
+
+  ) { }
 
   ngOnInit(): void {
     const Users = this.userService.getUser();
     const emplooyer = this.emplooyerService.getEmplyer();
-    console.log(Users)
+    const order = this.OrderService.getOrderService();
+
+   
+
+    console.log(order)
     console.log(
       "<------------->"
     )
-    console.log(emplooyer);
+
   }
 
 }

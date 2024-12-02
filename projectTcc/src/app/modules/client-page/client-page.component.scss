@@ -1,86 +1,82 @@
 @import "../../../styles/pageStyles.scss";
 @import "../../../styles/variables.scss";
 
-
 :host {
-  @include star_fall();
+  @include center_itens();
+  flex-direction: column;
+  gap: 3rem;
 
-  height: 100vh;
-  color: #fff;
-
-  .box_more_info {
-    @include box-more-info-styles();
-    height: 20%;
-    border-radius: 0rem 0rem 1.5rem 1.5rem;
-
-    overflow: hidden;
-  }
-
-  .status-phone-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-
-
+  .list-client {
     @include center_itens();
     flex-direction: column;
-    padding-inline: .5rem;
 
-    .user-card {
-      @include center_itens();
-      background-color: #f5f5f5;
+    height: 75vh;
+    width: 80vw;
+
+    background-color: #fff;
+    border-radius: .5rem;
+    padding: .7rem;
+
+    .input-search-cleint {
+
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
 
 
-      border-radius: .9rem;
-      margin-top: 1.0rem;
-
+      height: 10%;
       width: 100%;
-      height: 15vh;
 
-      position: relative;
-
-      .button-more-info-user {
-        position: absolute;
-        top: .1rem;
-        right: .5rem;
-
-        background: none;
-        cursor: pointer;
-
-        width: fit-content;
-        height: auto;
-
-        i {
-          font-size: 1.5rem;
-          font-weight: bold;
-        }
+      input {
+        border-bottom: 1px solid gray;
+        padding: .5rem;
       }
-
-      .user-span {
-        text-align: left;
-        font-size: .8rem;
-
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        gap: 1.0rem;
-
-        
-        width: 100%;
-        height: 100%;
+      button{
+        background: none;
         padding: .5rem;
 
-        color: black;
+        cursor: pointer;
+        border-bottom:1px solid gray;
+      }
+    }
 
-        span {
-          @include center_itens();
-          flex-direction: column;
-          align-items: last baseline;
+    .list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+
+      height: 90%;
+      width: 100%;
+
+      border-top: 1px solid gray;
+      padding: .2rem;
+      overflow-y: auto;
+
+      .card_OrderService{
+
+        padding: .4rem;
+        height: 30vh;
+        width: 25vw;
+
+
+        border-radius: .5rem;
+        border: 1px solid gray;
+
+        position: relative;
+        .button_moreInfo{
+          background: none;
+
+          position: absolute;
+          top: 0rem;
+          right: .3rem;
+
+          font-size: 1.5rem;
+          font-weight: 500;
+          cursor: pointer;
         }
       }
-
-
     }
   }
+
 
 }

@@ -1,20 +1,28 @@
-<div class="box_more_info">
-  <img src="../../../assets/Rectangle 8.png" alt="logo-empresa" class="logoPng">
-</div>
-<span class="star"></span>
-<span class="star"></span>
-<span class="star"></span>
-<span class="star"></span>
-<span class="star"></span>
-
-<div class="status-phone-list">
-  <div class="user-card" *ngFor='let User of users'>
-    <button class="button-more-info-user">
-      <i class="bi bi-three-dots"></i>
-    </button>
-    <div class="user-span">
-      <span>Name: {{User.name}}<span>Status: {{User.status}}</span></span>
-      <span>TEL: {{User.telefone}} <span>Modelo: {{User.celular}}</span></span>
+<app-nav-bar></app-nav-bar>
+<div class="list-client">
+  <div class="input-search-cleint">
+    <input type="text" placeholder="Nome">
+    <button><i class="bi bi-search"></i></button>
+  </div>
+  <div class="list">
+    <div class="card_OrderService" *ngFor="let Order of Orders">
+      <button class="button_moreInfo">
+        <i class="bi bi-list"></i>
+      </button>
+      <div class="user_info">
+        {{Order.user.first_name}}
+        {{Order.user.last_name}}
+        {{Order.user.numberContact}}
+      </div>
+      <div class="phone_info">
+        {{Order.phone.Marca}}
+        {{Order.phone.Modelo}}
+        {{Order.phone.ProblemaRelatado}}
+      </div>
+      <div class="Order_info">
+        {{Order.date}}
+        {{Order.status}}
+      </div>
     </div>
   </div>
 </div>

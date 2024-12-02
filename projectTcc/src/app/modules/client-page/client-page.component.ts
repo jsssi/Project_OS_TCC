@@ -1,16 +1,22 @@
 import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { OrderService } from '../../Service/Ordem.Service';
+import { Order } from '../../model/Order';
+import { NavBarComponent } from "../nav-bar/nav-bar.component";
 
 @Component({
   selector: 'app-client-page',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, NavBarComponent],
   templateUrl: './client-page.component.html',
   styleUrl: './client-page.component.scss'
 })
-export class ClientPageComponent {
-  users=[
-    {name:'jefferson',info:'motorola',status:'em andamento',telefone:'(71)xxxx-xxxx',celular:"Motorola"}
-  ]
+export class ClientPageComponent  implements OnInit{
 
+  Orders:Order[] = [];
+  constructor (private OrderService : OrderService){}
+
+  ngOnInit(): void {
+    this.Orders = this.OrderService.getOrderService();
+  }
 }

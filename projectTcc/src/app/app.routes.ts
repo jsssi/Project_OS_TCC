@@ -8,7 +8,7 @@ import { HomeComponent } from './modules/home/home.component';
 
 import { ClientPageComponent } from './modules/client-page/client-page.component';
 import { ProductPageComponent } from './modules/product-page/product-page.component';
-import { OrderServiceComponent } from './order-service/order-service.component';
+import { OrderServiceComponent } from './modules/order-service/order-service.component';
 
 export const routes: Routes = [
 

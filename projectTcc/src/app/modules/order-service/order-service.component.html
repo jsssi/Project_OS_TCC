@@ -1,0 +1,161 @@
+<header class="header_Page">
+  <app-nav-bar></app-nav-bar>
+  <div class="text-content">
+    <h2>
+      <span>Cadastro de</span>
+      O.S
+    </h2>
+    <p>Crie uma ordem de serviço para um
+      cliente e agilize o serviço</p>
+  </div>
+</header>
+<main class="main_Page_container">
+
+  <section>
+    <div class="Order_Service_Form">
+
+      <h3 class="cliente-title">Dados Do Cliente</h3>
+
+      <form class="form-user" [formGroup]="ClienteForm">
+        <div class="form-field">
+          <input
+            type="text"
+            placeholder="Nome"
+            formControlName="first_name"
+            [ngClass]="{'valid': ClienteForm.get('first_name')?.valid && ClienteForm.get('first_name')?.touched}">
+          <div class="danger-text"
+            *ngIf="ClienteForm.controls['first_name'].invalid && (ClienteForm.controls['first_name'].touched || ClienteForm.controls['first_name'].dirty)">
+            <span
+              *ngIf="ClienteForm.get('first_name')?.hasError('required')">Campo Obrigatorio</span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <input type="text"
+            placeholder="Sobrenome"
+            formControlName="last_name"
+            [ngClass]="{'valid': ClienteForm.get('last_name')?.valid && ClienteForm.get('last_name')?.touched}">
+          <div class="danger-text"
+            *ngIf="ClienteForm.controls['last_name'].invalid && (ClienteForm.controls['last_name'].touched || ClienteForm.controls['last_name'].dirty)">
+
+            <span
+            *ngIf="ClienteForm.get('last_name')?.hasError('required')">Campo Obrigatorio</span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <input
+            type="text"
+            placeholder="CPF"
+            formControlName="cpf"
+            [ngClass]="{'valid': ClienteForm.get('cpf')?.valid && ClienteForm.get('cpf')?.touched}">
+          <div class="danger-text"
+            *ngIf="ClienteForm.controls['cpf'].invalid && (ClienteForm.controls['cpf'].touched || ClienteForm.controls['cpf'].dirty)">
+            <span class="error" *ngIf="cpfError">{{ cpfError }}</span>
+          </div>
+
+        </div>
+
+        <div class="form-field">
+          <input
+            type="text"
+            placeholder="Email"
+            formControlName="email"
+            [ngClass]="{'valid': ClienteForm.get('email')?.valid && ClienteForm.get('email')?.touched}">
+          <div class="danger-text"
+            *ngIf="ClienteForm.controls['email'].invalid && (ClienteForm.controls['email'].touched || ClienteForm.controls['email'].dirty)">
+            <span
+              *ngIf="ClienteForm.controls['email'].errors?.['required']">Email
+              Obrigatorio</span>
+
+          </div>
+        </div>
+        <div class="form-field">
+          <input
+            type="text"
+            placeholder="Endereço"
+            formControlName="adress"
+            [ngClass]="{'valid': ClienteForm.get('adress')?.valid && ClienteForm.get('adress')?.touched}">
+          <div class="danger-text"
+            *ngIf="ClienteForm.controls['adress'].invalid && (ClienteForm.controls['adress'].touched || ClienteForm.controls['adress'].dirty)">
+            <span
+              *ngIf="ClienteForm.controls['adress'].errors?.['required']">Endereço
+              Obrigatorio</span>
+            <span *ngIf="ClienteForm.controls['adress'].valid">Good!</span>
+          </div>
+        </div>
+        <div class="form-field">
+          <input
+            type="text"
+            placeholder="Numero de Contato"
+            formControlName="numberContact"
+            [ngClass]="{'valid': ClienteForm.get('numberContact')?.valid && ClienteForm.get('numberContact')?.touched}">
+          <div class="danger-text"
+            *ngIf="ClienteForm.controls['numberContact'].invalid && (ClienteForm.controls['numberContact'].touched || ClienteForm.controls['numberContact'].dirty)">
+            <span
+              *ngIf="ClienteForm.controls['numberContact'].errors?.['required']">Numero
+              Para contato Obrigatorio</span>
+
+          </div>
+        </div>
+
+      </form>
+
+      <h3>Dispositivo</h3>
+
+      <form class="phone-Os" [formGroup]="PhoneForm">
+
+        <div class="form-field">
+          <input
+            type="text"
+            placeholder="Marca"
+            formControlName="marca"
+            [ngClass]="{'valid': PhoneForm.get('marca')?.valid && PhoneForm.get('marca')?.touched}">
+          <div class="danger-text"
+            *ngIf="PhoneForm.controls['marca'].invalid && (PhoneForm.controls['marca'].touched || PhoneForm.controls['marca'].dirty)">
+            <span *ngIf="PhoneForm.controls['marca'].errors?.['required']">Marca
+              Obrigatoria</span>
+            <span *ngIf="PhoneForm.controls['marca'].valid">Good!</span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <input
+            type="text"
+            placeholder="Modelo"
+            formControlName="modelo"
+            [ngClass]="{'valid': PhoneForm.get('modelo')?.valid && PhoneForm.get('modelo')?.touched}">
+          <div class="danger-text"
+            *ngIf="PhoneForm.controls['modelo'].invalid && (PhoneForm.controls['modelo'].touched || PhoneForm.controls['modelo'].dirty)">
+            <span
+              *ngIf="PhoneForm.controls['modelo'].errors?.['required']">Modelo
+              Obrigatorio</span>
+
+          </div>
+        </div>
+        <div class="form-field">
+          <textarea
+            placeholder="Problema"
+            formControlName="problema"
+            [ngClass]="{'valid': PhoneForm.get('problema')?.valid && PhoneForm.get('problema')?.touched}">
+
+           </textarea>
+          <div class="danger-text"
+            *ngIf="PhoneForm.controls['problema'].invalid && (PhoneForm.controls['problema'].touched || PhoneForm.controls['problema'].dirty)">
+            <span
+              *ngIf="PhoneForm.controls['problema'].errors?.['required']">Problema
+              Obrigatorio</span>
+
+          </div>
+        </div>
+      </form>
+
+      <button class="Oder-Register-btn" (click)="onSubmit()">Registrar
+        Ordem</button>
+    </div>
+  </section>
+  <section class="about-Order">
+
+  </section>
+
+</main>
