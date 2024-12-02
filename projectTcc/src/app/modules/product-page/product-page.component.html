@@ -1,40 +1,50 @@
-<app-nav-bar></app-nav-bar>
-
-<div class="main-content">
-
-  <div class="title-content">
-    <h1>Adicionar <span>Produto</span></h1>
-    <p>adcione produtos ao seu estoque <br> para uma melhor gestão de recursos</p>
+<header class="header_Page">
+  <app-nav-bar></app-nav-bar>
+  <div class="text-content">
+    <h2>
+      <span>Cadastro de</span>
+      Produto
+    </h2>
+    <p>Cadastre um produto e agilize o serviço</p>
   </div>
+</header>
 
-  <div class="card-content">
-    <form class="form">
-      <div class="input-camp">
-        <label for="name">Nome</label>
-        <input type="text" id="name" placeholder="Nome">
+<main class="main_Page_container">
+
+  <h3 class="product-title">Dados Do Produto</h3>
+
+  <div class="product_Form">
+
+    <form class="form-product" [formGroup]="ProductForm">
+      <div class="form-field">
+        <input
+          type="text"
+          placeholder="Nome"
+          formControlName="name">
       </div>
 
-      <div class="input-camp">
-        <label for="brand">Marca</label>
-        <input type="text" id="brand" placeholder="Nome">
+      <div class="form-field">
+        <input
+          type="text"
+          placeholder="Marca"
+          formControlName="brand">
       </div>
 
-      <div class="input-camp">
-        <label for="model">Modelo</label>
-        <input type="text" id="model" placeholder="Modelo">
+      <div class="form-field">
+        <input
+          type="text"
+          placeholder="Preço"
+          formControlName="price">
       </div>
 
-      <div class="input-camp">
-        <label for="quantity">Quantidade</label>
-        <input type="text" id="quantity" placeholder="quantidade">
+      <div class="form-field">
+        <input
+          type="text"
+          placeholder="Quantidade"
+          formControlName="quantity">
       </div>
-
-
-
-
-
-
     </form>
-  </div>
 
-</div>
+    <button class="product-register-btn">Registrar produto</button>
+  </div>
+</main>
