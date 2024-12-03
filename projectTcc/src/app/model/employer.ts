@@ -1,9 +1,9 @@
 export interface employer {
-  nome: string;
-  ultimoNome: string;
+  first_name: string;
+  last_name: string;
   cpf: string;
   email: string;
-  senha: string;
+  password: string;
   NmrCell: string;
   cargo: string;
 }

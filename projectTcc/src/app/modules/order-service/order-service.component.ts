@@ -51,17 +51,17 @@ export class OrderServiceComponent implements OnInit {
   ngOnInit() {
     this.ClienteForm = new FormGroup({
       first_name: new FormControl('', ValidatorsUtils.required()),
-      last_name: new FormControl('', Validators.required),
-      cpf: new FormControl('', [Validators.required, ValidatorsUtils.validateCPF]),
+      last_name: new FormControl('', ValidatorsUtils.required()),
+      cpf: new FormControl('', ValidatorsUtils.validateCPF),
 
-      email: new FormControl('', [Validators.required, Validators.email]),
-      adress: new FormControl('', [Validators.required]),
-      numberContact: new FormControl('', [Validators.required, Validators.pattern(/^\+\d{1,3}-\d{1,14}$/)]),
+      email: new FormControl('', [ValidatorsUtils.required(), Validators.email]),
+      adress: new FormControl('', [ValidatorsUtils.required()]),
+      numberContact: new FormControl('', [ValidatorsUtils.required(),Validators.pattern(/^\(\d{2}\) \d{5}-\d{4}$/)]),
     });
     this.PhoneForm = new FormGroup({
-      marca: new FormControl('', [Validators.required]),
-      modelo: new FormControl('', [Validators.required]),
-      problema: new FormControl('', [Validators.required])
+      marca: new FormControl('', [ValidatorsUtils.required()]),
+      modelo: new FormControl('', [ValidatorsUtils.required()]),
+      problema: new FormControl('', [ValidatorsUtils.required()])
 
     });
 

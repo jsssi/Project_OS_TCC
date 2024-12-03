@@ -5,6 +5,8 @@ import { usersWeb } from '../../model/users';
 import { UserService } from '../../Service/user.service';
 import { employer } from '../../model/employer';
 import employerService from '../../Service/employer.service';
+import { ValidatorsUtils } from '../../utils/Validators.utils';
+import { AuthService } from '../../Service/Auth.Service';
 @Component({
   selector: 'app-login-page-component',
   standalone: true,
@@ -18,29 +20,23 @@ import employerService from '../../Service/employer.service';
 export class LoginPageComponentComponent implements OnInit {
   constructor(
     private Router: Router,
-    private userService: UserService,
-    private emplooyerService: employerService
+    private AuthService:AuthService
+
   ) { }
 
 
   FormLogin!: FormGroup;
-
-
-
-
   ngOnInit(): void {
     this.FormLogin = new FormGroup({
-      cpf: new FormControl('', [Validators.required]),
-      senha: new FormControl('', [Validators.required])
+      cpf: new FormControl('', [ValidatorsUtils.required()]),
+      senha: new FormControl('', [ValidatorsUtils.required()])
     })
-
-   
-
-
   }
   navigate() {
-    const data = this.FormLogin.value;
-    console.log(data);
-    this.Router.navigate(['/home']);
+    const cpf = this.FormLogin.get('cpf')?.value ;
+    const senha = this.FormLogin.get('senha')?.value;
+    this.AuthService.login(cpf , senha)
+
+
   }
 }

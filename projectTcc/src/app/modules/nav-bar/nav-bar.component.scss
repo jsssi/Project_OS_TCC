@@ -41,15 +41,22 @@ header {
     }
   }
 
-  .menu {
+  .LogOut{
     align-self: center;
 
     margin-right: 45px;
 
-    i {
-      font-size: 30px;
+    button {
+      background: none;
       cursor: pointer;
-      color: white;
+
+      border-bottom:1px solid gray;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: $secund-color;
     }
+
+
+
   }
 }

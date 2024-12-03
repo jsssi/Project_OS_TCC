@@ -22,11 +22,15 @@
             type="text"
             placeholder="Nome"
             formControlName="first_name"
-            [ngClass]="{'valid': ClienteForm.get('first_name')?.valid && ClienteForm.get('first_name')?.touched}">
+            [ngClass]="{
+            'valid': ClienteForm.get('first_name')?.valid && ClienteForm.get('first_name')?.touched ,
+            'invalid':ClienteForm.get('first_name')?.invalid && ClienteForm.get('first_name')?.touched
+}">
           <div class="danger-text"
             *ngIf="ClienteForm.controls['first_name'].invalid && (ClienteForm.controls['first_name'].touched || ClienteForm.controls['first_name'].dirty)">
             <span
-              *ngIf="ClienteForm.get('first_name')?.hasError('required')">Campo Obrigatorio</span>
+              *ngIf="ClienteForm.get('first_name')?.hasError('required')">Campo
+              Obrigatorio</span>
           </div>
         </div>
 
@@ -34,12 +38,16 @@
           <input type="text"
             placeholder="Sobrenome"
             formControlName="last_name"
-            [ngClass]="{'valid': ClienteForm.get('last_name')?.valid && ClienteForm.get('last_name')?.touched}">
+            [ngClass]="{
+              'valid': ClienteForm.get('last_name')?.valid && ClienteForm.get('last_name')?.touched ,
+              'invalid':ClienteForm.get('last_name')?.invalid && ClienteForm.get('last_name')?.touched
+              }">
           <div class="danger-text"
             *ngIf="ClienteForm.controls['last_name'].invalid && (ClienteForm.controls['last_name'].touched || ClienteForm.controls['last_name'].dirty)">
 
             <span
-            *ngIf="ClienteForm.get('last_name')?.hasError('required')">Campo Obrigatorio</span>
+              *ngIf="ClienteForm.get('last_name')?.hasError('required')">Campo
+              Obrigatorio</span>
           </div>
         </div>
 
@@ -48,7 +56,10 @@
             type="text"
             placeholder="CPF"
             formControlName="cpf"
-            [ngClass]="{'valid': ClienteForm.get('cpf')?.valid && ClienteForm.get('cpf')?.touched}">
+            [ngClass]="{
+              'valid': ClienteForm.get('cpf')?.valid && ClienteForm.get('cpf')?.touched ,
+              'invalid':ClienteForm.get('cpf')?.invalid && ClienteForm.get('cpf')?.touched
+              }">
           <div class="danger-text"
             *ngIf="ClienteForm.controls['cpf'].invalid && (ClienteForm.controls['cpf'].touched || ClienteForm.controls['cpf'].dirty)">
             <span class="error" *ngIf="cpfError">{{ cpfError }}</span>
@@ -61,7 +72,10 @@
             type="text"
             placeholder="Email"
             formControlName="email"
-            [ngClass]="{'valid': ClienteForm.get('email')?.valid && ClienteForm.get('email')?.touched}">
+            [ngClass]="{
+              'valid': ClienteForm.get('email')?.valid && ClienteForm.get('email')?.touched ,
+              'invalid':ClienteForm.get('email')?.invalid && ClienteForm.get('email')?.touched
+              }">
           <div class="danger-text"
             *ngIf="ClienteForm.controls['email'].invalid && (ClienteForm.controls['email'].touched || ClienteForm.controls['email'].dirty)">
             <span
@@ -75,7 +89,10 @@
             type="text"
             placeholder="Endereço"
             formControlName="adress"
-            [ngClass]="{'valid': ClienteForm.get('adress')?.valid && ClienteForm.get('adress')?.touched}">
+            [ngClass]="{
+              'valid': ClienteForm.get('adress')?.valid && ClienteForm.get('adress')?.touched ,
+              'invalid':ClienteForm.get('adress')?.invalid && ClienteForm.get('adress')?.touched
+              }">
           <div class="danger-text"
             *ngIf="ClienteForm.controls['adress'].invalid && (ClienteForm.controls['adress'].touched || ClienteForm.controls['adress'].dirty)">
             <span
@@ -89,13 +106,15 @@
             type="text"
             placeholder="Numero de Contato"
             formControlName="numberContact"
-            [ngClass]="{'valid': ClienteForm.get('numberContact')?.valid && ClienteForm.get('numberContact')?.touched}">
+            [ngClass]="{
+              'valid': ClienteForm.get('numberContact')?.valid && ClienteForm.get('numberContact')?.touched ,
+              'invalid':ClienteForm.get('numberContact')?.invalid && ClienteForm.get('numberContact')?.touched
+              }">
           <div class="danger-text"
             *ngIf="ClienteForm.controls['numberContact'].invalid && (ClienteForm.controls['numberContact'].touched || ClienteForm.controls['numberContact'].dirty)">
-            <span
-              *ngIf="ClienteForm.controls['numberContact'].errors?.['required']">Numero
+            <span  *ngIf="ClienteForm.controls['numberContact'].errors?.['required']">Numero
               Para contato Obrigatorio</span>
-
+            <span *ngIf="ClienteForm.get('numberContact')?.errors?.['pattern']">(xx) xxxxx-xxxx!</span>
           </div>
         </div>
 
@@ -110,7 +129,10 @@
             type="text"
             placeholder="Marca"
             formControlName="marca"
-            [ngClass]="{'valid': PhoneForm.get('marca')?.valid && PhoneForm.get('marca')?.touched}">
+            [ngClass]="{
+            'valid': PhoneForm.get('marca')?.valid && PhoneForm.get('marca')?.touched ,
+            'invalid': PhoneForm.get('marca')?.invalid && PhoneForm.get('marca')?.touched
+            }">
           <div class="danger-text"
             *ngIf="PhoneForm.controls['marca'].invalid && (PhoneForm.controls['marca'].touched || PhoneForm.controls['marca'].dirty)">
             <span *ngIf="PhoneForm.controls['marca'].errors?.['required']">Marca
@@ -124,7 +146,10 @@
             type="text"
             placeholder="Modelo"
             formControlName="modelo"
-            [ngClass]="{'valid': PhoneForm.get('modelo')?.valid && PhoneForm.get('modelo')?.touched}">
+            [ngClass]="{
+              'valid': PhoneForm.get('modelo')?.valid && PhoneForm.get('modelo')?.touched ,
+              'invalid': PhoneForm.get('modelo')?.invalid && PhoneForm.get('modelo')?.touched
+              }">
           <div class="danger-text"
             *ngIf="PhoneForm.controls['modelo'].invalid && (PhoneForm.controls['modelo'].touched || PhoneForm.controls['modelo'].dirty)">
             <span
@@ -137,7 +162,10 @@
           <textarea
             placeholder="Problema"
             formControlName="problema"
-            [ngClass]="{'valid': PhoneForm.get('problema')?.valid && PhoneForm.get('problema')?.touched}">
+            [ngClass]="{
+              'valid': PhoneForm.get('problema')?.valid && PhoneForm.get('problema')?.touched ,
+              'invalid': PhoneForm.get('problema')?.invalid && PhoneForm.get('problema')?.touched
+              }">
 
            </textarea>
           <div class="danger-text"
@@ -150,12 +178,14 @@
         </div>
       </form>
 
-      <button class="Oder-Register-btn" (click)="onSubmit()">Registrar
+      <button class="Oder-Register-btn" (click)="onSubmit()"
+        [disabled]="ClienteForm.invalid && PhoneForm.invalid"
+        [ngClass]="{'disable-button':ClienteForm.invalid && PhoneForm.invalid}">Registrar
         Ordem</button>
     </div>
   </section>
   <section class="about-Order">
 
-  </section>
+      </section>
 
-</main>
+    </main>

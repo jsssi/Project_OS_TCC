@@ -28,10 +28,12 @@ input {
 
     border-bottom: 1px solid green;
     color: green;
-
-
   }
 
+  &.invalid {
+    border-bottom: 1px solid red;
+    color: red;
+  }
 }
 
 textarea {
@@ -40,12 +42,15 @@ textarea {
 
   margin-bottom: 1.5rem;
   resize: none;
+
   &.valid {
 
     border: 1px solid green;
     color: green;
+  }
 
-
+  &.invalid {
+    border: 1px solid red;
   }
 }
 
@@ -167,6 +172,10 @@ textarea {
 
       &:hover {
         background: #151f2a;
+      }
+      &.disable-button{
+        pointer-events: none;
+        opacity:.5;
       }
     }
   }
