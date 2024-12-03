@@ -1,6 +1,12 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { NavBarComponent } from "../nav-bar/nav-bar.component";
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AfterViewInit, Component, Directive, OnInit } from '@angular/core';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { UserService } from '../../Service/user.service';
 import { OrderService } from '../../Service/Ordem.Service';
 import { Order } from '../../model/Order';
@@ -9,6 +15,7 @@ import { phone } from '../../model/Phone';
 import { PhoneService } from '../../Service/phone.Service';
 import { NgClass, NgIf } from '@angular/common';
 import { ValidatorsUtils } from '../../utils/Validators.utils';
+import { FormatePhoneNumberDirective } from '../../directives/telefone-mask.directive';
 
 @Component({
   selector: 'app-order-service',
@@ -18,13 +25,13 @@ import { ValidatorsUtils } from '../../utils/Validators.utils';
     FormsModule,
     ReactiveFormsModule,
     NgIf,
-    NgClass
+    NgClass,
+    FormatePhoneNumberDirective,
   ],
   templateUrl: './order-service.component.html',
-  styleUrl: './order-service.component.scss'
+  styleUrl: './order-service.component.scss',
 })
 export class OrderServiceComponent implements OnInit {
-
   //Formularios
   ClienteForm!: FormGroup;
   PhoneForm!: FormGroup;
@@ -38,15 +45,11 @@ export class OrderServiceComponent implements OnInit {
   mes = this.today.getMonth() + 1;
   ano = this.today.getFullYear();
 
-
-
   constructor(
     private userService: UserService,
     private OrderService: OrderService,
-    private PhoneService: PhoneService,
-
-
-  ) { }
+    private PhoneService: PhoneService
+  ) {}
 
   ngOnInit() {
     this.ClienteForm = new FormGroup({
@@ -54,17 +57,27 @@ export class OrderServiceComponent implements OnInit {
       last_name: new FormControl('', ValidatorsUtils.required()),
       cpf: new FormControl('', ValidatorsUtils.validateCPF),
 
-      email: new FormControl('', [ValidatorsUtils.required(), Validators.email]),
+      email: new FormControl('', [
+        ValidatorsUtils.required(),
+        Validators.email,
+      ]),
       adress: new FormControl('', [ValidatorsUtils.required()]),
-      numberContact: new FormControl('', [ValidatorsUtils.required(),Validators.pattern(/^\(\d{2}\) \d{5}-\d{4}$/)]),
+      numberContact: new FormControl('', [
+        ValidatorsUtils.required(),
+        Validators.pattern(/^\(\d{2}\) \d{5}-\d{4}$/),
+      ]),
     });
     this.PhoneForm = new FormGroup({
       marca: new FormControl('', [ValidatorsUtils.required()]),
       modelo: new FormControl('', [ValidatorsUtils.required()]),
-      problema: new FormControl('', [ValidatorsUtils.required()])
-
+      problema: new FormControl('', [ValidatorsUtils.required()]),
     });
 
+    console.log('Cliente registrado:', this.userService.getUser());
+    console.log('Telefone registrado:', this.PhoneService.getPhone());
+    console.log('orders:', this.OrderService.getOrderService());
+
+    localStorage.clear();
   }
   get cpfError(): string | null {
     const control = this.ClienteForm.get('cpf');
@@ -74,12 +87,13 @@ export class OrderServiceComponent implements OnInit {
     if (control?.hasError('required')) {
       return 'O CPF é obrigatório';
     }
-    return null
+    return null;
   }
 
-
   onSubmit() {
-    const generatedPassword = String(Math.floor(Math.random() * 1000000)).padStart(6, '0');
+    const generatedPassword = String(
+      Math.floor(Math.random() * 1000000)
+    ).padStart(6, '0');
 
     const client: usersWeb = {
       first_name: this.ClienteForm.get('first_name')?.value,
@@ -89,25 +103,22 @@ export class OrderServiceComponent implements OnInit {
       adress: this.ClienteForm.get('adress')?.value,
       password: '',
       numberContact: this.ClienteForm.get('numberContact')?.value,
-    }
+    };
     const phone: phone = {
       Marca: this.PhoneForm.get('marca')?.value,
       Modelo: this.PhoneForm.get('modelo')?.value,
-      ProblemaRelatado: this.PhoneForm.get('ProblemaRelatado')?.value
-    }
-
-    this.userService.setUser(client);
-    this.PhoneService.setPhone(phone)
-
-
-
+      ProblemaRelatado: this.PhoneForm.get('ProblemaRelatado')?.value,
+    };
 
     const ordemServico: Order = {
       orderId: Math.floor(Math.random() * 100000000000),
       description: 'celular de fulano de tal',
       status: 'Em andamento',
-      date: `${String(this.dia).padStart(2, '0')}/${String(this.mes).padStart(2, '0')}/${this.ano}`,
-      price: "190",
+      date: `${String(this.dia).padStart(2, '0')}/${String(this.mes).padStart(
+        2,
+        '0'
+      )}/${this.ano}`,
+      price: '190',
       user: {
         first_name: this.ClienteForm.get('first_name')?.value,
         last_name: this.ClienteForm.get('last_name')?.value,
@@ -121,25 +132,26 @@ export class OrderServiceComponent implements OnInit {
       phone: {
         Marca: this.PhoneForm.get('marca')?.value,
         Modelo: this.PhoneForm.get('modelo')?.value,
-        ProblemaRelatado: this.PhoneForm.get('ProblemaRelatado')?.value
-      }
-
+        ProblemaRelatado: this.PhoneForm.get('ProblemaRelatado')?.value,
+      },
     };
-    this.OrderService.setOrderService(ordemServico);
-    this.userService.updatePassword(generatedPassword, this.ClienteForm.get('cpf')?.value)
+
+    this.userService.setUser(client);
+    this.PhoneService.setPhone(phone);
+
+    
+
+    this.userService.updatePassword(
+      generatedPassword,
+      this.ClienteForm.get('cpf')?.value
+    );
 
 
-    console.log('Ordem de Serviço criada:', ordemServico);
-    console.log('Cliente registrado:', client);
-
+    console.log('Cliente registrado:', this.userService.getUser());
+    console.log('Telefone registrado:', this.PhoneService.getPhone());
+    console.log('orders:', this.OrderService.getOrderService())
 
     this.ClienteForm.reset();
     this.PhoneForm.reset();
-
-
   }
-
 }
-
-
-

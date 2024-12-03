@@ -24,7 +24,11 @@ export class AuthService {
     this.user = this.UserService.getUser();
     this.emplooyer = this.emplooyerService.getEmplyer();
 
-    console.log(this.user)
+    const isUser = this.user.some(user => user.cpf === cpf && user.password === senha)
+    console.log(isUser)
+    if(isUser){
+      this.Router.navigate(['/clientes'])
+    }
 
 
   }
