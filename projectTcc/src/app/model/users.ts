@@ -1,5 +1,3 @@
-import { phone } from "./Phone";
-
 export interface usersWeb {
   first_name:    string;
   last_name:     string;
@@ -8,7 +6,7 @@ export interface usersWeb {
   adress:        string;
   password:      string;
   numberContact: number;
-  
+
 }
 
 

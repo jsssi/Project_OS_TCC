@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Directive, OnInit, ViewEncapsulation } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { NavBarComponent } from "./modules/nav-bar/nav-bar.component";
@@ -37,10 +37,7 @@ export class AppComponent implements OnInit {
 
 
 
-    console.log(Users)
-    console.log(
-      "<------------->"
-    )
+  
 
   }
 

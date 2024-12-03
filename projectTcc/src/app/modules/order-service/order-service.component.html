@@ -106,6 +106,7 @@
             type="text"
             placeholder="Numero de Contato"
             formControlName="numberContact"
+            FormatePhoneNumber
             [ngClass]="{
               'valid': ClienteForm.get('numberContact')?.valid && ClienteForm.get('numberContact')?.touched ,
               'invalid':ClienteForm.get('numberContact')?.invalid && ClienteForm.get('numberContact')?.touched

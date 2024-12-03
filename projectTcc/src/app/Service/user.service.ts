@@ -5,13 +5,10 @@ import { usersWeb } from "../model/users";
   providedIn: 'root',
 })
 
-export class UserService implements OnInit{
+export class UserService {
   private user:usersWeb[]=[];
-  constructor() { }
+  constructor() { this.LoadUserInLocalStorage(); }
 
-  ngOnInit(): void {
-      this.LoadUserInLocalStorage();
-  }
 
  private LoadUserInLocalStorage() {
     const user = localStorage.getItem('user');
@@ -30,7 +27,7 @@ export class UserService implements OnInit{
      if(index !== -1){
        DataUser[index].password = newPassword;
        this.SaveUserInLocalStorage();
-       
+
      }
    }
   }
