@@ -1,28 +1,50 @@
-import { AfterViewChecked, Component } from '@angular/core';
+import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
-import { NgFor } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { product } from '../../model/product';
+import { ValidatorsUtils } from '../../utils/Validators.utils';
 
 @Component({
   selector: 'app-product-page',
   standalone: true,
-  imports: [NavBarComponent,
+  imports: [
+    NavBarComponent,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgIf,
+    NgClass
   ],
   templateUrl: './product-page.component.html',
   styleUrl: './product-page.component.scss'
 })
-export class ProductPageComponent implements AfterViewChecked{
-   ProductForm!: FormGroup
+export class ProductPageComponent implements OnInit{
 
-  ngAfterViewChecked(): void {
+
+  //Formulario
+  ProductForm!: FormGroup
+
+  //Models
+  products: product[] = [];
+
+  ngOnInit(){
     this.ProductForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      brand: new FormControl('', Validators.required),
-      price: new FormControl('', Validators.required),
-      integer: new FormControl('', Validators.required)
+      name: new FormControl('', ValidatorsUtils.required()),
+      brand: new FormControl('', ValidatorsUtils.required()),
+      price: new FormControl('', ValidatorsUtils.required()),
+      quantity: new FormControl('', ValidatorsUtils.required())
     });
-   }
+  }
+
+  OnSubmit(){
+    const products: product ={
+      name: this.ProductForm.get('name')?.value,
+      brand: this.ProductForm.get('brand')?.value,
+      price: this.ProductForm.get('price')?.value,
+      quantity: this.ProductForm.get('quantity')?.value
+    }
+
+    console.log("Produto criado", products);
+  }
 
 }

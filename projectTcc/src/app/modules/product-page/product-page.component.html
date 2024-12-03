@@ -20,31 +20,82 @@
         <input
           type="text"
           placeholder="Nome"
-          formControlName="name">
+          formControlName="name"
+          ngClass="{
+            'valid': ProductForm.get('name')?.valid && ProductForm.get('name')?.touched,
+            'invalid': ProductForm.get('name')?.invalid && ProductForm.get('name')?.touched
+          }">
+
+          <div class="danger-text"
+            *ngIf="ProductForm.controls['name'].invalid && (ProductForm.controls['name'].touched || ProductForm.controls['name'].dirty)">
+
+            <span
+              *ngIf="ProductForm.get('name')?.hasError('required')">Campo
+              Obrigatorio</span>
+          </div>
       </div>
 
       <div class="form-field">
         <input
           type="text"
           placeholder="Marca"
-          formControlName="brand">
+          formControlName="brand"
+          ngClass="{
+            'valid': ProductForm.get('brand')?.valid && ProductForm.get('brand')?.touched,
+            'invalid': ProductForm.get('brand')?.invalid && ProductForm.get('brand')?.touched
+          }">
+          <div class="danger-text"
+            *ngIf="ProductForm.controls['brand'].invalid && (ProductForm.controls['brand'].touched || ProductForm.controls['brand'].dirty)">
+
+            <span
+              *ngIf="ProductForm.get('brand')?.hasError('required')">Campo
+              Obrigatorio</span>
+          </div>
+
+
       </div>
 
       <div class="form-field">
         <input
           type="text"
           placeholder="Preço"
-          formControlName="price">
+          formControlName="price"
+          ngClass="{
+            'valid': ProductForm.get('brand')?.valid && ProductForm.get('brand')?.touched,
+            'invalid': ProductForm.get('brand')?.invalid && ProductForm.get('brand')?.touched
+          }">
+          <div class="danger-text"
+            *ngIf="ProductForm.controls['price'].invalid && (ProductForm.controls['price'].touched || ProductForm.controls['price'].dirty)">
+
+            <span
+              *ngIf="ProductForm.get('price')?.hasError('required')">Campo
+              Obrigatorio</span>
+          </div>
       </div>
 
       <div class="form-field">
         <input
           type="text"
           placeholder="Quantidade"
-          formControlName="quantity">
+          formControlName="quantity"
+          ngClass="{
+            'valid': ProductForm.get('brand')?.valid && ProductForm.get('brand')?.touched,
+            'invalid': ProductForm.get('brand')?.invalid && ProductForm.get('brand')?.touched
+          }">
+          <div class="danger-text"
+            *ngIf="ProductForm.controls['quantity'].invalid && (ProductForm.controls['quantity'].touched || ProductForm.controls['quantity'].dirty)">
+
+            <span
+              *ngIf="ProductForm.get('quantity')?.hasError('required')">Campo
+              Obrigatorio</span>
+          </div>
       </div>
     </form>
 
-    <button class="product-register-btn">Registrar produto</button>
+    <button class="product-register-btn"
+      (click)="OnSubmit()"
+        [disabled]="ProductForm.invalid && ProductForm.invalid"
+        [ngClass]="{'disable-button':ProductForm.invalid && ProductForm.invalid}"
+    >Registrar produto</button>
   </div>
 </main>

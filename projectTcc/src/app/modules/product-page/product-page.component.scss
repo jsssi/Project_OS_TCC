@@ -17,6 +17,16 @@
   input {
     width: 20vw;
     height: auto;
+
+    &.valid {
+
+      border: 1px solid green;
+      color: green;
+    }
+
+    &.invalid {
+      border: 1px solid red;
+    }
   }
 
   textarea {
@@ -24,6 +34,14 @@
     height: 15vh;
 
     margin-bottom: 2rem;
+  }
+
+  .danger-text {
+    span {
+      color: red;
+      font-size: .7rem;
+    }
+
   }
 
 
@@ -123,6 +141,10 @@
 
         &:hover {
           background: #151f2a;
+        }
+        &.disable-button{
+          pointer-events: none;
+          opacity:.5;
         }
       }
     }
