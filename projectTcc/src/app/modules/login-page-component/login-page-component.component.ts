@@ -18,7 +18,8 @@ import { AuthService } from '../../Service/Auth.Service';
   styleUrl: './login-page-component.component.scss'
 })
 export class LoginPageComponentComponent implements OnInit {
-   user: usersWeb[] = []
+  currentUser: any;
+
   constructor(
     private Router: Router,
     private AuthService:AuthService,
@@ -30,17 +31,24 @@ export class LoginPageComponentComponent implements OnInit {
   FormLogin!: FormGroup;
   ngOnInit(): void {
     this.FormLogin = new FormGroup({
-      cpf: new FormControl('', [ValidatorsUtils.required()]),
+      email: new FormControl('', [ValidatorsUtils.required()]),
       senha: new FormControl('', [ValidatorsUtils.required()])
     })
-     const data = this.UserService.getUser()
-    console.log(data)
+
   }
   navigate() {
-    const cpf = this.FormLogin.get('cpf')?.value ;
+    const email = this.FormLogin.get('email')?.value ;
     const senha = this.FormLogin.get('senha')?.value;
-    this.AuthService.login(cpf , senha)
 
-    this.Router.navigate(['/home'])
+    this.AuthService.login(email, senha).subscribe(
+      (Response) =>{
+        this.AuthService.saveToken(Response.token);
+        console.log("token: ",Response.token)
+        this.Router.navigate(['/home']);
+      },
+      (Error) =>{
+        console.log("error");
+      }
+    )
   }
 }
