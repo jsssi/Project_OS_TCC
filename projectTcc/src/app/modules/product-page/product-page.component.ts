@@ -46,9 +46,11 @@ export class ProductPageComponent implements OnInit{
       productStatus: 'ESTOQUE'
     }
 
-    this.productService.addProduct(products).subscribe(
+    const token = this.authService.getToken()
+
+    this.productService.addProduct(products, token).subscribe(
       (Response) =>{
-        this.authService.getToken()
+        console.log(token);
         console.log('response', Response)
     }, (Error) =>{
       console.error('error', Error)

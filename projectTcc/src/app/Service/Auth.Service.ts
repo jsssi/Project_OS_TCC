@@ -15,7 +15,7 @@ export class AuthService {
 
   private _httpClient: HttpClient;
   private apiUrl = "http://localhost:8080/cos/auth";
-  private tokenKey = '';
+  private tokenKey = 'token';
 
   private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   public currentUser: Observable<any> = this.currentUserSubject.asObservable();
@@ -41,7 +41,6 @@ export class AuthService {
 
   saveToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
-    this.currentUserSubject.next(token);  // Atualiza o BehaviorSubject com o novo token
   }
 
   // Obter o token armazenado

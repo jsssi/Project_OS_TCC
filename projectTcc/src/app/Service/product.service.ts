@@ -25,10 +25,10 @@ export class ProductService{
     return this._httpClient.get<product>(`${this.apiUrl}/${id}`);
   }
 
-  addProduct(product: any): Observable<any>{
+  addProduct(product: any, token?: any): Observable<any>{
     console.log('entrou porra');
     const headers = new HttpHeaders(
-     {'Authorization': `Bearer ${this.authService.getToken()}`}
+     {'Authorization': `Bearer ${token}`}
     );
 
     console.log(this.authService.getToken());
