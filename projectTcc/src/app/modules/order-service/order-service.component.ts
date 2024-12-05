@@ -139,7 +139,7 @@ export class OrderServiceComponent implements OnInit {
     this.userService.setUser(client);
     this.PhoneService.setPhone(phone);
 
-    
+
 
     this.userService.updatePassword(
       generatedPassword,

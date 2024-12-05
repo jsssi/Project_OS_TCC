@@ -1,17 +1,19 @@
-import { HttpClient } from "@angular/common/http";
+import { AuthService } from './Auth.Service';
+import { product } from './../model/product';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { product } from "../model/product";
 
 @Injectable({
   providedIn: "root"
 })
 
-export class productService{
+export class ProductService{
+
   private _httpClient: HttpClient;
   private apiUrl = 'http://localhost:8080/cos/product';
 
-  constructor(httpClient: HttpClient){
+  constructor(httpClient: HttpClient, private authService: AuthService){
     this._httpClient = httpClient;
   }
 
@@ -23,8 +25,14 @@ export class productService{
     return this._httpClient.get<product>(`${this.apiUrl}/${id}`);
   }
 
-  addProduct(product: product){
-    return this._httpClient.post(`${this.apiUrl}/create`, product);
+  addProduct(product: any): Observable<any>{
+    console.log('entrou porra');
+    const headers = new HttpHeaders(
+     {'Authorization': `Bearer ${this.authService.getToken()}`}
+    );
+
+    console.log(this.authService.getToken());
+    return this._httpClient.post(`${this.apiUrl}/create`, product, { headers });
   }
 
   removeProduct(id: Number){

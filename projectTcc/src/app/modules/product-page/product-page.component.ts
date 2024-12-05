@@ -1,3 +1,5 @@
+import { AuthService } from './../../Service/Auth.Service';
+import { ProductService } from './../../Service/product.service';
 import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
 import { NgClass, NgFor, NgIf } from '@angular/common';
@@ -24,8 +26,7 @@ export class ProductPageComponent implements OnInit{
   //Formulario
   ProductForm!: FormGroup
 
-  //Models
-  products: product[] = [];
+  constructor(private productService: ProductService, private authService: AuthService){}
 
   ngOnInit(){
     this.ProductForm = new FormGroup({
@@ -41,8 +42,19 @@ export class ProductPageComponent implements OnInit{
       name: this.ProductForm.get('name')?.value,
       brand: this.ProductForm.get('brand')?.value,
       price: this.ProductForm.get('price')?.value,
-      quantity: this.ProductForm.get('quantity')?.value
+      quantity: this.ProductForm.get('quantity')?.value,
+      productStatus: 'ESTOQUE'
     }
+
+    this.productService.addProduct(products).subscribe(
+      (Response) =>{
+        this.authService.getToken()
+        console.log('response', Response)
+    }, (Error) =>{
+      console.error('error', Error)
+    })
+
+
 
     console.log("Produto criado", products);
   }
