@@ -23,11 +23,7 @@ export class AuthService {
   constructor(httpClient: HttpClient){
     this._httpClient = httpClient;
 
-    const token = localStorage.getItem(this.tokenKey);
-
-    if(token){
-      this.currentUserSubject.next(token);
-    }
+    const token = localStorage.getItem('token');
   }
 
 
@@ -40,7 +36,7 @@ export class AuthService {
 
 
   saveToken(token: string): void {
-    localStorage.setItem(this.tokenKey, token);
+    localStorage.setItem('token', token);
   }
 
   // Obter o token armazenado

@@ -1,3 +1,4 @@
+import { AuthService } from './../../Service/Auth.Service';
 import { AfterViewInit, Component, Directive, OnInit } from '@angular/core';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import {
@@ -48,7 +49,8 @@ export class OrderServiceComponent implements OnInit {
   constructor(
     private userService: UserService,
     private OrderService: OrderService,
-    private PhoneService: PhoneService
+    private PhoneService: PhoneService,
+    private AuthService: AuthService
   ) {}
 
   ngOnInit() {
@@ -77,7 +79,6 @@ export class OrderServiceComponent implements OnInit {
     console.log('Telefone registrado:', this.PhoneService.getPhone());
     console.log('orders:', this.OrderService.getOrderService());
 
-    localStorage.clear();
   }
   get cpfError(): string | null {
     const control = this.ClienteForm.get('cpf');

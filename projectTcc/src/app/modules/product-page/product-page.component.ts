@@ -26,6 +26,8 @@ export class ProductPageComponent implements OnInit{
   //Formulario
   ProductForm!: FormGroup
 
+  mesagemEnable = false;
+
   constructor(private productService: ProductService, private authService: AuthService){}
 
   ngOnInit(){
@@ -56,9 +58,17 @@ export class ProductPageComponent implements OnInit{
       console.error('error', Error)
     })
 
-
-
     console.log("Produto criado", products);
+
+    this.ProductForm.reset();
+
+    this.mesagemEnable = true;
+
+    setTimeout(()=>{
+      this.mesagemEnable = false;
+    }, 4000)
   }
+
+
 
 }

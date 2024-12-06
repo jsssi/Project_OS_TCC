@@ -35,6 +35,15 @@ export class ProductService{
     return this._httpClient.post(`${this.apiUrl}/create`, product, { headers });
   }
 
+  updateProduct(product: any, token?: any){
+    console.log('entrou em update product');
+    const headers = new HttpHeaders(
+      {'Authorization': `Bearer ${token}`}
+     );
+
+     
+  }
+
   removeProduct(id: Number){
     return this._httpClient.delete(`${this.apiUrl}/delete/${id}`);
   }
