@@ -1,5 +1,5 @@
 import { AuthService } from './../../Service/Auth.Service';
-import { usersWeb } from '../../model/Users';
+import { usersWeb } from './../../model/Users';
 import { AfterViewInit, Component, Directive, OnInit } from '@angular/core';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import {
@@ -83,7 +83,6 @@ export class OrderServiceComponent implements OnInit {
     });
 
 
-    console.log('Telefone registrado:', this.PhoneService.getPhone());
 
 
    this.userService.GetAllUsers(token).subscribe(
@@ -127,7 +126,7 @@ export class OrderServiceComponent implements OnInit {
       ProblemaRelatado: this.PhoneForm.get('ProblemaRelatado')?.value,
     };
 
-    console.log('Telefone registrado:', this.PhoneService.getPhone());
+
     console.log('orders:', this.OrderService.getOrderService())
 
     this.ClienteForm.reset();
