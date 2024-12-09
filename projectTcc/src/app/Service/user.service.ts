@@ -1,7 +1,8 @@
 import { Injectable, OnInit } from "@angular/core";
-import { usersWeb } from "../model/users";
+
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { catchError, Observable } from "rxjs";
+import { usersWeb } from "../model/Users";
 
 @Injectable({
   providedIn: 'root',
