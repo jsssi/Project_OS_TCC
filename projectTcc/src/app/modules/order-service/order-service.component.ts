@@ -11,12 +11,13 @@ import {
 import { UserService } from '../../Service/user.service';
 import { OrderService } from '../../Service/Ordem.Service';
 import { Order } from '../../model/Order';
-import { usersWeb } from '../../model/users';
+
 import { phone } from '../../model/Phone';
 import { PhoneService } from '../../Service/phone.Service';
 import { NgClass, NgIf } from '@angular/common';
 import { ValidatorsUtils } from '../../utils/Validators.utils';
 import { FormatePhoneNumberDirective } from '../../directives/telefone-mask.directive';
+import { usersWeb } from '../../model/users';
 
 @Component({
   selector: 'app-order-service',
@@ -39,7 +40,6 @@ export class OrderServiceComponent implements OnInit {
 
   //Model
   orders: Order[] = [];
-  user: usersWeb[] = [];
 
   today = new Date();
   dia = this.today.getDate();
@@ -69,15 +69,15 @@ export class OrderServiceComponent implements OnInit {
         Validators.pattern(/^\(\d{2}\) \d{5}-\d{4}$/),
       ]),
     });
+
     this.PhoneForm = new FormGroup({
       marca: new FormControl('', [ValidatorsUtils.required()]),
       modelo: new FormControl('', [ValidatorsUtils.required()]),
       problema: new FormControl('', [ValidatorsUtils.required()]),
     });
 
-    console.log('Cliente registrado:', this.userService.getUser());
-    console.log('Telefone registrado:', this.PhoneService.getPhone());
-    console.log('orders:', this.OrderService.getOrderService());
+
+
 
   }
   get cpfError(): string | null {
@@ -105,6 +105,8 @@ export class OrderServiceComponent implements OnInit {
       password: '',
       numberContact: this.ClienteForm.get('numberContact')?.value,
     };
+
+
     const phone: phone = {
       Marca: this.PhoneForm.get('marca')?.value,
       Modelo: this.PhoneForm.get('modelo')?.value,
@@ -137,18 +139,11 @@ export class OrderServiceComponent implements OnInit {
       },
     };
 
-    this.userService.setUser(client);
     this.PhoneService.setPhone(phone);
 
 
 
-    this.userService.updatePassword(
-      generatedPassword,
-      this.ClienteForm.get('cpf')?.value
-    );
 
-
-    console.log('Cliente registrado:', this.userService.getUser());
     console.log('Telefone registrado:', this.PhoneService.getPhone());
     console.log('orders:', this.OrderService.getOrderService())
 

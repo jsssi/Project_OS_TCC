@@ -41,7 +41,7 @@ export class ProductService{
       {'Authorization': `Bearer ${token}`}
      );
 
-     
+     return this._httpClient.put(`${this.apiUrl}/create`, product, { headers });
   }
 
   removeProduct(id: Number){

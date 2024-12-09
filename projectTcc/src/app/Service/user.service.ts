@@ -1,5 +1,8 @@
 import { Injectable, OnInit } from "@angular/core";
 import { usersWeb } from "../model/users";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { AuthService } from "./Auth.Service";
 
 @Injectable({
   providedIn: 'root',
@@ -7,35 +10,46 @@ import { usersWeb } from "../model/users";
 
 export class UserService {
   private user:usersWeb[]=[];
-  constructor() { this.LoadUserInLocalStorage(); }
 
 
- private LoadUserInLocalStorage() {
-    const user = localStorage.getItem('user');
-    if (user) {
-      return JSON.parse(user);
-    }
+  private _httpClient: HttpClient;
+  private apiUrl = 'http://localhost:8080/cos/client'
+
+  constructor(httpClient:HttpClient) {
+    this._httpClient = httpClient;
   }
 
-  private SaveUserInLocalStorage() {
-    localStorage.setItem('user', JSON.stringify(this.user));
-  }
-  updatePassword(newPassword:string , cpf:string){
-   const DataUser = this.getUser()
-   if(DataUser){
-     const index = DataUser.findIndex(item => item.cpf === cpf);
-     if(index !== -1){
-       DataUser[index].password = newPassword;
-       this.SaveUserInLocalStorage();
 
-     }
+  getClientByCpf(cpf: String): Observable<any>{
+    return this._httpClient.get<usersWeb>(`${this.apiUrl}/${cpf}`);
+  }
+
+  createClient(client: usersWeb, token: String): Observable<any>{
+   console.log('entrou');
+    const headers = new HttpHeaders(
+     {'Authorization': `Bearer ${token}`}
+    );
+
+    return this._httpClient.post(`${this.apiUrl}/create`, client, { headers});
+  }
+
+
+  updateClient(client: usersWeb, token: String): Observable<any>{
+    console.log('entrou');
+    const headers = new HttpHeaders(
+      {'Authorization': `Bearer ${token}`}
+    );
+
+    return this._httpClient.put(`${this.apiUrl}/update`, client, { headers});
    }
-  }
-  setUser(user:usersWeb){
-    this.user.push(user);
-    this.SaveUserInLocalStorage();
-  }
-  getUser(){
-    return this.user;
-  }
+
+
+
+
+
+
+
+
+
+
 }

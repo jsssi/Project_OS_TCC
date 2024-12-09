@@ -31,13 +31,13 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const Users = this.userService.getUser();
+    
     const emplooyer = this.emplooyerService.getEmplyer();
     const order = this.OrderService.getOrderService();
 
 
 
-  
+
 
   }
 
