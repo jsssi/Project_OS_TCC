@@ -1,34 +1,27 @@
+import { Token } from '@angular/compiler';
+
 import { Injectable } from "@angular/core";
-import { phone } from "../model/Phone";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { catchError } from 'rxjs';
 
 @Injectable({
   providedIn: "root"
 })
 
 export class PhoneService {
-  private phone: phone[] = [];
+  private _httpCLient:HttpClient
 
-  constructor() {
-    this.LoadLocalStorage();
+  constructor(HttpClient:HttpClient){
+   this._httpCLient = HttpClient
   }
+  SetPhoneUser(phone:any , token:any){
+    const headers = new HttpHeaders(
+      {'Authorization': `Bearer ${token}`}
+     );
 
-  // Simula a criação de um número de telefone
-
-  private LoadLocalStorage() {
-    const data = localStorage.getItem('phone')
-    if (data) {
-      this.phone = JSON.parse(data);
-    }
-  }
-  private SaveInLocalStorage() {
-    localStorage.setItem('phone', JSON.stringify(this.phone));
-  }
-
-  setPhone(phone: phone) {
-    this.SaveInLocalStorage();
-    this.phone.push(phone)
-  }
-  getPhone() {
-    return this.phone;
+    return this._httpCLient.post('/Api/cos/phone/create',{headers}).pipe(catchError ((Error=>{
+       console.log("error",Error)
+       throw Error
+    })))
   }
 }

@@ -1,5 +1,5 @@
 import { UserService } from './../../Service/user.service';
-
+import { usersWeb } from '../../model/Users';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { FormGroup, FormBuilder, FormsModule, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
@@ -19,6 +19,8 @@ import { AuthService } from '../../Service/Auth.Service';
 })
 export class LoginPageComponentComponent implements OnInit {
   currentUser: any;
+
+  mensage = ""
 
   constructor(
     private Router: Router,
@@ -47,7 +49,8 @@ export class LoginPageComponentComponent implements OnInit {
         this.Router.navigate(['/home']);
       },
       (Error) =>{
-        console.log("error");
+        console.log("error" , Error);
+        this.mensage='usuario ou senha invalidos'
       }
     )
   }

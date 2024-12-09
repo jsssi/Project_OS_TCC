@@ -1,55 +1,37 @@
 import { Injectable, OnInit } from "@angular/core";
-import { usersWeb } from "../model/users";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { AuthService } from "./Auth.Service";
+import { catchError, Observable } from "rxjs";
+import { usersWeb } from "../model/Users";
+
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class UserService {
-  private user:usersWeb[]=[];
-
-
-  private _httpClient: HttpClient;
-  private apiUrl = 'http://localhost:8080/cos/client'
-
-  constructor(httpClient:HttpClient) {
-    this._httpClient = httpClient;
+  private _httpClient:HttpClient
+  constructor(HttpClient:HttpClient) {
+    this._httpClient = HttpClient;
   }
 
+  CreateUser(user:any , token :any){
 
-  getClientByCpf(cpf: String): Observable<any>{
-    return this._httpClient.get<usersWeb>(`${this.apiUrl}/${cpf}`);
-  }
-
-  createClient(client: usersWeb, token: String): Observable<any>{
-   console.log('entrou');
-    const headers = new HttpHeaders(
-     {'Authorization': `Bearer ${token}`}
-    );
-
-    return this._httpClient.post(`${this.apiUrl}/create`, client, { headers});
-  }
-
-
-  updateClient(client: usersWeb, token: String): Observable<any>{
-    console.log('entrou');
     const headers = new HttpHeaders(
       {'Authorization': `Bearer ${token}`}
-    );
+     );
 
-    return this._httpClient.put(`${this.apiUrl}/update`, client, { headers});
-   }
+    return this._httpClient.post<any>('/Api/cos/client/create',user,{headers}).pipe(catchError  (error =>{
+      console.log("error",error)
+      throw error;
+    }))
+  }
+  GetAllUsers(token:any): Observable<usersWeb[]> {
 
+    const headers = new HttpHeaders(
+      {'Authorization': `Bearer ${token}`}
+     );
 
-
-
-
-
-
-
-
+    return this._httpClient.get<usersWeb[]>('/Api/cos/client',{headers});
+  }
 
 }
