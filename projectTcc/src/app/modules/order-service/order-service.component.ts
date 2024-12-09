@@ -1,5 +1,5 @@
 import { AuthService } from './../../Service/Auth.Service';
-import { usersWeb } from './../../model/users';
+import { usersWeb } from '../../model/Users';
 import { AfterViewInit, Component, Directive, OnInit } from '@angular/core';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import {
