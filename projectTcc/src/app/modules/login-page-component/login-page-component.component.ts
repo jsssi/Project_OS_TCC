@@ -20,6 +20,8 @@ import { AuthService } from '../../Service/Auth.Service';
 export class LoginPageComponentComponent implements OnInit {
   currentUser: any;
 
+  mensage = ""
+
   constructor(
     private Router: Router,
     private AuthService:AuthService,
@@ -47,7 +49,8 @@ export class LoginPageComponentComponent implements OnInit {
         this.Router.navigate(['/home']);
       },
       (Error) =>{
-        console.log("error");
+        console.log("error" , Error);
+        this.mensage='usuario ou senha invalidos'
       }
     )
   }

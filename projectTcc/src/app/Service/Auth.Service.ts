@@ -14,7 +14,6 @@ import { BehaviorSubject, catchError, Observable } from "rxjs";
 export class AuthService {
 
   private _httpClient: HttpClient;
-  private apiUrl = "http://localhost:8080/cos/auth";
   private tokenKey = 'token';
 
   private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
@@ -32,7 +31,7 @@ export class AuthService {
 
 
   login(email: string, password: string) {
-    return this._httpClient.post<any>(`${this.apiUrl}/login`, {email, password}).pipe( catchError(Error =>{
+    return this._httpClient.post<any>(`/Api/cos/auth/login`, {email, password}).pipe( catchError(Error =>{
       console.error('Erro ao fazer o login', Error);
       throw Error;
     }));

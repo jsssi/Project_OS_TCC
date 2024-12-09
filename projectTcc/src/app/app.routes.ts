@@ -9,6 +9,7 @@ import { HomeComponent } from './modules/home/home.component';
 import { ClientPageComponent } from './modules/client-page/client-page.component';
 import { ProductPageComponent } from './modules/product-page/product-page.component';
 import { OrderServiceComponent } from './modules/order-service/order-service.component';
+import { EmplooyerGerenteComponent } from './modules/emplooyer-gerente/emplooyer-gerente.component';
 
 export const routes: Routes = [
 
@@ -31,6 +32,10 @@ export const routes: Routes = [
   {
     path: 'OSCos',
     component: OrderServiceComponent
+  },
+  {
+    path: 'cos/auth/Register',
+    component:EmplooyerGerenteComponent
   },
   {
     path: '',

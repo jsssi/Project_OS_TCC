@@ -4,6 +4,6 @@ export interface employer {
   cpf: string;
   email: string;
   password: string;
-  NmrCell: string;
-  cargo: string;
+  phone_number: string;
+  type_employee: string;
 }

@@ -5,7 +5,7 @@ export interface usersWeb {
   email:         string;
   adress:        string;
   password:      string;
-  numberContact: number;
+  numberContact: string;
 
 }
 

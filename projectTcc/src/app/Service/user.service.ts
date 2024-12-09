@@ -1,41 +1,36 @@
 import { Injectable, OnInit } from "@angular/core";
 import { usersWeb } from "../model/users";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { catchError, Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class UserService {
-  private user:usersWeb[]=[];
-  constructor() { this.LoadUserInLocalStorage(); }
-
-
- private LoadUserInLocalStorage() {
-    const user = localStorage.getItem('user');
-    if (user) {
-      return JSON.parse(user);
-    }
+  private _httpClient:HttpClient
+  constructor(HttpClient:HttpClient) {
+    this._httpClient = HttpClient;
   }
 
-  private SaveUserInLocalStorage() {
-    localStorage.setItem('user', JSON.stringify(this.user));
-  }
-  updatePassword(newPassword:string , cpf:string){
-   const DataUser = this.getUser()
-   if(DataUser){
-     const index = DataUser.findIndex(item => item.cpf === cpf);
-     if(index !== -1){
-       DataUser[index].password = newPassword;
-       this.SaveUserInLocalStorage();
+  CreateUser(user:any , token :any){
 
-     }
-   }
+    const headers = new HttpHeaders(
+      {'Authorization': `Bearer ${token}`}
+     );
+
+    return this._httpClient.post<any>('/Api/cos/client/create',user,{headers}).pipe(catchError  (error =>{
+      console.log("error",error)
+      throw error;
+    }))
   }
-  setUser(user:usersWeb){
-    this.user.push(user);
-    this.SaveUserInLocalStorage();
+  GetAllUsers(token:any): Observable<usersWeb[]> {
+
+    const headers = new HttpHeaders(
+      {'Authorization': `Bearer ${token}`}
+     );
+
+    return this._httpClient.get<usersWeb[]>('/Api/cos/client',{headers});
   }
-  getUser(){
-    return this.user;
-  }
+
 }
