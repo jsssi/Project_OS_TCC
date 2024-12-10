@@ -4,74 +4,53 @@
 :host {
   @include center_itens();
   flex-direction: column;
-  gap: 3rem;
+
   background: linear-gradient($backgroud);
   background-repeat: no-repeat;
 
-  .list-client {
-    @include center_itens();
-    flex-direction: column;
+  height: 100vh;
 
-    height: 75vh;
-    width: 80vw;
-
-    background-color: #fff;
-    border-radius: 0.5rem;
-    padding: 0.7rem;
-
-    .input-search-cleint {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-
-      height: 10%;
-      width: 100%;
-
-      input {
-        border-bottom: 1px solid gray;
-        padding: 0.5rem;
-      }
-      button {
-        background: none;
-        padding: 0.5rem;
-
-        cursor: pointer;
-        border-bottom: 1px solid gray;
-      }
+  h1{
+    margin-top: 4rem;
+    font-size: 1.5rem;
+    color: #fff;
+    span{
+      color: $secund-color;
     }
+  }
+  .list-client {
 
-    .list {
+    height: 70vh;
+    width: 70vw;
+
+   
+
+    margin-top: .8rem;
+    background: #fff;
+    .input-search-cleint{
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+      align-items: center;
+      justify-content: flex-start;
 
-      height: 90%;
+      gap: .6rem;
+
       width: 100%;
+      height: auto;
+      padding: .3rem;
+      button{
+        @include center_itens();
+        width: 8vw;
+        height: 5vh;
 
-      border-top: 1px solid gray;
-      padding: 0.2rem;
-      overflow-y: auto;
-
-      .card_OrderService {
-        padding: 0.4rem;
-        height: 30vh;
-        width: 25vw;
-
-        border-radius: 0.5rem;
-        border: 1px solid gray;
-
-        position: relative;
-        .button_moreInfo {
-          background: none;
-
-          position: absolute;
-          top: 0rem;
-          right: 0.3rem;
-
-          font-size: 1.5rem;
-          font-weight: 500;
-          cursor: pointer;
-        }
+        background-color:$secund-color;
+        padding: .4rem;
+        border-radius: .3rem;
+        cursor: pointer;
+      }
+      input{
+        border-bottom: 1px solid gray;
+        width: 13vw;
+        padding: .3rem;
       }
     }
   }

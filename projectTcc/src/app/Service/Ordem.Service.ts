@@ -13,12 +13,14 @@ import { usersWeb } from '../model/users';
 
 export  class OrderService{
   private _httClient : HttpClient
-   
+
   constructor(HttpClient:HttpClient){
     this._httClient = HttpClient
   }
-  setOrderService(order:any , token:any ,userId:usersWeb){
+  setOrderService(order:Order , token:any ,userId:any){
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    order.client_id = userId;
+    
     return this._httClient.post<{id:number}>('/Api/cos/os/create', order , {headers})
   }
 }

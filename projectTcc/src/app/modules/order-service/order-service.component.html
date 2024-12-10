@@ -9,282 +9,287 @@
   </div>
 </header>
 <main class="main_Page_container">
-  <section>
-    <div class="Order_Service_Form">
-      <h3 class="cliente-title">Dados Do Cliente</h3>
+  <div class="Order_Service_Form">
+    <h3 class="cliente-title">Dados Do Cliente</h3>
 
-      <form class="form-user" [formGroup]="ClienteForm">
-        <div class="form-field">
-          <input
-            type="text"
-            placeholder="Nome"
-            formControlName="first_name"
-            [ngClass]="{
-              valid:
-                ClienteForm.get('first_name')?.valid &&
-                ClienteForm.get('first_name')?.touched,
-              invalid:
-                ClienteForm.get('first_name')?.invalid &&
-                ClienteForm.get('first_name')?.touched
-            }"
-          />
-          <div
-            class="danger-text"
-            *ngIf="
-              ClienteForm.controls['first_name'].invalid &&
-              (ClienteForm.controls['first_name'].touched ||
-                ClienteForm.controls['first_name'].dirty)
-            "
+    <form class="form-user" [formGroup]="ClienteForm">
+      <div class="form-field">
+        <input
+          type="text"
+          placeholder="Nome"
+          formControlName="first_name"
+          [ngClass]="{
+            valid:
+              ClienteForm.get('first_name')?.valid &&
+              ClienteForm.get('first_name')?.touched,
+            invalid:
+              ClienteForm.get('first_name')?.invalid &&
+              ClienteForm.get('first_name')?.touched
+          }"
+        />
+        <div
+          class="danger-text"
+          *ngIf="
+            ClienteForm.controls['first_name'].invalid &&
+            (ClienteForm.controls['first_name'].touched ||
+              ClienteForm.controls['first_name'].dirty)
+          "
+        >
+          <span *ngIf="ClienteForm.get('first_name')?.hasError('required')"
+            >Campo Obrigatorio</span
           >
-            <span *ngIf="ClienteForm.get('first_name')?.hasError('required')"
-              >Campo Obrigatorio</span
-            >
-          </div>
         </div>
+      </div>
 
-        <div class="form-field">
-          <input
-            type="text"
-            placeholder="Sobrenome"
-            formControlName="last_name"
-            [ngClass]="{
-              valid:
-                ClienteForm.get('last_name')?.valid &&
-                ClienteForm.get('last_name')?.touched,
-              invalid:
-                ClienteForm.get('last_name')?.invalid &&
-                ClienteForm.get('last_name')?.touched
-            }"
-          />
-          <div
-            class="danger-text"
-            *ngIf="
-              ClienteForm.controls['last_name'].invalid &&
-              (ClienteForm.controls['last_name'].touched ||
-                ClienteForm.controls['last_name'].dirty)
-            "
+      <div class="form-field">
+        <input
+          type="text"
+          placeholder="Sobrenome"
+          formControlName="last_name"
+          [ngClass]="{
+            valid:
+              ClienteForm.get('last_name')?.valid &&
+              ClienteForm.get('last_name')?.touched,
+            invalid:
+              ClienteForm.get('last_name')?.invalid &&
+              ClienteForm.get('last_name')?.touched
+          }"
+        />
+        <div
+          class="danger-text"
+          *ngIf="
+            ClienteForm.controls['last_name'].invalid &&
+            (ClienteForm.controls['last_name'].touched ||
+              ClienteForm.controls['last_name'].dirty)
+          "
+        >
+          <span *ngIf="ClienteForm.get('last_name')?.hasError('required')"
+            >Campo Obrigatorio</span
           >
-            <span *ngIf="ClienteForm.get('last_name')?.hasError('required')"
-              >Campo Obrigatorio</span
-            >
-          </div>
         </div>
+      </div>
 
-        <div class="form-field">
-          <input
-            type="text"
-            placeholder="CPF"
-            formControlName="cpf"
-            [ngClass]="{
-              valid:
-                ClienteForm.get('cpf')?.valid &&
-                ClienteForm.get('cpf')?.touched,
-              invalid:
-                ClienteForm.get('cpf')?.invalid &&
-                ClienteForm.get('cpf')?.touched
-            }"
-          />
-          <div
-            class="danger-text"
-            *ngIf="
-              ClienteForm.controls['cpf'].invalid &&
-              (ClienteForm.controls['cpf'].touched ||
-                ClienteForm.controls['cpf'].dirty)
-            "
-          >
-            <span class="error" *ngIf="cpfError">{{ cpfError }}</span>
-          </div>
+      <div class="form-field">
+        <input
+          type="text"
+          placeholder="CPF"
+          formControlName="cpf"
+          [ngClass]="{
+            valid:
+              ClienteForm.get('cpf')?.valid && ClienteForm.get('cpf')?.touched,
+            invalid:
+              ClienteForm.get('cpf')?.invalid && ClienteForm.get('cpf')?.touched
+          }"
+        />
+        <div
+          class="danger-text"
+          *ngIf="
+            ClienteForm.controls['cpf'].invalid &&
+            (ClienteForm.controls['cpf'].touched ||
+              ClienteForm.controls['cpf'].dirty)
+          "
+        >
+          <span class="error" *ngIf="cpfError">{{ cpfError }}</span>
         </div>
+      </div>
 
-        <div class="form-field">
-          <input
-            type="text"
-            placeholder="Email"
-            formControlName="email"
-            [ngClass]="{
-              valid:
-                ClienteForm.get('email')?.valid &&
-                ClienteForm.get('email')?.touched,
-              invalid:
-                ClienteForm.get('email')?.invalid &&
-                ClienteForm.get('email')?.touched
-            }"
-          />
-          <div
-            class="danger-text"
-            *ngIf="
-              ClienteForm.controls['email'].invalid &&
-              (ClienteForm.controls['email'].touched ||
-                ClienteForm.controls['email'].dirty)
-            "
+      <div class="form-field">
+        <input
+          type="text"
+          placeholder="Email"
+          formControlName="email"
+          [ngClass]="{
+            valid:
+              ClienteForm.get('email')?.valid &&
+              ClienteForm.get('email')?.touched,
+            invalid:
+              ClienteForm.get('email')?.invalid &&
+              ClienteForm.get('email')?.touched
+          }"
+        />
+        <div
+          class="danger-text"
+          *ngIf="
+            ClienteForm.controls['email'].invalid &&
+            (ClienteForm.controls['email'].touched ||
+              ClienteForm.controls['email'].dirty)
+          "
+        >
+          <span *ngIf="ClienteForm.controls['email'].errors?.['required']"
+            >Email Obrigatorio</span
           >
-            <span *ngIf="ClienteForm.controls['email'].errors?.['required']"
-              >Email Obrigatorio</span
-            >
-          </div>
         </div>
-        <div class="form-field">
-          <input
-            type="text"
-            placeholder="Endereço"
-            formControlName="adress"
-            [ngClass]="{
-              valid:
-                ClienteForm.get('adress')?.valid &&
-                ClienteForm.get('adress')?.touched,
-              invalid:
-                ClienteForm.get('adress')?.invalid &&
-                ClienteForm.get('adress')?.touched
-            }"
-          />
-          <div
-            class="danger-text"
-            *ngIf="
-              ClienteForm.controls['adress'].invalid &&
-              (ClienteForm.controls['adress'].touched ||
-                ClienteForm.controls['adress'].dirty)
-            "
+      </div>
+      <div class="form-field">
+        <input
+          type="text"
+          placeholder="Endereço"
+          formControlName="adress"
+          [ngClass]="{
+            valid:
+              ClienteForm.get('adress')?.valid &&
+              ClienteForm.get('adress')?.touched,
+            invalid:
+              ClienteForm.get('adress')?.invalid &&
+              ClienteForm.get('adress')?.touched
+          }"
+        />
+        <div
+          class="danger-text"
+          *ngIf="
+            ClienteForm.controls['adress'].invalid &&
+            (ClienteForm.controls['adress'].touched ||
+              ClienteForm.controls['adress'].dirty)
+          "
+        >
+          <span *ngIf="ClienteForm.controls['adress'].errors?.['required']"
+            >Endereço Obrigatorio</span
           >
-            <span *ngIf="ClienteForm.controls['adress'].errors?.['required']"
-              >Endereço Obrigatorio</span
-            >
-            <span *ngIf="ClienteForm.controls['adress'].valid">Good!</span>
-          </div>
+          <span *ngIf="ClienteForm.controls['adress'].valid">Good!</span>
         </div>
-        <div class="form-field">
-          <input
-            type="text"
-            placeholder="Numero de Contato"
-            formControlName="numberContact"
-            FormatePhoneNumber
-            [ngClass]="{
-              valid:
-                ClienteForm.get('numberContact')?.valid &&
-                ClienteForm.get('numberContact')?.touched,
-              invalid:
-                ClienteForm.get('numberContact')?.invalid &&
-                ClienteForm.get('numberContact')?.touched
-            }"
-          />
-          <div
-            class="danger-text"
-            *ngIf="
-              ClienteForm.controls['numberContact'].invalid &&
-              (ClienteForm.controls['numberContact'].touched ||
-                ClienteForm.controls['numberContact'].dirty)
-            "
+      </div>
+      <div class="form-field">
+        <input
+          type="text"
+          placeholder="Numero de Contato"
+          formControlName="numberContact"
+          FormatePhoneNumber
+          [ngClass]="{
+            valid:
+              ClienteForm.get('numberContact')?.valid &&
+              ClienteForm.get('numberContact')?.touched,
+            invalid:
+              ClienteForm.get('numberContact')?.invalid &&
+              ClienteForm.get('numberContact')?.touched
+          }"
+        />
+        <div
+          class="danger-text"
+          *ngIf="
+            ClienteForm.controls['numberContact'].invalid &&
+            (ClienteForm.controls['numberContact'].touched ||
+              ClienteForm.controls['numberContact'].dirty)
+          "
+        >
+          <span
+            *ngIf="ClienteForm.controls['numberContact'].errors?.['required']"
+            >Numero Para contato Obrigatorio</span
           >
-            <span
-              *ngIf="ClienteForm.controls['numberContact'].errors?.['required']"
-              >Numero Para contato Obrigatorio</span
-            >
-            <span *ngIf="ClienteForm.get('numberContact')?.errors?.['pattern']"
-              >(xx) xxxxx-xxxx!</span
-            >
-          </div>
+          <span *ngIf="ClienteForm.get('numberContact')?.errors?.['pattern']"
+            >(xx) xxxxx-xxxx!</span
+          >
         </div>
-      </form>
+      </div>
+    </form>
 
-      <h3>Dispositivo</h3>
+    <h3>Dispositivo</h3>
 
-      <form class="phone-Os" [formGroup]="PhoneForm">
-        <div class="form-field">
-          <input
-            type="text"
-            placeholder="Marca"
-            formControlName="brand"
-            [ngClass]="{
-              valid:
-                PhoneForm.get('brand')?.valid &&
-                PhoneForm.get('brand')?.touched,
-              invalid:
-                PhoneForm.get('brand')?.invalid &&
-                PhoneForm.get('brand')?.touched
-            }"
-          />
-          <div
-            class="danger-text"
-            *ngIf="
-              PhoneForm.controls['brand'].invalid &&
-              (PhoneForm.controls['brand'].touched ||
-                PhoneForm.controls['brand'].dirty)
-            "
+    <form class="phone-Os" [formGroup]="PhoneForm">
+      <div class="form-field">
+        <input
+          type="text"
+          placeholder="Marca"
+          formControlName="brand"
+          [ngClass]="{
+            valid:
+              PhoneForm.get('brand')?.valid && PhoneForm.get('brand')?.touched,
+            invalid:
+              PhoneForm.get('brand')?.invalid && PhoneForm.get('brand')?.touched
+          }"
+        />
+        <div
+          class="danger-text"
+          *ngIf="
+            PhoneForm.controls['brand'].invalid &&
+            (PhoneForm.controls['brand'].touched ||
+              PhoneForm.controls['brand'].dirty)
+          "
+        >
+          <span *ngIf="PhoneForm.controls['brand'].errors?.['required']"
+            >Marca Obrigatoria</span
           >
-            <span *ngIf="PhoneForm.controls['brand'].errors?.['required']"
-              >Marca Obrigatoria</span
-            >
-            <span *ngIf="PhoneForm.controls['brand'].valid">Good!</span>
-          </div>
+          <span *ngIf="PhoneForm.controls['brand'].valid">Good!</span>
         </div>
-        <div class="form-field">
-          <input
-            type="text"
-            placeholder="Modelo"
-            formControlName="model"
-            [ngClass]="{
-              valid:
-                PhoneForm.get('model')?.valid &&
-                PhoneForm.get('model')?.touched,
-              invalid:
-                PhoneForm.get('model')?.invalid &&
-                PhoneForm.get('model')?.touched
-            }"
-          />
-          <div
-            class="danger-text"
-            *ngIf="
-              PhoneForm.controls['model'].invalid &&
-              (PhoneForm.controls['model'].touched ||
-                PhoneForm.controls['model'].dirty)
-            "
+      </div>
+      <div class="form-field">
+        <input
+          type="text"
+          placeholder="Modelo"
+          formControlName="model"
+          [ngClass]="{
+            valid:
+              PhoneForm.get('model')?.valid && PhoneForm.get('model')?.touched,
+            invalid:
+              PhoneForm.get('model')?.invalid && PhoneForm.get('model')?.touched
+          }"
+        />
+        <div
+          class="danger-text"
+          *ngIf="
+            PhoneForm.controls['model'].invalid &&
+            (PhoneForm.controls['model'].touched ||
+              PhoneForm.controls['model'].dirty)
+          "
+        >
+          <span *ngIf="PhoneForm.controls['model'].errors?.['required']"
+            >Modelo Obrigatorio</span
           >
-            <span *ngIf="PhoneForm.controls['model'].errors?.['required']"
-              >Modelo Obrigatorio</span
-            >
-            <span *ngIf="PhoneForm.controls['model'].valid">Good!</span>
-          </div>
+          <span *ngIf="PhoneForm.controls['model'].valid">Good!</span>
         </div>
-        <div class="form-field">
-          <textarea
-            placeholder="Problema"
-            formControlName="problem"
-            [ngClass]="{
-              valid:
-                PhoneForm.get('problem')?.valid &&
-                PhoneForm.get('problem')?.touched,
-              invalid:
-                PhoneForm.get('problem')?.invalid &&
-                PhoneForm.get('problem')?.touched
-            }"
+      </div>
+      <div class="form-field">
+        <textarea
+          placeholder="Problema"
+          formControlName="problem"
+          [ngClass]="{
+            valid:
+              PhoneForm.get('problem')?.valid &&
+              PhoneForm.get('problem')?.touched,
+            invalid:
+              PhoneForm.get('problem')?.invalid &&
+              PhoneForm.get('problem')?.touched
+          }"
+        >
+        </textarea>
+        <div
+          class="danger-text"
+          *ngIf="
+            PhoneForm.controls['problem'].invalid &&
+            (PhoneForm.controls['problem'].touched ||
+              PhoneForm.controls['problem'].dirty)
+          "
+        >
+          <span *ngIf="PhoneForm.controls['problem'].errors?.['required']"
+            >Problema Obrigatorio</span
           >
-          </textarea>
-          <div
-            class="danger-text"
-            *ngIf="
-              PhoneForm.controls['problem'].invalid &&
-              (PhoneForm.controls['problem'].touched ||
-                PhoneForm.controls['problem'].dirty)
-            "
-          >
-            <span *ngIf="PhoneForm.controls['problem'].errors?.['required']"
-              >Problema Obrigatorio</span
-            >
-          </div>
         </div>
+      </div>
+    </form>
 
-      </form>
-
-      <button
-        class="Oder-Register-btn"
-        (click)="onSubmit()"
-        [disabled]="ClienteForm.invalid || PhoneForm.invalid"
-        [ngClass]="{
-          'disable-button': ClienteForm.invalid || PhoneForm.invalid
-        }"
-      >
-        Registrar Ordem
-      </button>
-    </div>
-  </section>
-  <section class="about-Order"></section>
+    <h3>Ordem De Serviço</h3>
+    <form class="OSForm" [formGroup]="OsForm">
+      <div class="form-field">
+        <input type="text" />
+      </div>
+      <div class="form-field">
+        <input type="text" />
+      </div>
+      <div class="form-field">
+        <input type="text" />
+      </div>
+      <div class="form-field">
+        <input type="datetime-local" />
+      </div>
+    </form>
+  </div>
+  <button
+    class="Oder-Register-btn"
+    (click)="onSubmit()"
+    [disabled]="ClienteForm.invalid || PhoneForm.invalid"
+    [ngClass]="{
+      'disable-button': ClienteForm.invalid || PhoneForm.invalid
+    }"
+  >
+    Registrar Ordem
+  </button>
 </main>

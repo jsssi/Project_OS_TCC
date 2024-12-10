@@ -16,132 +16,141 @@
     padding: 0.4rem;
     border-radius: 0.3rem;
   }
-}
-
-input {
-  width: 20vw;
-  height: auto;
-
-  border: none;
-  border-bottom: 1px solid gray;
-
-  &.valid {
-    border-bottom: 1px solid green;
-    color: green;
+  h3{
+    margin-top: 1rem;
   }
 
-  &.invalid {
-    border-bottom: 1px solid red;
-    color: red;
-  }
-}
-
-textarea {
-  width: 41vw;
-  height: 15vh;
-
-  margin-bottom: 1.5rem;
-  resize: none;
-
-  &.valid {
-    border: 1px solid green;
-    color: green;
-  }
-
-  &.invalid {
-    border: 1px solid red;
-  }
-}
-
-.danger-text {
-  span {
-    color: red;
-    font-size: 0.7rem;
-  }
-}
-
-.header_Page {
-  display: flex;
-  flex-direction: column;
-
-  height: 30vh;
-  width: 100%;
-
-  @include center_itens();
-
-  .text-content {
-    @include center_itens();
-    flex-direction: column;
-    text-align: center;
-
+  input {
     width: 20vw;
-    height: 30vh;
-
-    position: relative;
-    margin-top: 3rem;
-
-    span {
-      color: #fff;
-    }
-
-    p {
-      margin-top: .5rem;
-    }
-
-    color: $secund-color;
-  }
-}
-
-.main_Page_container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: left;
-
-  margin-top: 0.5rem;
-  height: 90vh;
-  width: 55vw;
-  padding: 1rem;
-
-  border-radius: 0.4rem;
-
-  background: #fff;
-
-  .cliente-title {
-    margin-top: 0.5rem;
-  }
-
-  .Order_Service_Form {
-    position: relative;
-
-    display: flex;
-    flex-wrap: wrap;
-
-    width: 94%;
     height: auto;
 
-    gap: 0.5rem;
+    border: none;
+    border-bottom: 1px solid gray;
 
-    padding: 1rem;
-
-    .form-user {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
+    &.valid {
+      border-bottom: 1px solid green;
+      color: green;
     }
 
-    .phone-Os {
+    &.invalid {
+      border-bottom: 1px solid red;
+      color: red;
+    }
+  }
+
+  textarea {
+    width: 41vw;
+    height: 15vh;
+
+    margin-bottom: 1.5rem;
+    resize: none;
+
+    &.valid {
+      border: 1px solid green;
+      color: green;
+    }
+
+    &.invalid {
+      border: 1px solid red;
+    }
+  }
+
+  .danger-text {
+    span {
+      color: red;
+      font-size: 0.7rem;
+    }
+  }
+
+  .header_Page {
+    display: flex;
+    flex-direction: column;
+
+    height: 30vh;
+    width: 100%;
+
+    @include center_itens();
+
+    .text-content {
+      @include center_itens();
+      flex-direction: column;
+      text-align: center;
+
+      width: 20vw;
+      height: 30vh;
+
+      position: relative;
+      margin-top: 3rem;
+
+      span {
+        color: #fff;
+      }
+
+      p {
+        margin-top: 0.5rem;
+      }
+
+      color: $secund-color;
+    }
+  }
+
+  .main_Page_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+
+    margin-top: 0.5rem;
+    height: 90vh;
+    width: 55vw;
+    padding: 1rem;
+
+    border-radius: 0.4rem;
+
+    background: #fff;
+    position: relative;
+
+    .cliente-title {
+      margin-top: 0.5rem;
+    }
+
+    .Order_Service_Form {
       display: flex;
       flex-wrap: wrap;
+
+      width: 94%;
+      height: auto;
 
       gap: 0.5rem;
 
-      width: 100%;
-    }
+      padding: .5rem;
 
+      .form-user {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .phone-Os {
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: 0.5rem;
+        height: fit-content;
+        
+      }
+      .OSForm {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        width: 100%;
+        height: auto;
+      }
+    }
     .Oder-Register-btn {
       position: absolute;
-      right: 0;
+      right: 0.5rem;
       bottom: 0.5rem;
 
       padding: 0.5rem;

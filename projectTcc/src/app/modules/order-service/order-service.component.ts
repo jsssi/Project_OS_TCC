@@ -39,6 +39,9 @@ export class OrderServiceComponent implements OnInit {
   //Formularios
   ClienteForm!: FormGroup;
   PhoneForm!: FormGroup;
+  OsForm!:FormGroup;
+
+  //Variaveis
   token!: any;
   UserExist?:boolean;
 
@@ -82,6 +85,9 @@ export class OrderServiceComponent implements OnInit {
       model: new FormControl('', [ValidatorsUtils.required()]),
       problem: new FormControl('', [ValidatorsUtils.required()]),
     });
+    this.OsForm = new FormGroup({
+      
+    })
 
     this.userService.GetAllUsers(this.token).subscribe(
       (Response) => {

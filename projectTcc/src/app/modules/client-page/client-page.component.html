@@ -1,8 +1,11 @@
 <app-nav-bar></app-nav-bar>
+
+<h1>Lista de <span>Clientes</span></h1>
 <div class="list-client">
   <div class="input-search-cleint">
-    <input type="text" placeholder="Nome">
-    <button><i class="bi bi-search"></i></button>
+    <button>Buscar</button>
+    <input type="text" placeholder="Nome CLiente">
+
   </div>
   <div class="list">
     <div class="card_OrderService" *ngFor="let Order of Orders">
@@ -10,7 +13,7 @@
         <i class="bi bi-list"></i>
       </button>
       <div class="user_info">
-        
+
       </div>
       <div class="phone_info">
 
