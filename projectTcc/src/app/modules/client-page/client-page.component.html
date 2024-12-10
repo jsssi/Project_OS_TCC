@@ -8,12 +8,23 @@
 
   </div>
   <div class="list">
-    <div class="card_OrderService" *ngFor="let Order of Orders">
+
+    <div class="help-info">
+      <p>id</p>
+      <p>nome</p>
+      <p>info</p>
+      <p>telefone</p>
+      <p>editar</p>
+      <p>excluir</p>
+      <p>O.S</p>
+    </div>
+
+    <div class="card_OrderService" *ngFor="let users of clients">
       <button class="button_moreInfo">
         <i class="bi bi-list"></i>
       </button>
       <div class="user_info">
-
+       {{ users.first_name }}
       </div>
       <div class="phone_info">
 
