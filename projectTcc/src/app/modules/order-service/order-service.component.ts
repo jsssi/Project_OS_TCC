@@ -1,5 +1,5 @@
 import { AuthService } from './../../Service/Auth.Service';
-import { usersWeb } from './../../model/Users';
+import { usersWeb } from '../../model/users';
 import { AfterViewInit, Component, Directive, OnInit } from '@angular/core';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import {
@@ -18,6 +18,7 @@ import { NgClass, NgIf } from '@angular/common';
 import { ValidatorsUtils } from '../../utils/Validators.utils';
 import { FormatePhoneNumberDirective } from '../../directives/telefone-mask.directive';
 import { Token } from '@angular/compiler';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-order-service',
@@ -37,6 +38,7 @@ export class OrderServiceComponent implements OnInit {
   //Formularios
   ClienteForm!: FormGroup;
   PhoneForm!: FormGroup;
+  token!: any;
 
   //Model
   orders: Order[] = [];
@@ -47,19 +49,15 @@ export class OrderServiceComponent implements OnInit {
   mes = this.today.getMonth() + 1;
   ano = this.today.getFullYear();
 
-
   constructor(
     private userService: UserService,
     private OrderService: OrderService,
     private PhoneService: PhoneService,
-    private AuthService:AuthService
-  ) {
-
-  }
-
+    private AuthService: AuthService
+  ) {}
 
   ngOnInit() {
-    const token = this.AuthService.getToken();
+    this.token = this.AuthService.getToken();
 
     this.ClienteForm = new FormGroup({
       first_name: new FormControl('', ValidatorsUtils.required()),
@@ -77,22 +75,19 @@ export class OrderServiceComponent implements OnInit {
       ]),
     });
     this.PhoneForm = new FormGroup({
-      marca: new FormControl('', [ValidatorsUtils.required()]),
-      modelo: new FormControl('', [ValidatorsUtils.required()]),
-      problema: new FormControl('', [ValidatorsUtils.required()]),
+      brand: new FormControl('', [ValidatorsUtils.required()]),
+      model: new FormControl('', [ValidatorsUtils.required()]),
+      problem: new FormControl('', [ValidatorsUtils.required()]),
     });
 
-
-
-
-   this.userService.GetAllUsers(token).subscribe(
-    (Response)=>{
-      console.log('usuarios encontrados',Response)
-    },
-   (Error) =>{
-    console.log('error',Error)
-   }
-   );
+    this.userService.GetAllUsers(this.token).subscribe(
+      (Response) => {
+        console.log('usuarios encontrados', Response);
+      },
+      (Error) => {
+        console.log('error', Error);
+      }
+    );
   }
 
   get cpfError(): string | null {
@@ -107,29 +102,58 @@ export class OrderServiceComponent implements OnInit {
   }
 
   onSubmit() {
-    const generatedPassword = String(
-      Math.floor(Math.random() * 1000000)
-    ).padStart(6, '0');
+    //Primeiro a ser enviado para o banco
+    const phone: phone = {
+      brand: this.PhoneForm.get('brand')?.value,
+      model: this.PhoneForm.get('model')?.value,
+      problem_description: this.PhoneForm.get('problem')?.value,
+      phone_status: 'PENDENTE',
+    };
 
+    //Segundo a ser enviado para o banco
     const client: usersWeb = {
       first_name: this.ClienteForm.get('first_name')?.value,
       last_name: this.ClienteForm.get('last_name')?.value,
       cpf: this.ClienteForm.get('cpf')?.value,
       email: this.ClienteForm.get('email')?.value,
-      adress: this.ClienteForm.get('adress')?.value,
-      password: '',
-      numberContact: this.ClienteForm.get('numberContact')?.value,
+      address: this.ClienteForm.get('adress')?.value,
+      phone_number: this.ClienteForm.get('numberContact')?.value,
     };
-    const phone: phone = {
-      Marca: this.PhoneForm.get('marca')?.value,
-      Modelo: this.PhoneForm.get('modelo')?.value,
-      ProblemaRelatado: this.PhoneForm.get('ProblemaRelatado')?.value,
-    };
-
-
-    console.log('orders:', this.OrderService.getOrderService())
+    const userLimpo = this.limparCampos(client)
+    this.criarCliente(phone, userLimpo);
 
     this.ClienteForm.reset();
     this.PhoneForm.reset();
+  }
+
+  criarCliente(phone: any, client: any): void {
+    this.PhoneService.SetPhoneUser(phone, this.token)
+      .pipe(
+        switchMap((responsePhone) => {
+          console.log('Telefone Registrado:', responsePhone.id);
+          return this.userService.CreateUser(
+            client,
+            responsePhone.id,
+            this.token
+          );
+        })
+      )
+      .subscribe({
+        next: (responseUser) => {
+          console.log('Cliente Cadastrado com Sucesso:', responseUser);
+        },
+        error: (error) => {
+          console.error('Erro:', error);
+        },
+      });
+  }
+  limparCampos(user: any) {
+    // Limpar o CPF
+    user.cpf = user.cpf.replace(/[^\d]/g, ''); // Remove qualquer coisa que não seja número
+
+    // Limpar o número de telefone
+    user.phone_number = user.phone_number.replace(/[^\d]/g, ''); // Remove qualquer coisa que não seja número
+
+    return user;
   }
 }

@@ -5,6 +5,8 @@
 @media(min-width:780px) {
   :host {
     @include center_itens();
+    background:linear-gradient($backgroud);
+    background-repeat: no-repeat;
 
     height: 100vh;
 

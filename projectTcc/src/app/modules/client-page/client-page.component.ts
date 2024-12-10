@@ -17,6 +17,6 @@ export class ClientPageComponent  implements OnInit{
   constructor (private OrderService : OrderService){}
 
   ngOnInit(): void {
-    this.Orders = this.OrderService.getOrderService();
+    
   }
 }

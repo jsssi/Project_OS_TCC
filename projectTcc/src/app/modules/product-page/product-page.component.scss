@@ -1,17 +1,17 @@
 @import "../../../styles/variables.scss";
 @import "../../../styles/pageStyles.scss";
 
-
 :host {
   @include center_itens();
+  background: linear-gradient($backgroud);
+  background-repeat: no-repeat;
   flex-direction: column;
-
 
   input,
   textarea {
     border: 1px solid gray;
-    padding: .4rem;
-    border-radius: .3rem;
+    padding: 0.4rem;
+    border-radius: 0.3rem;
   }
 
   input {
@@ -19,7 +19,6 @@
     height: auto;
 
     &.valid {
-
       border: 1px solid green;
       color: green;
     }
@@ -39,20 +38,16 @@
   .danger-text {
     span {
       color: red;
-      font-size: .7rem;
+      font-size: 0.7rem;
     }
-
   }
 
-
   .header_Page {
-
     display: flex;
     flex-direction: column;
 
     height: 30vh;
     width: 100%;
-
 
     @include center_itens();
 
@@ -89,16 +84,15 @@
     height: 60vh;
     width: 60vw;
 
-    border-radius: .4rem;
+    border-radius: 0.4rem;
 
     background: #fff;
 
-    .product-title{
+    .product-title {
       margin-top: 1rem;
     }
 
-    .product_Form{
-
+    .product_Form {
       position: relative;
 
       display: flex;
@@ -109,42 +103,38 @@
       width: 75%;
       height: auto;
 
+      gap: 0.5rem;
 
-      gap: .5rem;
+      padding: 0.7rem;
 
-      padding: .7rem;
-
-      .form-product{
+      .form-product {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
         gap: 1rem;
-
       }
 
       .product-register-btn {
-
         position: absolute;
         right: -10px;
         bottom: -80px;
 
-
-        padding: .5rem;
+        padding: 0.5rem;
         cursor: pointer;
         width: fit-content;
         color: $secund-color;
-        background: #00162E;
+        background: #00162e;
 
-        border-radius: .3rem;
+        border-radius: 0.3rem;
 
-        transition: all .5s ease-in-out;
+        transition: all 0.5s ease-in-out;
 
         &:hover {
           background: #151f2a;
         }
-        &.disable-button{
+        &.disable-button {
           pointer-events: none;
-          opacity:.5;
+          opacity: 0.5;
         }
       }
     }

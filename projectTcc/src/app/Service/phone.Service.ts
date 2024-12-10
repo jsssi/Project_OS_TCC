@@ -19,7 +19,7 @@ export class PhoneService {
       {'Authorization': `Bearer ${token}`}
      );
 
-    return this._httpCLient.post('/Api/cos/phone/create',{headers}).pipe(catchError ((Error=>{
+    return this._httpCLient.post<any>('/Api/cos/phone/create', phone,{headers}).pipe(catchError ((Error=>{
        console.log("error",Error)
        throw Error
     })))

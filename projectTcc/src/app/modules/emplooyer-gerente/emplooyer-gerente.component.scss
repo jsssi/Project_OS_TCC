@@ -1,20 +1,23 @@
 @import "../../../styles/pageStyles.scss";
 @import "../../../styles/variables.scss";
 
-:host{
+:host {
   @include center_itens();
   flex-direction: column;
 
+  background: linear-gradient($backgroud);
+  background-repeat: no-repeat;
+
   height: 100vh;
 
-  .containenr_Form_Register_employe{
+  .containenr_Form_Register_employe {
     @include center_itens();
 
     height: 70vh;
     width: 50vw;
 
     background: #fff;
-    .form_register{
+    .form_register {
       display: flex;
       flex-wrap: wrap;
 
@@ -25,52 +28,49 @@
 
       position: relative;
 
-     
-      .form_field{
+      .form_field {
         display: flex;
         flex-direction: column;
 
         align-items: flex-start;
         justify-content: center;
 
-        gap: .3rem;
-        label{
-          font-size: .8rem;
+        gap: 0.3rem;
+        label {
+          font-size: 0.8rem;
           font-weight: 500;
         }
-        input{
-         padding: .3rem;
-         border: 1px solid gray;
+        input {
+          padding: 0.3rem;
+          border: 1px solid gray;
 
-         border-radius: .2rem;
-         width: 15vw;
+          border-radius: 0.2rem;
+          width: 15vw;
         }
-        select{
+        select {
           border: 1px solid gray;
           width: 8vw;
-          padding: .2rem;
+          padding: 0.2rem;
 
-          border-radius: .3rem;
+          border-radius: 0.3rem;
         }
-
       }
-      button{
-
+      button {
         position: absolute;
         right: 1rem;
         bottom: 0;
 
-        background-color:$secund-color;
-        width:8vw;
+        background-color: $secund-color;
+        width: 8vw;
         height: 5vh;
 
-        padding: .2rem;
-        border-radius: .3rem;
+        padding: 0.2rem;
+        border-radius: 0.3rem;
 
         cursor: pointer;
-        transition: all .5s ease-out;
+        transition: all 0.5s ease-out;
 
-        &:hover{
+        &:hover {
           transform: scale(1.1);
         }
       }

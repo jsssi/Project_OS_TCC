@@ -1,38 +1,24 @@
+import { Order } from './../model/Order';
+import { Token } from '@angular/compiler';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { OrderServiceComponent } from "../modules/order-service/order-service.component";
-import { Order } from "../model/Order";
+
 import { employer } from "../model/employer";
+import { usersWeb } from '../model/users';
 
 @Injectable({
   providedIn : "root"
 })
 
 export  class OrderService{
-  private Order : Order[]=[];
-  private employee : employer[] = [];
-
-
-  constructor(){
-    this.loadLocalStorage();
+  private _httClient : HttpClient
+   
+  constructor(HttpClient:HttpClient){
+    this._httClient = HttpClient
   }
-  private loadLocalStorage(){
-    const data = localStorage.getItem('orderService')
-    if(data){
-      this.Order = JSON.parse(data);
-    }
-  }
-  private SaveInLocalStorage(){
-    localStorage.setItem('orderService', JSON.stringify(this.Order));
-  }
-
-  setOrderService(order: Order){ 
-    this.Order.push(order);
-    this.SaveInLocalStorage();
-  }
-  getOrderService(){
-    return this.Order;
-  }
-  FindOderForCpf(cpf:string){
-
+  setOrderService(order:any , token:any ,userId:usersWeb){
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this._httClient.post<{id:number}>('/Api/cos/os/create', order , {headers})
   }
 }

@@ -1,20 +1,21 @@
 @import "../../../styles/variables.scss";
 @import "../../../styles/pageStyles.scss";
 
-
 :host {
   @include center_itens();
   flex-direction: column;
   height: fit-content;
 
+  padding: 1rem;
+
+  background: linear-gradient($backgroud);
+  background-repeat: no-repeat;
 
   textarea {
     border: 1px solid gray;
-    padding: .4rem;
-    border-radius: .3rem;
+    padding: 0.4rem;
+    border-radius: 0.3rem;
   }
-
-
 }
 
 input {
@@ -25,7 +26,6 @@ input {
   border-bottom: 1px solid gray;
 
   &.valid {
-
     border-bottom: 1px solid green;
     color: green;
   }
@@ -44,7 +44,6 @@ textarea {
   resize: none;
 
   &.valid {
-
     border: 1px solid green;
     color: green;
   }
@@ -57,19 +56,16 @@ textarea {
 .danger-text {
   span {
     color: red;
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
-
 }
 
 .header_Page {
-
   display: flex;
   flex-direction: column;
 
   height: 30vh;
   width: 100%;
-
 
   @include center_itens();
 
@@ -82,14 +78,14 @@ textarea {
     height: 30vh;
 
     position: relative;
-    margin-top: 1rem;
+    margin-top: 3rem;
 
     span {
       color: #fff;
     }
 
     p {
-      margin-top: 1.4rem;
+      margin-top: .5rem;
     }
 
     color: $secund-color;
@@ -102,21 +98,20 @@ textarea {
   align-items: center;
   text-align: left;
 
-  margin-top: .5rem;
-  height: fit-content;
+  margin-top: 0.5rem;
+  height: 90vh;
   width: 55vw;
-  padding-inline: 1rem;
+  padding: 1rem;
 
-  border-radius: .4rem;
+  border-radius: 0.4rem;
 
   background: #fff;
 
   .cliente-title {
-    margin-top: .5rem;
+    margin-top: 0.5rem;
   }
 
   .Order_Service_Form {
-
     position: relative;
 
     display: flex;
@@ -125,57 +120,46 @@ textarea {
     width: 94%;
     height: auto;
 
-
-    gap: .5rem;
+    gap: 0.5rem;
 
     padding: 1rem;
-
-
 
     .form-user {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
-
-
-
     }
 
     .phone-Os {
       display: flex;
       flex-wrap: wrap;
 
-      gap: .5rem;
-
-
+      gap: 0.5rem;
 
       width: 100%;
     }
 
     .Oder-Register-btn {
-
       position: absolute;
       right: 0;
-      bottom: .5rem;
+      bottom: 0.5rem;
 
-
-      padding: .5rem;
+      padding: 0.5rem;
       cursor: pointer;
       width: fit-content;
       color: $secund-color;
-      background: #00162E;
+      background: #00162e;
 
-      border-radius: .3rem;
+      border-radius: 0.3rem;
 
-
-      transition: all .5s ease-in-out;
+      transition: all 0.5s ease-in-out;
 
       &:hover {
         background: #151f2a;
       }
-      &.disable-button{
+      &.disable-button {
         pointer-events: none;
-        opacity:.5;
+        opacity: 0.5;
       }
     }
   }

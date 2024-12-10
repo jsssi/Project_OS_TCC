@@ -1,5 +1,7 @@
 export interface phone{
-  Marca:            string;
-  Modelo:           string;
-  ProblemaRelatado: string;
+  id?    : number
+  brand : string
+  model : string
+  problem_description : string
+  phone_status : string
 }
