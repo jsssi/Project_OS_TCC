@@ -14,23 +14,23 @@ import { EmplooyerGerenteComponent } from './modules/emplooyer-gerente/emplooyer
 export const routes: Routes = [
 
   {
-    path: 'login',
+    path: 'cos/auth/login',
     component: LoginPageComponentComponent
   },
   {
-    path: 'home',
+    path: 'cos/home',
     component: HomeComponent
   },
   {
-    path: 'clientes',
+    path: 'cos/clientes',
     component: ClientPageComponent
   },
   {
-    path: 'products',
+    path: 'cos/products',
     component: ProductPageComponent
   },
   {
-    path: 'OSCos',
+    path: 'cos/OSCos',
     component: OrderServiceComponent
   },
   {
@@ -39,7 +39,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/cos/auth/login',
     pathMatch: 'full'
   },
 

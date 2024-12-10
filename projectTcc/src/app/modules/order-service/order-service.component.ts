@@ -1,3 +1,4 @@
+
 import { AuthService } from './../../Service/Auth.Service';
 import { usersWeb } from '../../model/users';
 import { AfterViewInit, Component, Directive, OnInit } from '@angular/core';
@@ -18,7 +19,7 @@ import { NgClass, NgIf } from '@angular/common';
 import { ValidatorsUtils } from '../../utils/Validators.utils';
 import { FormatePhoneNumberDirective } from '../../directives/telefone-mask.directive';
 import { Token } from '@angular/compiler';
-import { switchMap } from 'rxjs';
+import { catchError, of, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-order-service',
@@ -39,6 +40,7 @@ export class OrderServiceComponent implements OnInit {
   ClienteForm!: FormGroup;
   PhoneForm!: FormGroup;
   token!: any;
+  UserExist?:boolean;
 
   //Model
   orders: Order[] = [];
@@ -53,7 +55,8 @@ export class OrderServiceComponent implements OnInit {
     private userService: UserService,
     private OrderService: OrderService,
     private PhoneService: PhoneService,
-    private AuthService: AuthService
+    private AuthService: AuthService,
+
   ) {}
 
   ngOnInit() {
@@ -120,32 +123,52 @@ export class OrderServiceComponent implements OnInit {
       phone_number: this.ClienteForm.get('numberContact')?.value,
     };
     const userLimpo = this.limparCampos(client)
-    this.criarCliente(phone, userLimpo);
+
 
     this.ClienteForm.reset();
     this.PhoneForm.reset();
+
+
+    this.criarCliente(phone, userLimpo);
   }
 
-  criarCliente(phone: any, client: any): void {
-    this.PhoneService.SetPhoneUser(phone, this.token)
-      .pipe(
-        switchMap((responsePhone) => {
-          console.log('Telefone Registrado:', responsePhone.id);
-          return this.userService.CreateUser(
-            client,
-            responsePhone.id,
-            this.token
-          );
-        })
-      )
-      .subscribe({
-        next: (responseUser) => {
+  criarCliente(phone: any , client: any):void{
+    this.PhoneService
+    .SetPhoneUser(phone, this.token)
+    .pipe(
+      switchMap((responsePhone) => {
+        console.log('Telefone Registrado:', responsePhone.id);
+        // Adiciona o ID do telefone ao cliente
+        client.phone_id = responsePhone.id;
+
+        // Tenta criar o usuário com o ID do telefone
+        return this.userService.CreateUser(client, responsePhone.id, this.token).pipe(
+          catchError((error) => {
+            // Se a criação do usuário falhar, exclui o telefone
+            console.log('Erro ao criar usuário. Excluindo telefone...', error.error.message);
+
+            return this.PhoneService.DeletePhone(responsePhone.id, this.token).pipe(
+              tap(() => console.log('Telefone excluído com sucesso!'))
+            );
+          })
+        );
+      }),
+      catchError((error) => {
+        // Se o registro do telefone falhar, interrompe o processo
+        console.error('Erro ao registrar telefone:', error);
+        return of(null);
+      })
+    )
+    .subscribe({
+      next: (responseUser) => {
+        if (responseUser) {
           console.log('Cliente Cadastrado com Sucesso:', responseUser);
-        },
-        error: (error) => {
-          console.error('Erro:', error);
-        },
-      });
+        }
+      },
+      error: (error) => {
+        console.error('Erro geral:', error);
+      },
+    });
   }
   limparCampos(user: any) {
     // Limpar o CPF
@@ -156,4 +179,5 @@ export class OrderServiceComponent implements OnInit {
 
     return user;
   }
+
 }

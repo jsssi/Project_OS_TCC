@@ -4,15 +4,15 @@
   </div>
 
   <nav>
-    <ul routerLink="/home" routerLinkActive="active">Home</ul>
-    <ul routerLink="/clientes" routerLinkActive="active">Clientes</ul>
-    <ul routerLink="/products" routerLinkActive="active">Estoque</ul>
-    <ul routerLink="/OSCos" routerLinkActive="active">Ordem</ul>
-    <ul routerLink="/cos/auth/Register" routerLinkActive="active">Registrar Funcionario</ul>
+    <ul routerLink="/cos/home" routerLinkActive="active">Home</ul>
+    <ul routerLink="/cos/clientes" routerLinkActive="active">Clientes</ul>
+    <ul routerLink="/cos/products" routerLinkActive="active">Estoque</ul>
+    <ul routerLink="/cos/OSCos" routerLinkActive="active">Ordem</ul>
+    <ul routerLink="/cos/auth/Register" routerLinkActive="active" [class.hidden]="!isGerent()">Registrar Funcionario</ul>
   </nav>
 
   <div class="LogOut">
-    <button routerLink="/login" routerLinkActive="active">Sair</button>
+    <button routerLink="/cos/auth/login" routerLinkActive="active">Sair</button>
   </div>
 
 </header>

@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild, viewChild } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
@@ -7,18 +8,20 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   imports: [
     RouterLink,
     RouterLinkActive,
+    NgIf
   ],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.scss'
 })
-export class NavBarComponent implements AfterViewInit {
+export class NavBarComponent implements OnInit {
+  typeEmployee: string | null = null;
 
   @ViewChild('navBar') navBarRef!: ElementRef;
   @ViewChild('open', { static: false }) openRef!: ElementRef;
   @ViewChild('close', { static: false }) closeRef!: ElementRef;
 
   constructor(private Renderer: Renderer2) { }
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
     if (this.openRef) {
       this.openRef.nativeElement.addEventListener('click', () => {
         if (this.navBarRef) {
@@ -37,7 +40,10 @@ export class NavBarComponent implements AfterViewInit {
         }
       })
     }
+    this.typeEmployee = localStorage.getItem('type_employee')
   }
-
+  isGerent():boolean{
+    return this.typeEmployee === "GERENTE"
+  }
 
 }

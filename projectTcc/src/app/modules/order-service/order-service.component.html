@@ -277,9 +277,9 @@
       <button
         class="Oder-Register-btn"
         (click)="onSubmit()"
-        [disabled]="ClienteForm.invalid && PhoneForm.invalid"
+        [disabled]="ClienteForm.invalid || PhoneForm.invalid"
         [ngClass]="{
-          'disable-button': ClienteForm.invalid && PhoneForm.invalid
+          'disable-button': ClienteForm.invalid || PhoneForm.invalid
         }"
       >
         Registrar Ordem

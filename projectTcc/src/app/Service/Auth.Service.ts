@@ -51,7 +51,7 @@ export class AuthService {
   isAuthenticated(): boolean {
     return this.getToken() !== null;
   }
-
+  
   // Logout - Remover o token do localStorage e atualizar o estado
   logout(): void {
     localStorage.removeItem(this.tokenKey);

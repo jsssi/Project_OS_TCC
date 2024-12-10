@@ -45,12 +45,13 @@ export class LoginPageComponentComponent implements OnInit {
     this.AuthService.login(email, senha).subscribe(
       (Response) =>{
         this.AuthService.saveToken(Response.token);
-        console.log("token: ",Response.token)
-        this.Router.navigate(['/home']);
+        localStorage.setItem('type_employee', Response.employee.type_employee)
+        console.log("token: ",Response)
+        this.Router.navigate(['/cos/home']);
       },
       (Error) =>{
-        console.log("error" , Error);
-        this.mensage='usuario ou senha invalidos'
+        console.log("error" , Error.error.message);
+        alert("Usuario ou senha Invalidos")
       }
     )
   }
