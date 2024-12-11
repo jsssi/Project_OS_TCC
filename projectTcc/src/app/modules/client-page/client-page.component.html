@@ -29,7 +29,7 @@
         <p>{{users.phone_number}}</p>
         <img src="../../../assets/botao-editar.png">
         <img src="../../../assets/botao-excluir.png" (click)="deleteUserById(users.id)">
-        <button>gerar</button>
+        <button (click)="generetedPdf(users.cpf)">gerar</button>
       </div>
     </div>
   </div>

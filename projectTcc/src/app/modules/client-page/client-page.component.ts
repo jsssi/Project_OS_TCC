@@ -21,9 +21,10 @@ export class ClientPageComponent  implements OnInit{
 
   clients:usersWeb[] = [];
 
+  order: any;
 
   cpf: string = '';
-  constructor (private OrderService : OrderService, private clientService:UserService, private authService: AuthService, private phoneService: PhoneService){}
+  constructor (private orderService : OrderService, private clientService:UserService, private authService: AuthService, private phoneService: PhoneService){}
 
   ngOnInit(): void {
     this.loadClients();
@@ -38,7 +39,7 @@ export class ClientPageComponent  implements OnInit{
       (Error) =>{
         console.log('erro ao carregar os clientes');
       }
-    )
+    );
   }
 
   findByCpf(){
@@ -71,4 +72,35 @@ export class ClientPageComponent  implements OnInit{
       }
     )
   }
+
+  generetedPdf(cpf: String){
+    if(this.orderService) return;
+
+    this.clientService.getClientByCpf(cpf, this.authService.getToken()).subscribe(
+      (Response) =>{
+        this.clients = [Response];
+        console.log(Response)
+
+        const documentDefinition = {
+          content: [
+            { text: 'Ordem de Serviço', style: 'header' },
+            { text: `ID: ${this.order.id}`, style: 'subheader' },
+            { text: `NOME: ${Response.first_name + " " + Response.last_name}`, style: 'content' },
+            { text: `CPF: ${Response.cpf}`, style: 'content' },
+            { text: `EMAIL: ${Response.email}`, style: 'content' },
+            { text: `ENDEREÇO: ${Response.address}`, style: 'content' },
+            { text: `NUMERO DE CELULAR: ${Response.phone_number}`, style: 'content' }
+          ],
+          styles: {
+            header: { fontSize: 18, bold: true, alignment: 'center' },
+            subheader: { fontSize: 14, italics: true, margin: [0, 10] },
+            content: { fontSize: 12, margin: [0, 5] }
+          }
+        };
+      }, (Error) =>{
+        console.log('error', Error);
+      });
+  }
+
+
 }
