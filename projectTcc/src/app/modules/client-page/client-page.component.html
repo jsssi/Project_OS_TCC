@@ -3,8 +3,8 @@
 <h1>Lista de <span>Clientes</span></h1>
 <div class="list-client">
   <div class="input-search-cleint">
-    <button>Buscar</button>
-    <input type="text" placeholder="Nome CLiente">
+    <button (click)="findByCpf()">Buscar</button>
+    <input type="text" placeholder="Cpf Cliente" [(ngModel)]="cpf" (input)="refresh()">
 
   </div>
   <div class="list">
@@ -12,7 +12,8 @@
     <div class="help-info">
       <p>id</p>
       <p>nome</p>
-      <p>info</p>
+      <p>cpf</p>
+      <p>status</p>
       <p>telefone</p>
       <p>editar</p>
       <p>excluir</p>
@@ -20,17 +21,15 @@
     </div>
 
     <div class="card_OrderService" *ngFor="let users of clients">
-      <button class="button_moreInfo">
-        <i class="bi bi-list"></i>
-      </button>
       <div class="user_info">
-       {{ users.first_name }}
-      </div>
-      <div class="phone_info">
-
-      </div>
-      <div class="Order_info">
-
+        <p>{{users.id}}</p>
+        <p>{{ users.first_name + " " + users.last_name }}</p>
+        <p>{{users.cpf}}</p>
+        <p>Pendente</p>
+        <p>{{users.phone_number}}</p>
+        <img src="../../../assets/botao-editar.png">
+        <img src="../../../assets/botao-excluir.png">
+        <button>criar</button>
       </div>
     </div>
   </div>

@@ -19,7 +19,7 @@ export class UserService {
   CreateUser(user:any, phoneId: phone, token: any){
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
     user.phone_id= phoneId
-    
+
     return this._httpClient.post<{ id: number }>('/Api/cos/client/create', user, { headers });
   }
   GetAllUsers(token: any): Observable<usersWeb[]> {
@@ -27,9 +27,15 @@ export class UserService {
 
     return this._httpClient.get<usersWeb[]>('/Api/cos/client', { headers });
   }
+
+  getClientByCpf(cpf: String, token: any){
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+
+    return this._httpClient.get<usersWeb>(`/Api/cos/client/${cpf}`, { headers });
+  }
   UpdateUser(token:any){
    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
    return this._httpClient.put<any>('/Api/cos/cliente/update',{headers})
   }
- 
+
 }
