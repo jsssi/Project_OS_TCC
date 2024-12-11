@@ -18,12 +18,29 @@
       color: $secund-color;
     }
   }
+
+  .help-info{
+    height: 6vh;
+    display: flex;
+    background: #EBEBEB;
+    border: none;
+
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+
+    p{
+      font-weight: bold;
+      font-size: 26px;
+    }
+  }
+
   .list-client {
 
     height: 70vh;
     width: 70vw;
 
-   
+
 
     margin-top: .8rem;
     background: #fff;
