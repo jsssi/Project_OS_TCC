@@ -59,4 +59,16 @@ export class ClientPageComponent  implements OnInit{
       this.loadClients()
     }
   }
+
+  deleteUserById(id: Number | undefined){
+    this.clientService.deleteUser(id, this.authService.getToken()).subscribe(
+      (Response) =>{
+        alert('usuario apagado com sucesso');
+        console.log("response: " , Response)
+        this.loadClients();
+      }, (Error) =>{
+        console.error("error: ", Error);
+      }
+    )
+  }
 }

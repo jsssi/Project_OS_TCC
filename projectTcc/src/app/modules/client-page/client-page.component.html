@@ -28,8 +28,8 @@
         <p>Pendente</p>
         <p>{{users.phone_number}}</p>
         <img src="../../../assets/botao-editar.png">
-        <img src="../../../assets/botao-excluir.png">
-        <button>criar</button>
+        <img src="../../../assets/botao-excluir.png" (click)="deleteUserById(users.id)">
+        <button>gerar</button>
       </div>
     </div>
   </div>

@@ -35,7 +35,13 @@ export class UserService {
   }
   UpdateUser(token:any){
    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
-   return this._httpClient.put<any>('/Api/cos/cliente/update',{headers})
+   return this._httpClient.put<any>('/Api/cos/client/update',{headers})
+  }
+
+  deleteUser(id: Number | undefined, token:any){
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+
+    return this._httpClient.delete(`/Api/cos/client/delete/${id}`, { headers });
   }
 
 }
