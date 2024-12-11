@@ -1,4 +1,3 @@
-
 import { AuthService } from './../../Service/Auth.Service';
 import { usersWeb } from '../../model/users';
 import { AfterViewInit, Component, Directive, OnInit } from '@angular/core';
@@ -39,27 +38,17 @@ export class OrderServiceComponent implements OnInit {
   //Formularios
   ClienteForm!: FormGroup;
   PhoneForm!: FormGroup;
-  OsForm!:FormGroup;
+  OsForm!: FormGroup;
 
   //Variaveis
   token!: any;
-  UserExist?:boolean;
-
-  //Model
-  orders: Order[] = [];
-  user: usersWeb[] = [];
-
-  today = new Date();
-  dia = this.today.getDate();
-  mes = this.today.getMonth() + 1;
-  ano = this.today.getFullYear();
+  UserExist?: boolean;
 
   constructor(
     private userService: UserService,
     private OrderService: OrderService,
     private PhoneService: PhoneService,
-    private AuthService: AuthService,
-
+    private AuthService: AuthService
   ) {}
 
   ngOnInit() {
@@ -86,8 +75,10 @@ export class OrderServiceComponent implements OnInit {
       problem: new FormControl('', [ValidatorsUtils.required()]),
     });
     this.OsForm = new FormGroup({
-      
-    })
+      material    : new FormControl('', [ValidatorsUtils.required()]),
+      description : new FormControl('',[ValidatorsUtils.required()]),
+      estimadTime : new FormControl('',[ValidatorsUtils.required()])
+    });
 
     this.userService.GetAllUsers(this.token).subscribe(
       (Response) => {
@@ -128,54 +119,66 @@ export class OrderServiceComponent implements OnInit {
       address: this.ClienteForm.get('adress')?.value,
       phone_number: this.ClienteForm.get('numberContact')?.value,
     };
-    const userLimpo = this.limparCampos(client)
+    const userLimpo = this.limparCampos(client);
 
+    const order: Order = {
+      description : this.OsForm.get('description')?.value,
+      material: this.OsForm.get('material')?.value,
+      estimateTime:this.OsForm.get('estimadeTime')?.value
+    };
 
     this.ClienteForm.reset();
     this.PhoneForm.reset();
 
-
-    this.criarCliente(phone, userLimpo);
+    this.CriarOrdem(phone, userLimpo , order);
   }
 
-  criarCliente(phone: any , client: any):void{
-    this.PhoneService
-    .SetPhoneUser(phone, this.token)
-    .pipe(
-      switchMap((responsePhone) => {
-        console.log('Telefone Registrado:', responsePhone.id);
-        // Adiciona o ID do telefone ao cliente
-        client.phone_id = responsePhone.id;
+  CriarOrdem(phone: any, client: any, order: any): void {
+    this.PhoneService.SetPhoneUser(phone, this.token)
+      .pipe(
+        switchMap((responsePhone) => {
+          console.log('Telefone Registrado:', responsePhone.id);
+          client.phone_id = responsePhone.id;
 
-        // Tenta criar o usuário com o ID do telefone
-        return this.userService.CreateUser(client, responsePhone.id, this.token).pipe(
-          catchError((error) => {
-            // Se a criação do usuário falhar, exclui o telefone
-            console.log('Erro ao criar usuário. Excluindo telefone...', error.error.message);
-
-            return this.PhoneService.DeletePhone(responsePhone.id, this.token).pipe(
-              tap(() => console.log('Telefone excluído com sucesso!'))
+          return this.userService.CreateUser(client, responsePhone.id, this.token)
+            .pipe(
+              catchError((error) => {
+                console.error('Erro ao criar usuário. Excluindo telefone...', error.error.message);
+                return this.PhoneService.DeletePhone(responsePhone.id, this.token)
+                  .pipe(
+                    tap(() => console.log('Telefone excluído com sucesso!')),
+                    catchError((deleteError) => {
+                      console.error('Erro ao excluir telefone', deleteError);
+                      return of(null); // Retorna null em caso de falha ao excluir o telefone
+                    })
+                  );
+              })
             );
-          })
-        );
-      }),
-      catchError((error) => {
-        // Se o registro do telefone falhar, interrompe o processo
-        console.error('Erro ao registrar telefone:', error);
-        return of(null);
-      })
-    )
-    .subscribe({
-      next: (responseUser) => {
-        if (responseUser) {
-          console.log('Cliente Cadastrado com Sucesso:', responseUser);
-        }
-      },
-      error: (error) => {
-        console.error('Erro geral:', error);
-      },
-    });
+        }),
+        catchError((error) => {
+          console.error('Erro ao registrar telefone:', error);
+          return of(null);
+        })
+      )
+      .subscribe({
+        next: (responseUser) => {
+          if (responseUser) {
+            console.log('Cliente Cadastrado com Sucesso:', responseUser);
+            this.OrderService.setOrderService(responseUser.id, this.token, order).subscribe(
+            (ResponseOrder) =>{
+              console.log('Ordem Gerada com sucesso',ResponseOrder)
+            },
+            (Error)=>{
+              console.log('Error:', Error)
+            });
+          }
+        },
+        error: (error) => {
+          console.error('Erro geral:', error);
+        },
+      });
   }
+
   limparCampos(user: any) {
     // Limpar o CPF
     user.cpf = user.cpf.replace(/[^\d]/g, ''); // Remove qualquer coisa que não seja número
@@ -185,5 +188,4 @@ export class OrderServiceComponent implements OnInit {
 
     return user;
   }
-
 }

@@ -11,11 +11,6 @@
   background: linear-gradient($backgroud);
   background-repeat: no-repeat;
 
-  textarea {
-    border: 1px solid gray;
-    padding: 0.4rem;
-    border-radius: 0.3rem;
-  }
   h3{
     margin-top: 1rem;
   }
@@ -40,10 +35,12 @@
 
   textarea {
     width: 41vw;
-    height: 15vh;
+    height: 12vh;
 
-    margin-bottom: 1.5rem;
+
     resize: none;
+    border: 1px solid gray;
+    padding: .5rem;
 
     &.valid {
       border: 1px solid green;
@@ -137,12 +134,12 @@
 
         gap: 0.5rem;
         height: fit-content;
-        
+
       }
       .OSForm {
         display: flex;
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: .5rem;
 
         width: 100%;
         height: auto;

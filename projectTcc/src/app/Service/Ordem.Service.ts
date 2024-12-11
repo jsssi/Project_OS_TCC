@@ -17,10 +17,10 @@ export  class OrderService{
   constructor(HttpClient:HttpClient){
     this._httClient = HttpClient
   }
-  setOrderService(order:Order , token:any ,userId:any){
+  setOrderService(order:any , token:any ,userId:usersWeb){
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
-    order.client_id = userId;
-    
+    order.clientId = userId;
+
     return this._httClient.post<{id:number}>('/Api/cos/os/create', order , {headers})
   }
 }
