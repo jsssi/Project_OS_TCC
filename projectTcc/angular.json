@@ -35,8 +35,6 @@
             "styles": [
               "src/styles.scss",
               "src/styles/variables.scss"
-
-
             ],
             "scripts": []
           },
@@ -102,12 +100,13 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "/assets"
+                
               }
             ],
             "styles": [
               "src/styles.scss",
               "src/styles/variables.scss"
-
+              
 
 
             ],

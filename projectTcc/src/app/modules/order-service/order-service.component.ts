@@ -77,7 +77,7 @@ export class OrderServiceComponent implements OnInit {
     this.OsForm = new FormGroup({
       material    : new FormControl('', [ValidatorsUtils.required()]),
       description : new FormControl('',[ValidatorsUtils.required()]),
-      estimadTime : new FormControl('',[ValidatorsUtils.required()])
+      estimatedTime : new FormControl('',[ValidatorsUtils.required()])
     });
 
     this.userService.GetAllUsers(this.token).subscribe(
@@ -124,7 +124,7 @@ export class OrderServiceComponent implements OnInit {
     const order: Order = {
       description : this.OsForm.get('description')?.value,
       material: this.OsForm.get('material')?.value,
-      estimateTime:this.OsForm.get('estimadeTime')?.value
+      estimatedTime:this.OsForm.get('estimatedTime')?.value
     };
 
     this.ClienteForm.reset();
@@ -164,13 +164,15 @@ export class OrderServiceComponent implements OnInit {
         next: (responseUser) => {
           if (responseUser) {
             console.log('Cliente Cadastrado com Sucesso:', responseUser);
-            this.OrderService.setOrderService(responseUser.id, this.token, order).subscribe(
-            (ResponseOrder) =>{
-              console.log('Ordem Gerada com sucesso',ResponseOrder)
-            },
-            (Error)=>{
-              console.log('Error:', Error)
-            });
+            order.clientId = responseUser.id;  // Agora o ID do usuário é atribuído a order.clientId
+            this.OrderService.setOrderService(order, this.token).subscribe(
+              (ResponseOrder) => {
+                console.log('Ordem Gerada com sucesso', ResponseOrder);
+              },
+              (Error) => {
+                console.log('Error:', Error);
+              }
+            );
           }
         },
         error: (error) => {

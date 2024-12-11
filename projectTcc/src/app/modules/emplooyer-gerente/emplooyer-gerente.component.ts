@@ -38,7 +38,7 @@ export class EmplooyerGerenteComponent implements OnInit {
     },
     (error)=>{
       console.log("Erorr", error.error.message)
-      
+
     }
 
    );

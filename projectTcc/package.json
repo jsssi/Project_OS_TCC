@@ -27,6 +27,8 @@
     "@angular/router": "^18.2.0",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "jspdf": "^2.5.2",
+    "jspdf-autotable": "^3.8.4",
     "ngx-indexed-db": "^19.0.0",
     "project-tcc": "file:",
     "rxjs": "~7.8.0",
