@@ -1,7 +1,7 @@
 import { phone } from "./Phone";
 
 export interface usersWeb {
-  client_id?: number;
+  id?: number;
   first_name: string;
   last_name: string;
   cpf: string;

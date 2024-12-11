@@ -11,18 +11,17 @@ import { Observable } from "rxjs";
 export class ProductService{
 
   private _httpClient: HttpClient;
-  private apiUrl = 'http://localhost:8080/cos/product';
 
   constructor(httpClient: HttpClient, private authService: AuthService){
     this._httpClient = httpClient;
   }
 
   getAllProducts(): Observable<product[]>{
-   return this._httpClient.get<product[]>(`${this.apiUrl}`);
+   return this._httpClient.get<product[]>(`/Api/cos/product`);
   }
 
   getProduct(id: Number): Observable<product>{
-    return this._httpClient.get<product>(`${this.apiUrl}/${id}`);
+    return this._httpClient.get<product>(`/Api/cos/product/${id}`);
   }
 
   addProduct(product: any, token?: any): Observable<any>{
@@ -32,11 +31,11 @@ export class ProductService{
     );
 
     console.log(this.authService.getToken());
-    return this._httpClient.post(`${this.apiUrl}/create`, product, { headers });
+    return this._httpClient.post(`/Api/cos/product/create`, product, { headers });
   }
 
   removeProduct(id: Number){
-    return this._httpClient.delete(`${this.apiUrl}/delete/${id}`);
+    return this._httpClient.delete(`/Api/cos/product/delete/${id}`);
   }
 
 
