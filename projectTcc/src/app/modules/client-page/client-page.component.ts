@@ -1,4 +1,5 @@
-
+import { jsPDF } from 'jspdf';
+import 'jspdf-autotable';
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../Service/Ordem.Service';
 import { AuthService } from '../../Service/Auth.Service';

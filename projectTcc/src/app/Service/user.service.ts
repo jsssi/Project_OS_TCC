@@ -35,9 +35,9 @@ export class UserService {
 
     return this._httpClient.get<usersWeb>(`/Api/cos/client/${cpf}`, { headers });
   }
-  UpdateUser(token:any){
+  UpdateUser(client: any, token:any){
    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
-   return this._httpClient.put<any>('/Api/cos/client/update',{headers})
+   return this._httpClient.put<any>('/Api/cos/client/update', client, {headers})
   }
 
   deleteUser(id: Number | undefined, token:any){

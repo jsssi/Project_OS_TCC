@@ -16,8 +16,11 @@ export class ProductService{
     this._httpClient = httpClient;
   }
 
-  getAllProducts(): Observable<product[]>{
-   return this._httpClient.get<product[]>(`/Api/cos/product`);
+  getAllProducts(token: any): Observable<product[]>{
+    const headers = new HttpHeaders(
+      {'Authorization': `Bearer ${token}`}
+     );
+    return this._httpClient.get<product[]>(`/Api/cos/product`, { headers });
   }
 
   getProduct(id: Number): Observable<product>{
@@ -34,8 +37,12 @@ export class ProductService{
     return this._httpClient.post(`/Api/cos/product/create`, product, { headers });
   }
 
-  removeProduct(id: Number){
-    return this._httpClient.delete(`/Api/cos/product/delete/${id}`);
+  removeProduct(id: Number | undefined, token: any){
+    const headers = new HttpHeaders(
+      {'Authorization': `Bearer ${token}`}
+     );
+
+    return this._httpClient.delete(`/Api/cos/product/delete/${id}`, { headers });
   }
 
 
