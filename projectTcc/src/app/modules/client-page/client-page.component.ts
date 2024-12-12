@@ -22,18 +22,18 @@ import { FormsModule, NgModel } from '@angular/forms';
 })
 export class ClientPageComponent implements OnInit {
   token: any;
-  
-  
+
+
   order: any;
   cpf: string = '';
-  
+
   constructor (private orderService : OrderService, private clientService:UserService, private authService: AuthService, private phoneService: PhoneService){}
 
   ngOnInit(): void {
     this.loadClients();
     this.token = this.authService.getToken();
   }
-  
+
   clients: usersWeb[] = [];
   loadClients(){
     this.clientService.GetAllUsers(this.authService.getToken()).subscribe(
@@ -43,25 +43,24 @@ export class ClientPageComponent implements OnInit {
       (Error) =>{
         console.log('erro ao carregar os clientes');
       })
-   }     
-  GerarOdemDeSerice(OrderId:number) {
-    console.log(OrderId)
+   }
+  GerarOdemDeSerice(OrderId: any) {
     this.orderService.GetOrderServiceById(OrderId, this.token).subscribe(
       (order) => {
         const doc = new jsPDF();
-  
+
         // Cabeçalho
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(22);
         doc.setTextColor(0, 102, 204);
         doc.text('Ordem de Serviço', 105, 20, { align: 'center' });
-  
+
         // Logo
         const img = new Image();
-        img.src = '../../../assets/Rectangle 8.png'; 
+        img.src = '../../../assets/Rectangle 8.png';
         doc.addImage(img, 'PNG', 10, 10, 20, 20);
         img.style.color = '#0000';
-  
+
         // Tabela: Dados do Cliente
         const clientDetails = [
           ['Nome', `${order.client_id?.first_name || ''} ${order.client_id?.last_name || ''}`],
@@ -86,10 +85,10 @@ export class ClientPageComponent implements OnInit {
             halign: 'left',
           },
         });
-  
+
         // Usar finalY do jsPDF
         const finalY1 = (doc as any).lastAutoTable.finalY;
-  
+
         // Tabela: Dados do Telefone
         const phoneDetails = [
           ['Marca', order.client_id?.phone_id?.brand || ''],
@@ -113,10 +112,10 @@ export class ClientPageComponent implements OnInit {
             halign: 'left',
           },
         });
-  
+
         // Usar finalY atualizado
         const finalY2 = (doc as any).lastAutoTable.finalY;
-  
+
         // Tabela: Detalhes da Ordem de Serviço
         const orderDetails = [
           ['Descrição', order.description || 'Nao informado'],
@@ -140,12 +139,12 @@ export class ClientPageComponent implements OnInit {
             halign: 'left',
           },
         });
-  
+
         // Assinatura
         const finalY3 = (doc as any).lastAutoTable.finalY;
         doc.text('Assinatura do Cliente:', 10, finalY3 + 20);
         doc.line(10, finalY3 + 25, 200, finalY3 + 25);
-  
+
         // Salvar o PDF
         doc.save('ordem_de_servico.pdf');
       }
@@ -154,7 +153,7 @@ export class ClientPageComponent implements OnInit {
 
   findByCpf() {
     console.log('coletando cpf');
-  
+
     this.clientService.getClientByCpf(this.cpf, this.authService.getToken()).subscribe(
       (response:usersWeb ) => {  // Usando o tipo esperado
         this.clients = [response];  // Acessando o usuário dentro do objeto 'response'
@@ -167,8 +166,8 @@ export class ClientPageComponent implements OnInit {
       }
     );
   }
-  
-  
+
+
   refresh(){
     if(this.cpf.trim() === ''){
       this.loadClients()
