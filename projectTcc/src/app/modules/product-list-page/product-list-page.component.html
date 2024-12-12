@@ -1,0 +1,36 @@
+<app-nav-bar></app-nav-bar>
+
+<h1>Lista de <span>Clientes</span></h1>
+<div class="list-client">
+  <div class="input-search-cleint">
+    <button >Buscar</button>
+    <input type="text" placeholder="nome produto" [(ngModel)]="name" (input)="refresh()">
+
+  </div>
+  <div class="list">
+
+    <div class="help-info">
+      <p>id</p>
+      <p>nome</p>
+      <p>modelo</p>
+      <p>preço</p>
+      <p>quantidade</p>
+      <p>editar</p>
+      <p>excluir</p>
+    </div>
+
+    <div class="card_OrderService" *ngFor="let item of products">
+      <div class="user_info">
+        <p>{{ item.id }}</p>
+        <p>{{ item.name }}</p>
+        <p>{{ item.brand }}</p>
+        <p>{{ item.price }}</p>
+        <p>{{ item.quantity }}</p>
+
+        <img src="../../../assets/botao-editar.png">
+        <img src="../../../assets/botao-excluir.png" (click)="deleteProductById(item.id)">
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,10 +1,11 @@
+import { Order } from './../../model/Order';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 import { Component, NgModule, OnInit } from '@angular/core';
 import { OrderService } from '../../Service/Ordem.Service';
 import { AuthService } from '../../Service/Auth.Service';
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { usersWeb } from '../../model/users';
 import { UserService } from '../../Service/user.service';
 import { PhoneService } from '../../Service/phone.Service';
@@ -17,7 +18,7 @@ import { FormsModule, NgModel } from '@angular/forms';
   styleUrls: ['./client-page.component.scss'],
   imports: [NavBarComponent,
     NgFor,
-    FormsModule
+    FormsModule, NgIf
   ],
 })
 export class ClientPageComponent implements OnInit {
@@ -26,6 +27,10 @@ export class ClientPageComponent implements OnInit {
 
   order: any;
   cpf: string = '';
+
+  isModalOpen: boolean = false;
+
+
 
   constructor (private orderService : OrderService, private clientService:UserService, private authService: AuthService, private phoneService: PhoneService){}
 
@@ -44,6 +49,9 @@ export class ClientPageComponent implements OnInit {
         console.log('erro ao carregar os clientes');
       })
    }
+
+
+
   GerarOdemDeSerice(OrderId: any) {
     this.orderService.GetOrderServiceById(OrderId, this.token).subscribe(
       (order) => {
@@ -184,5 +192,19 @@ export class ClientPageComponent implements OnInit {
         console.error("error: ", Error);
       }
     )
+  }
+
+  openEditModal(client: any) {
+    this.clients = { ...client }; // Faz uma cópia do cliente para edição
+    this.isModalOpen = true;  // Torna o modal visível
+  }
+
+  // Fechar o modal
+  closeModal() {
+    this.isModalOpen = false;  // Fecha o modal
+  }
+
+  updateClient(){
+    
   }
 }

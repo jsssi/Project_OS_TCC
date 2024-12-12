@@ -141,6 +141,7 @@ export class OrderServiceComponent implements OnInit {
         switchMap((responsePhone) => {
           console.log('Telefone Registrado:', responsePhone.id);
           client.phone_id = responsePhone.id;
+          client.orderId = 1;
 
           return this.userService.CreateUser(client, responsePhone.id, this.token)
             .pipe(
@@ -165,7 +166,7 @@ export class OrderServiceComponent implements OnInit {
       .subscribe({
         next: (responseUser) => {
           if (responseUser) {
-            console.log('Cliente Cadastrado com Sucesso:', responseUser);
+            console.log('Cliente Cadastrado com Sucesso: ', responseUser);
             order.clientId = responseUser.id;  // Agora o ID do usuário é atribuído a order.clientId
             this.OrderService.setOrderService(order, this.token).subscribe(
               (ResponseOrder) => {

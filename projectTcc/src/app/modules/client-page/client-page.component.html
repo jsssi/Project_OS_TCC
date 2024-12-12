@@ -13,7 +13,6 @@
       <p>id</p>
       <p>nome</p>
       <p>cpf</p>
-      <p>status</p>
       <p>telefone</p>
       <p>editar</p>
       <p>excluir</p>
@@ -25,13 +24,45 @@
         <p>{{ item.id }}</p>
         <p>{{ item.first_name + " " + item.last_name }}</p>
         <p>{{ item.cpf }}</p>
-        <p>Pendente</p>
         <p>{{ item.phone_number }}</p>
-        <img src="../../../assets/botao-editar.png">
+        <img src="../../../assets/botao-editar.png" (click)="openEditModal(item)">
         <img src="../../../assets/botao-excluir.png" (click)="deleteUserById(item.id)">
+
+
         <button (click)="GerarOdemDeSerice(item.orderId)">gerar</button>
+
+        <div class="edit-client-modal" *ngIf="isModalOpen">
+          <div class="modal-content">
+            <h2>Editar Cliente</h2>
+            <form (ngSubmit)="updateClient()">
+              <div class="form-group">
+                <label for="first_name">Nome</label>
+                <input id="first_name" type="text" [(ngModel)]="item.first_name" name="first_name">
+              </div>
+
+              <div class="form-group">
+                <label for="last_name">Sobrenome</label>
+                <input id="last_name" type="text" [(ngModel)]="item.last_name" name="last_name">
+              </div>
+
+              <div class="form-group">
+                <label for="cpf">CPF</label>
+                <input id="cpf" type="text" [(ngModel)]="item.cpf" name="cpf">
+              </div>
+
+              <div class="form-group">
+                <label for="phone_number">Telefone</label>
+                <input id="phone_number" type="text" [(ngModel)]="item.phone_number" name="phone_number">
+              </div>
+
+
+              <button type="submit">Salvar</button>
+            </form>
+            <button (click)="closeModal()">Fechar</button>
+          </div>
+        </div>
       </div>
     </div>
-    
+
   </div>
 </div>
