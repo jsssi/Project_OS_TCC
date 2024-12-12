@@ -269,13 +269,31 @@
     <h3>Ordem De Serviço</h3>
     <form class="OSForm" [formGroup]="OsForm">
       <div class="form-field">
-        <input type="text" placeholder="Peças Utilizizadas" formControlName="material"/>
+        <input type="text" placeholder="Peças Utilizizadas" formControlName="material" 
+         [ngClass]="{
+          valid:
+            PhoneForm.get('material')?.valid && PhoneForm.get('material')?.touched,
+          invalid:
+            PhoneForm.get('material')?.invalid && PhoneForm.get('material')?.touched
+        }"/>
       </div>
       <div class="form-field">
-        <input type="datetime" placeholder="Tempo Estimado" formControlName="estimadeTime"/>
+        <input type="datetime" placeholder="Tempo Estimado" formControlName="estimatedTime"
+        [ngClass]="{
+          valid:
+            PhoneForm.get('estimatedTime')?.valid && PhoneForm.get('estimatedTime')?.touched,
+          invalid:
+            PhoneForm.get('estimatedTime')?.invalid && PhoneForm.get('estimatedTime')?.touched
+        }"/>
       </div>
       <div class="form-field">
-        <textarea name="" placeholder="Descriçao" formControlName="description"></textarea>
+        <textarea name="" placeholder="Descriçao" formControlName="description"
+        [ngClass]="{
+          valid:
+            PhoneForm.get('description')?.valid && PhoneForm.get('description')?.touched,
+          invalid:
+            PhoneForm.get('description')?.invalid && PhoneForm.get('description')?.touched
+        }"></textarea>
       </div>
      </form>
   </div>
