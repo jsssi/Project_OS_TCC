@@ -25,14 +25,19 @@
     background: #EBEBEB;
     border: none;
 
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    gap: 50px;
 
     p{
       font-weight: bold;
       font-size: 26px;
     }
+  }
+
+  .card_OrderService{
+    display: flex;
+    border: 1px solid red;
+    justify-content: space-around;
   }
 
   .list-client {

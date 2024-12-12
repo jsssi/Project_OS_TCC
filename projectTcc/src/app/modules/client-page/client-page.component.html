@@ -20,18 +20,12 @@
     </div>
 
     <div class="card_OrderService" *ngFor="let users of clients">
-      <button class="button_moreInfo">
-        <i class="bi bi-list"></i>
-      </button>
-      <div class="user_info">
-       {{ users.first_name }}
-      </div>
-      <div class="phone_info">
+    <div class="user_info">
+        <p> {{users.id}} </p>
+        <p>{{users.first_name}}</p>
+        <img src="" >
+    </div>
 
-      </div>
-      <div class="Order_info">
-
-      </div>
     </div>
   </div>
 </div>
