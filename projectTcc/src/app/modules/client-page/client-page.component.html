@@ -20,17 +20,18 @@
       <p>O.S</p>
     </div>
 
-    <div class="card_OrderService" *ngFor="let users of clients">
+    <div class="card_OrderService" *ngFor="let item of clients">
       <div class="user_info">
-        <p>{{users.id}}</p>
-        <p>{{ users.first_name + " " + users.last_name }}</p>
-        <p>{{users.cpf}}</p>
+        <p>{{ item.id }}</p>
+        <p>{{ item.first_name + " " + item.last_name }}</p>
+        <p>{{ item.cpf }}</p>
         <p>Pendente</p>
-        <p>{{users.phone_number}}</p>
+        <p>{{ item.phone_number }}</p>
         <img src="../../../assets/botao-editar.png">
-        <img src="../../../assets/botao-excluir.png" (click)="deleteUserById(users.id)">
-        <button (click)="generetedPdf(users.cpf)">gerar</button>
+        <img src="../../../assets/botao-excluir.png" (click)="deleteUserById(item.id)">
+        <button (click)="GerarOdemDeSerice(item.orderId)">gerar</button>
       </div>
     </div>
+    
   </div>
 </div>
