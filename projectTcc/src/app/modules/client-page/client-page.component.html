@@ -5,10 +5,9 @@
   <div class="input-search-cleint">
     <button (click)="findByCpf()">Buscar</button>
     <input type="text" placeholder="Cpf Cliente" [(ngModel)]="cpf" (input)="refresh()">
-
   </div>
-  <div class="list">
 
+  <div class="list">
     <div class="help-info">
       <p>id</p>
       <p>nome</p>
@@ -27,11 +26,11 @@
         <p>{{ item.cpf }}</p>
         <p>Pendente</p>
         <p>{{ item.phone_number }}</p>
+
         <img src="../../../assets/botao-editar.png">
         <img src="../../../assets/botao-excluir.png" (click)="deleteUserById(item.id)">
-        <button (click)="GerarOdemDeSerice(item.orderId)">gerar</button>
+        <button>gerar</button> <!-- Passando o orderId -->
       </div>
     </div>
-    
   </div>
 </div>

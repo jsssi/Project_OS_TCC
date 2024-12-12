@@ -4,6 +4,7 @@ import { phone } from './../model/Phone';
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable } from 'rxjs';
+import { Order } from '../model/Order';
 
 
 
@@ -16,9 +17,10 @@ export class UserService {
     this._httpClient = HttpClient;
   }
 
-  CreateUser(user:any, phoneId: phone, token: any){
+  CreateUser(user:usersWeb, phoneId: phone, token: any , OrderId:number){
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
-    user.phone_id= phoneId
+    user.phone_id = phoneId.id;  // Atribui o ID do telefone
+    user.orderId = OrderId;  // Atribui o ID da ordem de serviço
 
     return this._httpClient.post<{ id: number }>('/Api/cos/client/create', user, { headers });
   }

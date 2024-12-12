@@ -23,7 +23,7 @@ export class EmplooyerGerenteComponent implements OnInit {
       cpf: '07788881503',
       password: '1234567',
       phone_number: '71988381575',
-      type_employee: 'Atendente',
+      type_employee: 'Gerente',
 
 
   };
