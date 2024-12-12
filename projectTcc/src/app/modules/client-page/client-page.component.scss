@@ -10,6 +10,7 @@
 
   height: 100vh;
 
+
   h1{
     margin-top: 4rem;
     font-size: 1.5rem;
@@ -25,30 +26,75 @@
     background: #EBEBEB;
     border: none;
 
-    justify-content: space-around;
+
     align-items: center;
+    justify-content: space-around;
+
+    padding: 18px;
 
     p{
       font-weight: bold;
-      font-size: 26px;
+      font-size: 24px;
     }
   }
 
   .card_OrderService{
     display: flex;
-    border: 1px solid red;
     justify-content: space-around;
   }
 
   .list-client {
-
     height: 70vh;
     width: 70vw;
 
-
-
     margin-top: .8rem;
+    padding: 20px;
     background: #fff;
+
+    border-radius: 10px;
+
+    .list{
+      .card_OrderService{
+        margin-top: 20px;
+        .user_info{
+          height: 6vh;
+          display: flex;
+          border: none;
+
+
+          align-items: center;
+          justify-content: space-around;
+
+
+
+          padding: 18px;
+          p{
+            font-weight: 600;
+            font-size: 15px;
+          }
+
+          img{
+            width: 4%;
+            cursor: pointer;
+          }
+          button{
+            @include center_itens();
+            width: 4vw;
+            height: 5vh;
+
+            color: #000;
+            background-color: $secund-color;
+            padding: .4rem;
+            border-radius: .25rem;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+
+
+
     .input-search-cleint{
       display: flex;
       align-items: center;

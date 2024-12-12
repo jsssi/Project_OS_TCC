@@ -269,18 +269,15 @@
     <h3>Ordem De Serviço</h3>
     <form class="OSForm" [formGroup]="OsForm">
       <div class="form-field">
-        <input type="text" />
+        <input type="text" placeholder="Peças Utilizizadas" formControlName="material"/>
       </div>
       <div class="form-field">
-        <input type="text" />
+        <input type="datetime" placeholder="Tempo Estimado" formControlName="estimadeTime"/>
       </div>
       <div class="form-field">
-        <input type="text" />
+        <textarea name="" placeholder="Descriçao" formControlName="description"></textarea>
       </div>
-      <div class="form-field">
-        <input type="datetime-local" />
-      </div>
-    </form>
+     </form>
   </div>
   <button
     class="Oder-Register-btn"
