@@ -119,7 +119,7 @@ export class OrderServiceComponent implements OnInit {
       address: this.ClienteForm.get('adress')?.value,
       phone_number: this.ClienteForm.get('numberContact')?.value,
       phone_id: phone,
-      orderId: 0,
+      order_id: 1,
     };
     const userLimpo = this.limparCampos(client);
 
@@ -141,7 +141,7 @@ export class OrderServiceComponent implements OnInit {
         switchMap((responsePhone) => {
           console.log('Telefone Registrado:', responsePhone.id);
           client.phone_id = responsePhone.id;
-          client.orderId = 1;
+          client.order_id = 1;
 
           return this.userService.CreateUser(client, responsePhone.id, this.token)
             .pipe(
@@ -171,7 +171,7 @@ export class OrderServiceComponent implements OnInit {
             this.OrderService.setOrderService(order, this.token).subscribe(
               (ResponseOrder) => {
                 console.log('Ordem Gerada com sucesso', ResponseOrder);
-                client.orderId = ResponseOrder.id
+                client.order_id = ResponseOrder.id
               },
               (Error) => {
                 console.log('Error:', Error);
