@@ -1,170 +1,63 @@
-import { Order } from './../../model/Order';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../Service/Ordem.Service';
 import { AuthService } from '../../Service/Auth.Service';
-import { NavBarComponent } from "../nav-bar/nav-bar.component";
-import { NgFor, NgIf } from '@angular/common';
-import { usersWeb } from '../../model/users';
 import { UserService } from '../../Service/user.service';
 import { PhoneService } from '../../Service/phone.Service';
-import { FormsModule, NgModel } from '@angular/forms';
+import { usersWeb } from '../../model/users';
+import { FormsModule } from '@angular/forms';
+import { NgFor } from '@angular/common';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-client-page',
   standalone:true,
-  templateUrl: './client-page.component.html',
-  styleUrls: ['./client-page.component.scss'],
-  imports: [NavBarComponent,
+  imports:[
+    FormsModule,
     NgFor,
-    FormsModule, NgIf
+    NavBarComponent
   ],
+  templateUrl: './client-page.component.html',
+  styleUrls: ['./client-page.component.scss']
 })
 export class ClientPageComponent implements OnInit {
   token: any;
-
-
   order: any;
   cpf: string = '';
+  clients: usersWeb[] = []; // Armazena a lista de clientes
 
-  isModalOpen: boolean = false;
-
-
-
-  constructor (private orderService : OrderService, private clientService:UserService, private authService: AuthService, private phoneService: PhoneService){}
+  constructor(
+    private orderService: OrderService,
+    private clientService: UserService,
+    private authService: AuthService,
+    private phoneService: PhoneService
+  ) {}
 
   ngOnInit(): void {
     this.loadClients();
     this.token = this.authService.getToken();
   }
 
-  clients: usersWeb[] = [];
-  loadClients(){
+  loadClients() {
     this.clientService.GetAllUsers(this.authService.getToken()).subscribe(
-      (data) =>{
+      (data) => {
         this.clients = data;
       },
-      (Error) =>{
-        console.log('erro ao carregar os clientes');
-      })
-   }
-
-
-
-  GerarOdemDeSerice(OrderId: any) {
-    this.orderService.GetOrderServiceById(OrderId, this.token).subscribe(
-      (order) => {
-        const doc = new jsPDF();
-
-        // Cabeçalho
-        doc.setFont('helvetica', 'normal');
-        doc.setFontSize(22);
-        doc.setTextColor(0, 102, 204);
-        doc.text('Ordem de Serviço', 105, 20, { align: 'center' });
-
-        // Logo
-        const img = new Image();
-        img.src = '../../../assets/Rectangle 8.png';
-        doc.addImage(img, 'PNG', 10, 10, 20, 20);
-        img.style.color = '#0000';
-
-        // Tabela: Dados do Cliente
-        const clientDetails = [
-          ['Nome', `${order.client_id?.first_name || ''} ${order.client_id?.last_name || ''}`],
-          ['Email', order.client_id?.email || 'Não informado'],
-          ['CPF', order.client_id?.cpf || 'Não informado'],
-          ['Endereço', order.client_id?.address || 'Não informado'],
-          ['Telefone', order.client_id?.phone_number || 'Não informado'],
-        ];
-        doc.autoTable({
-          startY: 50,
-          head: [['Campo', 'Detalhe']],
-          body: clientDetails,
-          theme: 'grid',
-          headStyles: {
-            fillColor: [0, 102, 204],
-            textColor: [255, 255, 255],
-            fontSize: 10,
-            halign: 'center',
-          },
-          bodyStyles: {
-            fontSize: 10,
-            halign: 'left',
-          },
-        });
-
-        // Usar finalY do jsPDF
-        const finalY1 = (doc as any).lastAutoTable.finalY;
-
-        // Tabela: Dados do Telefone
-        const phoneDetails = [
-          ['Marca', order.client_id?.phone_id?.brand || ''],
-          ['Modelo', order.client_id?.phone_id?.model || ''],
-          ['Status', order.client_id?.phone_id?.phone_status || ''],
-          ['Descrição do Problema', order.client_id?.phone_id?.problem_description || ''],
-        ];
-        doc.autoTable({
-          startY: finalY1 + 10,
-          head: [['Campo', 'Detalhe']],
-          body: phoneDetails,
-          theme: 'grid',
-          headStyles: {
-            fillColor: [0, 102, 204],
-            textColor: [255, 255, 255],
-            fontSize: 10,
-            halign: 'center',
-          },
-          bodyStyles: {
-            fontSize: 10,
-            halign: 'left',
-          },
-        });
-
-        // Usar finalY atualizado
-        const finalY2 = (doc as any).lastAutoTable.finalY;
-
-        // Tabela: Detalhes da Ordem de Serviço
-        const orderDetails = [
-          ['Descrição', order.description || 'Nao informado'],
-          ['Material', order.material || 'Nao informado'],
-          ['Data de Emissão', order.emission_date || 'Nao informado'],
-          ['Data Estimada', order.estimatedTime || 'Nao informado'],
-        ];
-        doc.autoTable({
-          startY: finalY2 + 10,
-          head: [['Campo', 'Detalhe']],
-          body: orderDetails,
-          theme: 'grid',
-          headStyles: {
-            fillColor: [0, 102, 204],
-            textColor: [255, 255, 255],
-            fontSize: 10,
-            halign: 'center',
-          },
-          bodyStyles: {
-            fontSize: 10,
-            halign: 'left',
-          },
-        });
-
-        // Assinatura
-        const finalY3 = (doc as any).lastAutoTable.finalY;
-        doc.text('Assinatura do Cliente:', 10, finalY3 + 20);
-        doc.line(10, finalY3 + 25, 200, finalY3 + 25);
-
-        // Salvar o PDF
-        doc.save('ordem_de_servico.pdf');
+      (error) => {
+        console.log('Erro ao carregar os clientes');
       }
     );
   }
 
+  // Função para gerar a ordem de serviço e associar o orderId ao cliente
+
+  // Função para buscar clientes pelo CPF
   findByCpf() {
     console.log('coletando cpf');
-
     this.clientService.getClientByCpf(this.cpf, this.authService.getToken()).subscribe(
-      (response:usersWeb ) => {  // Usando o tipo esperado
-        this.clients = [response];  // Acessando o usuário dentro do objeto 'response'
+      (response: usersWeb) => {
+        this.clients = [response]; // Acessando o usuário dentro do objeto 'response'
         console.log(response);
       },
       (error) => {
@@ -175,36 +68,27 @@ export class ClientPageComponent implements OnInit {
     );
   }
 
-
-  refresh(){
-    if(this.cpf.trim() === ''){
-      this.loadClients()
+  refresh() {
+    if (this.cpf.trim() === '') {
+      this.loadClients();
     }
   }
 
-  deleteUserById(id: Number | undefined){
+  // Função para excluir um cliente
+  deleteUserById(id: Number | undefined) {
     this.clientService.deleteUser(id, this.authService.getToken()).subscribe(
-      (Response) =>{
-        alert('usuario apagado com sucesso');
-        console.log("response: " , Response)
+      (Response) => {
+        alert('usuário apagado com sucesso');
+        console.log('response:', Response);
         this.loadClients();
-      }, (Error) =>{
-        console.error("error: ", Error);
+      },
+      (Error) => {
+        console.error('error:', Error);
       }
-    )
+    );
   }
 
-  openEditModal(client: any) {
-    this.clients = { ...client }; // Faz uma cópia do cliente para edição
-    this.isModalOpen = true;  // Torna o modal visível
-  }
-
-  // Fechar o modal
-  closeModal() {
-    this.isModalOpen = false;  // Fecha o modal
-  }
-
-  updateClient(){
-    
+  gerarPdf(cpf: string){
+    this.orderService.GerarOdemDeSerice(cpf);
   }
 }

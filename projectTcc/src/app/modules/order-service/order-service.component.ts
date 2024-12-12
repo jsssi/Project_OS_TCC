@@ -1,6 +1,7 @@
+
 import { AuthService } from './../../Service/Auth.Service';
 import { usersWeb } from '../../model/users';
-import { AfterViewInit, Component, Directive, OnInit } from '@angular/core';
+import { Component, numberAttribute, OnInit } from '@angular/core';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import {
   FormControl,
@@ -17,7 +18,7 @@ import { PhoneService } from '../../Service/phone.Service';
 import { NgClass, NgIf } from '@angular/common';
 import { ValidatorsUtils } from '../../utils/Validators.utils';
 import { FormatePhoneNumberDirective } from '../../directives/telefone-mask.directive';
-import { Token } from '@angular/compiler';
+
 import { catchError, of, switchMap, tap } from 'rxjs';
 
 @Component({
@@ -48,7 +49,8 @@ export class OrderServiceComponent implements OnInit {
     private userService: UserService,
     private OrderService: OrderService,
     private PhoneService: PhoneService,
-    private AuthService: AuthService
+    private AuthService: AuthService,
+
   ) {}
 
   ngOnInit() {
@@ -109,7 +111,11 @@ export class OrderServiceComponent implements OnInit {
       problem_description: this.PhoneForm.get('problem')?.value,
       phone_status: 'PENDENTE',
     };
-
+    const order: Order = {
+      description : this.OsForm.get('description')?.value,
+      material: this.OsForm.get('material')?.value,
+      estimatedTime:this.OsForm.get('estimatedTime')?.value
+    };
     //Segundo a ser enviado para o banco
     const client: usersWeb = {
       first_name: this.ClienteForm.get('first_name')?.value,
@@ -118,65 +124,62 @@ export class OrderServiceComponent implements OnInit {
       email: this.ClienteForm.get('email')?.value,
       address: this.ClienteForm.get('adress')?.value,
       phone_number: this.ClienteForm.get('numberContact')?.value,
-      phone_id: phone,
-      order_id: 1,
     };
     const userLimpo = this.limparCampos(client);
 
-    const order: Order = {
-      description : this.OsForm.get('description')?.value,
-      material: this.OsForm.get('material')?.value,
-      estimatedTime:this.OsForm.get('estimatedTime')?.value
-    };
+
 
     this.ClienteForm.reset();
     this.PhoneForm.reset();
+    this.OsForm.reset();
 
     this.CriarOrdem(phone, userLimpo , order);
   }
 
-  CriarOrdem(phone: any, client: usersWeb, order: any): void {
+  CriarOrdem(phone: any, client: usersWeb, order: Order): void {
     this.PhoneService.SetPhoneUser(phone, this.token)
       .pipe(
         switchMap((responsePhone) => {
           console.log('Telefone Registrado:', responsePhone.id);
-          client.phone_id = responsePhone.id;
-          client.order_id = 1;
+          client.phone_id = responsePhone.id; // Atribuindo o id do telefone ao cliente
 
-          return this.userService.CreateUser(client, responsePhone.id, this.token)
-            .pipe(
-              catchError((error) => {
-                console.error('Erro ao criar usuário. Excluindo telefone...', error.error.message);
-                return this.PhoneService.DeletePhone(responsePhone.id, this.token)
-                  .pipe(
-                    tap(() => console.log('Telefone excluído com sucesso!')),
-                    catchError((deleteError) => {
-                      console.error('Erro ao excluir telefone', deleteError);
-                      return of(null); // Retorna null em caso de falha ao excluir o telefone
-                    })
-                  );
-              })
-            );
+          return this.OrderService.setOrderService(order, this.token).pipe(
+            tap((responseOrder) => {
+              console.log('Ordem de Serviço Gerada:', responseOrder.id);
+              client.order_id = responseOrder.id; // Atribuindo o id da ordem ao cliente
+            }),
+            switchMap(() =>
+              this.userService.CreateUser(client, responsePhone, this.token, client.order_id)
+            ),
+            catchError((error) => {
+              console.error('Erro ao criar ordem de serviço ou cliente:', error.error.message);
+
+              // Excluir telefone em caso de falha
+              return this.PhoneService.DeletePhone(responsePhone.id, this.token).pipe(
+                tap(() => console.log('Telefone excluído com sucesso!')),
+                catchError((deleteError) => {
+                  console.error('Erro ao excluir telefone', deleteError);
+                  return of(null);
+                })
+              );
+            })
+          );
         }),
         catchError((error) => {
-          console.error('Erro ao registrar telefone:', error);
+          if (error && error.error && error.error.message) {
+            console.error('Erro ao registrar telefone:', error.error.message);
+          } else {
+            console.error('Erro inesperado ao registrar telefone:', error);
+          }
           return of(null);
         })
+
       )
       .subscribe({
         next: (responseUser) => {
           if (responseUser) {
-            console.log('Cliente Cadastrado com Sucesso: ', responseUser);
-            order.clientId = responseUser.id;  // Agora o ID do usuário é atribuído a order.clientId
-            this.OrderService.setOrderService(order, this.token).subscribe(
-              (ResponseOrder) => {
-                console.log('Ordem Gerada com sucesso', ResponseOrder);
-                client.order_id = ResponseOrder.id
-              },
-              (Error) => {
-                console.log('Error:', Error);
-              }
-            );
+            console.log('Cliente Cadastrado com Sucesso:', responseUser);
+            this.OrderService.GerarOdemDeSerice(client.cpf); // Gera o PDF da ordem de serviço
           }
         },
         error: (error) => {

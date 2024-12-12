@@ -5,10 +5,9 @@
   <div class="input-search-cleint">
     <button (click)="findByCpf()">Buscar</button>
     <input type="text" placeholder="Cpf Cliente" [(ngModel)]="cpf" (input)="refresh()">
-
   </div>
-  <div class="list">
 
+  <div class="list">
     <div class="help-info">
       <p>id</p>
       <p>nome</p>
@@ -25,43 +24,13 @@
         <p>{{ item.first_name + " " + item.last_name }}</p>
         <p>{{ item.cpf }}</p>
         <p>{{ item.phone_number }}</p>
-        <img src="../../../assets/botao-editar.png" (click)="openEditModal(item)">
+        <img src="../../../assets/botao-editar.png">
         <img src="../../../assets/botao-excluir.png" (click)="deleteUserById(item.id)">
 
 
-        <button (click)="GerarOdemDeSerice(item.order_id)">gerar</button>
-
-        <div class="edit-client-modal" *ngIf="isModalOpen">
-          <div class="modal-content">
-            <h2>Editar Cliente</h2>
-            <form (ngSubmit)="updateClient()">
-              <div class="form-group">
-                <label for="first_name">Nome</label>
-                <input id="first_name" type="text" [(ngModel)]="item.first_name" name="first_name">
-              </div>
-
-              <div class="form-group">
-                <label for="last_name">Sobrenome</label>
-                <input id="last_name" type="text" [(ngModel)]="item.last_name" name="last_name">
-              </div>
-
-              <div class="form-group">
-                <label for="cpf">CPF</label>
-                <input id="cpf" type="text" [(ngModel)]="item.cpf" name="cpf">
-              </div>
-
-              <div class="form-group">
-                <label for="phone_number">Telefone</label>
-                <input id="phone_number" type="text" [(ngModel)]="item.phone_number" name="phone_number">
-              </div>
+          <button (click)="gerarPdf(item.cpf)">gerar</button>
 
 
-              <button type="submit">Salvar</button>
-            </form>
-            <button (click)="closeModal()">Fechar</button>
-          </div>
-        </div>
-      </div>
     </div>
 
   </div>

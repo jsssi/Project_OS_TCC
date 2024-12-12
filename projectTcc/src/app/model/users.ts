@@ -1,3 +1,4 @@
+import { Order } from "./Order";
 import { phone } from "./Phone";
 
 export interface usersWeb {
@@ -8,8 +9,8 @@ export interface usersWeb {
   email:      string;
   address:    string;
   phone_number: string;
-  phone_id?:  phone;
-  order_id?: number;
+  phone_id?: any;
+  order_id?: any;
 }
 
 
