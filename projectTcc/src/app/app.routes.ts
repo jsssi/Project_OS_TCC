@@ -44,7 +44,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/cos/auth/login',
+    redirectTo: 'cos/auth/login',
     pathMatch: 'full'
   },
 

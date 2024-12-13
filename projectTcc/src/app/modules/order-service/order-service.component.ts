@@ -20,6 +20,7 @@ import { ValidatorsUtils } from '../../utils/Validators.utils';
 import { FormatePhoneNumberDirective } from '../../directives/telefone-mask.directive';
 
 import { catchError, of, switchMap, tap } from 'rxjs';
+import { NgxMaskDirective , NgxMaskConfig, NgxMaskService, NgxMaskPipe } from 'ngx-mask';
 
 @Component({
   selector: 'app-order-service',
@@ -32,6 +33,7 @@ import { catchError, of, switchMap, tap } from 'rxjs';
     NgClass,
     FormatePhoneNumberDirective,
   ],
+
   templateUrl: './order-service.component.html',
   styleUrl: './order-service.component.scss',
 })

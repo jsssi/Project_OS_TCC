@@ -14,9 +14,9 @@ export default class employerService {
   }
 
   registerEmplooyer(employer: any) {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
     return this._httClient
-      .post<any>('/Api/cos/auth/register', employer, { headers })
+      .post<any>('/Api/cos/auth/register', employer)
       .pipe(
         catchError((error) => {
           console.log('error', error);

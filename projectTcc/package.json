@@ -30,6 +30,7 @@
     "jspdf": "^2.5.2",
     "jspdf-autotable": "^3.8.4",
     "ngx-indexed-db": "^19.0.0",
+    "ngx-mask": "^19.0.4",
     "project-tcc": "file:",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

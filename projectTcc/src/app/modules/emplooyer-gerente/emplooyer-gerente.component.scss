@@ -9,24 +9,44 @@
   background-repeat: no-repeat;
 
   height: 100vh;
-
+  h3{
+    color: #fff;
+    font-size: 1.3rem;
+    
+    margin-top:1.0rem;
+    text-transform: capitalize;
+    span{
+     color: $secund-color;
+    }
+  }
+  select{
+    
+    border-bottom: 1px solid gray;
+  }
   .containenr_Form_Register_employe {
     @include center_itens();
 
-    height: 70vh;
+    height: 40vh;
     width: 50vw;
 
     background: #fff;
+    margin-top: 1.0rem;
+
+    border-radius: .6rem;
+
     .form_register {
       display: flex;
       flex-wrap: wrap;
 
       gap: 1rem;
+      padding: 1rem;
 
-      height: 65%;
-      width: 65%;
+      height: 75%;
+      width: 75%;
 
       position: relative;
+      
+
 
       .form_field {
         display: flex;
@@ -42,7 +62,7 @@
         }
         input {
           padding: 0.3rem;
-          border: 1px solid gray;
+          border-bottom: 1px solid gray;
 
           border-radius: 0.2rem;
           width: 15vw;

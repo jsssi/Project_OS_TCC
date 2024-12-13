@@ -1,40 +1,41 @@
 <app-nav-bar></app-nav-bar>
+<h3>Registre novos <span>Funcionarios</span></h3>
 <div class="containenr_Form_Register_employe">
-  <form class="form_register">
+  <form class="form_register" [formGroup]="employeeForm">
     <div class="form_field">
-      <label>Nome</label>
-      <input type="text"  />
+
+      <input type="text"  placeholder="Nome" formControlName="first_name">
     </div>
     <div class="form_field">
-      <label>Sobrenome</label>
-      <input type="text"  />
+
+      <input type="text" placeholder="Sobrenome" formControlName="last_name"/>
     </div>
     <div class="form_field">
-      <label>Email</label>
-      <input type="text" />
+
+      <input type="text" placeholder="Email" formControlName="email"/>
     </div>
     <div class="form_field">
-      <label>CPF</label>
-      <input type="text"  />
+
+      <input type="text" placeholder="CPF"  FormateCpf   formControlName="cpf"/>
     </div>
     <div class="form_field">
-      <label>Password</label>
-      <input type="text" />
+
+      <input type="text" placeholder="Senha" formControlName="password"/>
     </div>
     <div class="form_field">
-       <label>Numero de Telefone</label>
-      <input type="text"  />
+
+      <input type="text"  placeholder="Numero de Telefone"  FormatePhoneNumber   formControlName="phone_number"/>
     </div>
     <div class="form_field">
       <label>Cargo</label>
-      <select name="selectOptions">
+      <select name="selectOptions" formControlName="type_employee">
         <option value="Atendente">Atendente</option>
         <option value="Tecnico">Tecnico</option>
         <option value="Gerente">Gerente</option>
       </select>
     </div>
 
-
+    <button class="RegisterButton" (click)="onSubmit()">Registrar</button>
   </form>
-  <button class="RegisterButton" (click)="onSubmit()">Registrar</button>
+
 </div>
